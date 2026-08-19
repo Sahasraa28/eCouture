@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My eCloset</title>
+  <link rel="stylesheet" href="closet.css">
+</head>
+
+<body>
+
+<h1>Digital Wardrobe</h1>
+
+<main class="main">
+
+  <div class="top">
+    <input
+      class="search"
+      id="searchInput"
+      placeholder="Search clothes..."
+    >
+
+    <button id="uploadButton">+ Upload Clothing</button>
+  </div>
+
+  <div class="container" id="clothingContainer">
+
+    <div class="card">
+      <img src="shirt.jpeg" alt="Shirt">
+      <h3>Shirt</h3>
+      <p>Top</p>
+      <span class="tag">Good Condition</span>
+
+      <div class="action">
+        <button onclick="openViewModal(
+          'Shirt','Top','Good Condition','shirt.jpeg','good'
+        )">
+          View
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="jeans.jpeg" alt="Jeans">
+      <h3>Jeans</h3>
+      <p>Bottom</p>
+      <span class="tag excellent">Excellent</span>
+
+      <div class="action">
+        <button onclick="openViewModal(
+          'Jeans','Bottom','Excellent','jeans.jpeg','excellent'
+        )">
+          View
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="hoodie.jpeg" alt="Hoodie">
+      <h3>Hoodie</h3>
+      <p>Outerwear</p>
+      <span class="tag repair">Needs Repair</span>
+
+      <div class="action">
+        <button onclick="openViewModal(
+          'Hoodie','Outerwear','Needs Repair','hoodie.jpeg','repair'
+        )">
+          View
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="no-results" id="noResults">
+    No clothing found.
+  </div>
+
+</main>
+
+
+<!-- VIEW MODAL -->
+
+<div class="modal" id="viewModal">
+
+  <div class="modal-content">
+
+    <button class="close" onclick="closeViewModal()">×</button>
+
+    <div class="view-header">
+
+      <img id="viewImage" src="" alt="Clothing">
+
+      <div class="view-info">
+        <h2 id="viewName">Clothing</h2>
+
+        <p>
+          <strong>Category:</strong>
+          <span id="viewCategory"></span>
+        </p>
+
+        <p>
+          <strong>Condition:</strong>
+          <span id="viewCondition"></span>
+        </p>
+      </div>
+
+    </div>
+
+    <div id="recommendations"></div>
+
+  </div>
+
+</div>
+
+
+<!-- UPLOAD MODAL -->
+
+<div class="modal" id="uploadModal">
+
+  <div class="modal-content upload-content">
+
+    <button class="close" onclick="closeUploadModal()">×</button>
+
+    <h2>Add Clothing</h2>
+    <p>Add an item to your digital wardrobe.</p>
+
+    <div class="upload-options" id="uploadOptions">
+
+      <div class="upload-option" onclick="startCamera()">
+        <div class="upload-icon">📷</div>
+        <h3>Scan with Camera</h3>
+        <p>Use your camera to scan a clothing item.</p>
+      </div>
+
+      <div class="upload-option" onclick="chooseFile()">
+        <div class="upload-icon">🖼️</div>
+        <h3>Upload from Device</h3>
+        <p>Choose a photo from your device.</p>
+      </div>
+
+    </div>
+
+    <input
+      type="file"
+      id="fileInput"
+      accept="image/*"
+      hidden
+    >
+
+    <!-- CAMERA -->
+
+    <div class="camera-area" id="cameraArea">
+
+      <video id="cameraVideo" autoplay playsinline></video>
+
+      <div class="camera-buttons">
+        <button onclick="capturePhoto()">📸 Capture</button>
+        <button onclick="stopCamera()">Cancel</button>
+      </div>
+
+    </div>
+
+
+    <!-- UPLOAD FORM -->
+
+    <div class="upload-form" id="uploadForm">
+
+      <img
+        id="previewImage"
+        class="preview-image"
+        src=""
+        alt="Preview"
+      >
+
+      <div class="form-group">
+        <label>Clothing Name</label>
+        <input
+          id="clothingName"
+          placeholder="e.g. Black Tee"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Category</label>
+
+        <select id="clothingCategory">
+          <option>Top</option>
+          <option>Bottom</option>
+          <option>Outerwear</option>
+          <option>Dress</option>
+          <option>Accessories</option>
+          <option>Shoes</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Condition</label>
+
+        <select id="clothingCondition">
+          <option value="good">Good Condition</option>
+          <option value="excellent">Excellent</option>
+          <option value="repair">Needs Repair</option>
+        </select>
+      </div>
+
+      <button class="add-button" onclick="addClothing()">
+        + Add to Digital Wardrobe
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="closet.js"></script>
+
+</body>
+</html>
