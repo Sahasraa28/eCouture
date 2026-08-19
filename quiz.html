@@ -20,7 +20,6 @@ body {
     color: #314640;
 }
 
-
 /* NAVBAR */
 
 .navbar {
@@ -29,11 +28,9 @@ body {
     background: white;
     border-radius: 15px;
     padding: 18px 35px;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     box-shadow: 0 8px 25px rgba(0,0,0,.08);
 }
 
@@ -53,21 +50,16 @@ body {
     color: #333;
 }
 
-
-/* QUIZ BOX */
+/* QUIZ */
 
 .quiz {
     width: 90%;
     max-width: 900px;
     margin: 40px auto;
-
     background: #8da89f;
     color: white;
-
     padding: 55px;
-
     border-radius: 25px;
-
     box-shadow: 0 10px 30px rgba(0,0,0,.15);
 }
 
@@ -82,8 +74,7 @@ body {
     line-height: 1.6;
 }
 
-
-/* PROGRESS BAR */
+/* PROGRESS */
 
 .progress {
     height: 8px;
@@ -94,12 +85,11 @@ body {
 
 .progress-bar {
     height: 100%;
-    width: 20%;
+    width: 0%;
     background: #f5e6d9;
     border-radius: 20px;
     transition: .3s;
 }
-
 
 /* QUESTIONS */
 
@@ -120,7 +110,6 @@ body {
     opacity: .9;
 }
 
-
 /* ANSWERS */
 
 .answers {
@@ -133,16 +122,11 @@ body {
 .answer {
     background: rgba(255,255,255,.2);
     color: white;
-
     border: 2px solid transparent;
     border-radius: 15px;
-
     padding: 20px;
-
     text-align: left;
-
     cursor: pointer;
-
     transition: .2s;
 }
 
@@ -156,30 +140,23 @@ body {
     border-color: white;
 }
 
-
-/* TEXT BOX */
+/* TEXTAREA */
 
 textarea {
     width: 100%;
     min-height: 150px;
-
     border: none;
     border-radius: 15px;
-
     padding: 18px;
-
     font-size: 16px;
     font-family: Arial;
-
     resize: vertical;
-
     margin-top: 20px;
 }
 
 textarea:focus {
     outline: 3px solid rgba(255,255,255,.4);
 }
-
 
 /* BUTTONS */
 
@@ -192,14 +169,10 @@ textarea:focus {
 button {
     background: #314640;
     color: white;
-
     border: none;
     border-radius: 25px;
-
     padding: 13px 25px;
-
     font-size: 16px;
-
     cursor: pointer;
 }
 
@@ -211,7 +184,6 @@ button:hover {
     background: transparent;
     border: 2px solid white;
 }
-
 
 /* RESULT */
 
@@ -240,7 +212,6 @@ button:hover {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
-
     margin-top: 30px;
 }
 
@@ -261,7 +232,6 @@ button:hover {
     margin-top: 25px;
     font-style: italic;
 }
-
 
 /* MOBILE */
 
@@ -299,9 +269,7 @@ button:hover {
 </style>
 </head>
 
-
 <body>
-
 
 <!-- NAVBAR -->
 
@@ -313,28 +281,20 @@ button:hover {
 
     <nav>
 
-        <a href="ecouture.html">
-            Home
-        </a>
+        <a href="ecouture.html">Home</a>
 
-        <a href="closet3.html">
-            Digital Closet
-        </a>
+        <a href="closet3.html">Digital Closet</a>
 
-        <a href="quiz.html">
-            Style Quiz
-        </a>
+        <a href="quiz.html">Style Quiz</a>
 
     </nav>
 
 </header>
 
 
-
 <!-- QUIZ -->
 
 <section class="quiz">
-
 
     <!-- INTRO -->
 
@@ -359,7 +319,6 @@ button:hover {
     </div>
 
 
-
     <!-- QUESTIONS -->
 
     <div id="quizQuestions" style="display:none;">
@@ -373,263 +332,184 @@ button:hover {
 
         <div class="question active">
 
-            <p>QUESTION 1 OF 7</p>
+            <p>QUESTION 1 OF 9</p>
 
             <h2>
-                Pick an outfit you'd actually wear.
+                What is your age group?
             </h2>
 
             <div class="answers">
 
                 <div class="answer"
-                     data-style="y2k"
+                     data-value="child"
                      onclick="selectAnswer(this)">
-                    💿 Baggy jeans, crop top &
-                    chunky sneakers
+                    🧸 Child
                 </div>
 
                 <div class="answer"
-                     data-style="streetwear"
+                     data-value="teen"
                      onclick="selectAnswer(this)">
-                    🖤 Oversized hoodie, cargos &
-                    sneakers
+                    🎧 Teen
                 </div>
 
                 <div class="answer"
-                     data-style="chic"
+                     data-value="adult"
                      onclick="selectAnswer(this)">
-                    🤍 jorts , fitted top &
-                   converse
-                </div>
-
-                <div class="answer"
-                     data-style="romantic"
-                     onclick="selectAnswer(this)">
-                    🌸 Flowy skirt, corset top &
-                    ballet flats
+                    ✨ Adult
                 </div>
 
             </div>
 
         </div>
-
 
 
         <!-- QUESTION 2 -->
 
         <div class="question">
 
-            <p>QUESTION 2 OF 7</p>
+            <p>QUESTION 2 OF 9</p>
 
             <h2>
-                Which accessory would you choose?
+                Which style collection would you like to explore?
             </h2>
+
+            <p>
+                This helps us show outfit examples that fit
+                your preferences.
+            </p>
 
             <div class="answers">
 
                 <div class="answer"
-                     data-style="y2k"
+                     data-value="female"
                      onclick="selectAnswer(this)">
-                    💿 Silver chain belt
+                    🌸 Female
                 </div>
 
                 <div class="answer"
-                     data-style="streetwear"
+                     data-value="male"
                      onclick="selectAnswer(this)">
-                    🖤 Crossbody bag & cap
+                    🖤 Male
                 </div>
 
                 <div class="answer"
-                     data-style="chic"
+                     data-value="neutral"
                      onclick="selectAnswer(this)">
-                    🤍 Minimal gold jewellery
-                </div>
-
-                <div class="answer"
-                     data-style="romantic"
-                     onclick="selectAnswer(this)">
-                    🌸 Delicate necklace & bow
+                    🤍 Gender-neutral
                 </div>
 
             </div>
 
         </div>
-
 
 
         <!-- QUESTION 3 -->
 
         <div class="question">
 
-            <p>QUESTION 3 OF 7</p>
+            <p>QUESTION 3 OF 9</p>
 
             <h2>
-                What kind of fit do you prefer?
+                Pick an outfit you'd actually wear.
             </h2>
 
-            <div class="answers">
-
-                <div class="answer"
-                     data-style="y2k"
-                     onclick="selectAnswer(this)">
-                    Baggy bottoms + fitted top
-                </div>
-
-                <div class="answer"
-                     data-style="streetwear"
-                     onclick="selectAnswer(this)">
-                    Oversized everything
-                </div>
-
-                <div class="answer"
-                     data-style="chic"
-                     onclick="selectAnswer(this)">
-                    Structured and fitted
-                </div>
-
-                <div class="answer"
-                     data-style="romantic"
-                     onclick="selectAnswer(this)">
-                    Fitted top + flowy bottom
-                </div>
-
+            <div class="answers"
+                 id="outfitAnswers">
             </div>
 
         </div>
-
 
 
         <!-- QUESTION 4 -->
 
         <div class="question">
 
-            <p>QUESTION 4 OF 7</p>
+            <p>QUESTION 4 OF 9</p>
 
             <h2>
-                Which colour palette feels most like you?
+                Which accessory would you choose?
             </h2>
 
-            <div class="answers">
-
-                <div class="answer"
-                     data-style="y2k"
-                     onclick="selectAnswer(this)">
-                    💿 Pink, silver, denim & black
-                </div>
-
-                <div class="answer"
-                     data-style="streetwear"
-                     onclick="selectAnswer(this)">
-                    🖤 Black, grey & dark green
-                </div>
-
-                <div class="answer"
-                     data-style="chic"
-                     onclick="selectAnswer(this)">
-                    🤍 Cream, beige & white
-                </div>
-
-                <div class="answer"
-                     data-style="romantic"
-                     onclick="selectAnswer(this)">
-                    🌸 Pastels, pink & cream
-                </div>
-
+            <div class="answers"
+                 id="accessoryAnswers">
             </div>
 
         </div>
-
 
 
         <!-- QUESTION 5 -->
 
         <div class="question">
 
-            <p>QUESTION 5 OF 7</p>
+            <p>QUESTION 5 OF 9</p>
 
             <h2>
-                What matters most when getting dressed?
+                What kind of fit do you prefer?
             </h2>
 
-            <div class="answers">
-
-                <div class="answer"
-                     data-style="y2k"
-                     onclick="selectAnswer(this)">
-                    Looking unique & trendy
-                </div>
-
-                <div class="answer"
-                     data-style="streetwear"
-                     onclick="selectAnswer(this)">
-                    Making a statement
-                </div>
-
-                <div class="answer"
-                     data-style="chic"
-                     onclick="selectAnswer(this)">
-                    Looking polished
-                </div>
-
-                <div class="answer"
-                     data-style="romantic"
-                     onclick="selectAnswer(this)">
-                    Looking cute & feminine
-                </div>
-
+            <div class="answers"
+                 id="fitAnswers">
             </div>
 
         </div>
-
 
 
         <!-- QUESTION 6 -->
 
         <div class="question">
 
-            <p>QUESTION 6 OF 7</p>
+            <p>QUESTION 6 OF 9</p>
 
             <h2>
                 Pick your ideal jacket.
             </h2>
 
-            <div class="answers">
-
-                <div class="answer"
-                     data-style="y2k"
-                     onclick="selectAnswer(this)">
-                    💿 Cropped denim jacket
-                </div>
-
-                <div class="answer"
-                     data-style="streetwear"
-                     onclick="selectAnswer(this)">
-                    🖤 Oversized bomber
-                </div>
-
-                <div class="answer"
-                     data-style="chic"
-                     onclick="selectAnswer(this)">
-                    🤍 Tailored blazer
-                </div>
-
-                <div class="answer"
-                     data-style="romantic"
-                     onclick="selectAnswer(this)">
-                    🌸 Cropped cardigan
-                </div>
-
+            <div class="answers"
+                 id="jacketAnswers">
             </div>
 
         </div>
-
 
 
         <!-- QUESTION 7 -->
 
         <div class="question">
 
-            <p>QUESTION 7 OF 7</p>
+            <p>QUESTION 7 OF 9</p>
+
+            <h2>
+                Which colour palette feels most like you?
+            </h2>
+
+            <div class="answers"
+                 id="colourAnswers">
+            </div>
+
+        </div>
+
+
+        <!-- QUESTION 8 -->
+
+        <div class="question">
+
+            <p>QUESTION 8 OF 9</p>
+
+            <h2>
+                What matters most when getting dressed?
+            </h2>
+
+            <div class="answers"
+                 id="priorityAnswers">
+            </div>
+
+        </div>
+
+
+        <!-- QUESTION 9 -->
+
+        <div class="question">
+
+            <p>QUESTION 9 OF 9</p>
 
             <h2>
                 How would you describe your personal style?
@@ -642,10 +522,10 @@ button:hover {
 
             <textarea
                 id="styleDescription"
-                placeholder="e.g. I love baggy jeans, silver jewellery, cute tops and vintage clothes..."></textarea>
+                placeholder="Tell us about the clothes, colours and outfits you love...">
+            </textarea>
 
         </div>
-
 
 
         <!-- NAVIGATION -->
@@ -659,6 +539,7 @@ button:hover {
             </button>
 
             <button
+                id="nextButton"
                 onclick="nextQuestion()">
                 Next →
             </button>
@@ -666,7 +547,6 @@ button:hover {
         </div>
 
     </div>
-
 
 
     <!-- RESULT -->
@@ -681,13 +561,17 @@ button:hover {
             Your style is...
         </h2>
 
-        <div class="style-name" id="styleName"></div>
+        <div class="style-name"
+             id="styleName">
+        </div>
 
-        <p class="style-description" id="styleDescriptionResult"></p>
+        <p class="style-description"
+           id="styleDescriptionResult">
+        </p>
 
-
-        <div class="styles" id="styleCards"></div>
-
+        <div class="styles"
+             id="styleCards">
+        </div>
 
         <div class="user-style">
 
@@ -697,49 +581,57 @@ button:hover {
 
         </div>
 
-
         <br>
 
+        <button onclick="restartQuiz()">
+            Retake Quiz ↻
+        </button>
+
         <button onclick="location.href='closet3.html'">
-
             Go to my Digital Closet →
-
         </button>
 
     </div>
 
-
 </section>
-
 
 
 <script>
 
-
-/* VARIABLES */
+/* =====================================================
+   VARIABLES
+===================================================== */
 
 let currentQuestion = 0;
 
 const questions =
     document.querySelectorAll(".question");
 
+let userAge = "";
+let userGender = "";
 
-/* STYLE POINTS */
+
+/* =====================================================
+   STYLE SCORES
+===================================================== */
 
 let scores = {
 
     y2k: 0,
-
     streetwear: 0,
-
+    casual: 0,
     chic: 0,
-
-    romantic: 0
+    elegant: 0,
+    sporty: 0,
+    minimalist: 0,
+    preppy: 0
 
 };
 
 
-/* STYLE NAMES */
+/* =====================================================
+   STYLE NAMES
+===================================================== */
 
 const styleNames = {
 
@@ -747,15 +639,57 @@ const styleNames = {
 
     streetwear: "🖤 Streetwear",
 
+    casual: "👖 Casual",
+
     chic: "🤍 Chic",
 
-    romantic: "🌸 Romantic"
+    elegant: "✨ Elegant",
+
+    sporty: "🏃 Sporty",
+
+    minimalist: "🌿 Minimalist",
+
+    preppy: "🎀 Preppy"
 
 };
 
 
+/* =====================================================
+   STYLE DESCRIPTIONS
+===================================================== */
 
-/* START QUIZ */
+const styleDescriptions = {
+
+    y2k:
+        "You love playful, nostalgic outfits with fun details, denim, statement accessories and a confident attitude.",
+
+    streetwear:
+        "You love relaxed silhouettes, layers, sneakers and outfits that feel effortless and cool.",
+
+    casual:
+        "You prefer comfortable, practical outfits that are easy to wear while still looking stylish.",
+
+    chic:
+        "You like polished outfits, clean silhouettes and pieces that always look put-together.",
+
+    elegant:
+        "You prefer sophisticated, refined outfits with graceful silhouettes, timeless colours and beautiful details.",
+
+    sporty:
+        "You like comfortable, practical clothing with an active feel and easy-to-wear pieces.",
+
+    minimalist:
+        "You prefer simple outfits, clean lines, neutral colours and pieces that work well together.",
+
+    preppy:
+        "You enjoy neat, classic outfits with coordinated colours, structured pieces and timeless details."
+
+};
+
+
+/* =====================================================
+   START
+===================================================== */
 
 function startQuiz() {
 
@@ -770,8 +704,9 @@ function startQuiz() {
 }
 
 
-
-/* SELECT ANSWER */
+/* =====================================================
+   SELECT ANSWER
+===================================================== */
 
 function selectAnswer(answer) {
 
@@ -779,21 +714,932 @@ function selectAnswer(answer) {
         answer.parentElement
         .querySelectorAll(".answer");
 
-
     answers.forEach(a => {
 
         a.classList.remove("selected");
 
     });
 
-
     answer.classList.add("selected");
+
+
+    /*
+       Store age.
+    */
+
+    if (currentQuestion === 0) {
+
+        userAge =
+            answer.dataset.value;
+
+    }
+
+
+    /*
+       Store gender.
+    */
+
+    if (currentQuestion === 1) {
+
+        userGender =
+            answer.dataset.value;
+
+        createAllAgeSpecificQuestions();
+
+    }
 
 }
 
 
+/* =====================================================
+   CREATE ALL AGE + GENDER SPECIFIC QUESTIONS
+===================================================== */
 
-/* SHOW QUESTION */
+function createAllAgeSpecificQuestions() {
+
+    createOutfitAnswers();
+
+    createAccessoryAnswers();
+
+    createFitAnswers();
+
+    createJacketAnswers();
+
+    createColourAnswers();
+
+    createPriorityAnswers();
+
+}
+
+
+/* =====================================================
+   HELPER
+===================================================== */
+
+function addAnswers(containerId, options) {
+
+    const container =
+        document.getElementById(containerId);
+
+    container.innerHTML = "";
+
+    options.forEach(option => {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "answer";
+
+        div.dataset.style =
+            option.style;
+
+        div.textContent =
+            option.text;
+
+        div.onclick = function() {
+
+            selectAnswer(this);
+
+        };
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+/* =====================================================
+   QUESTION 3 — OUTFITS
+===================================================== */
+
+function createOutfitAnswers() {
+
+    let options = [];
+
+
+    /* -------------------------
+       CHILD
+    ------------------------- */
+
+    if (userAge === "child") {
+
+        if (userGender === "female") {
+
+            options = [
+
+                {
+                    style: "casual",
+                    text: "🌈 Colourful T-shirt, comfy jeans & sneakers"
+                },
+
+                {
+                    style: "sporty",
+                    text: "🏃 Joggers, sweatshirt & trainers"
+                },
+
+                {
+                    style: "preppy",
+                    text: "🎀 Polo shirt, shorts & sneakers"
+                },
+
+                {
+                    style: "elegant",
+                    text: "✨ Cardigan, comfortable trousers & flats"
+                }
+
+            ];
+
+        }
+
+        else if (userGender === "male") {
+
+            options = [
+
+                {
+                    style: "casual",
+                    text: "👕 Graphic T-shirt, jeans & sneakers"
+                },
+
+                {
+                    style: "sporty",
+                    text: "🏃 Joggers, hoodie & trainers"
+                },
+
+                {
+                    style: "streetwear",
+                    text: "🖤 Oversized sweatshirt, relaxed trousers & sneakers"
+                },
+
+                {
+                    style: "preppy",
+                    text: "🎒 Polo shirt, chinos & sneakers"
+                }
+
+            ];
+
+        }
+
+        else {
+
+            options = [
+
+                {
+                    style: "casual",
+                    text: "🌈 Colourful T-shirt, comfy jeans & sneakers"
+                },
+
+                {
+                    style: "sporty",
+                    text: "🏃 Joggers, sweatshirt & trainers"
+                },
+
+                {
+                    style: "streetwear",
+                    text: "🖤 Relaxed sweatshirt, loose trousers & sneakers"
+                },
+
+                {
+                    style: "preppy",
+                    text: "🎒 Polo shirt, shorts & sneakers"
+                }
+
+            ];
+
+        }
+
+    }
+
+
+    /* -------------------------
+       TEEN
+    ------------------------- */
+
+    else if (userAge === "teen") {
+
+        if (userGender === "female") {
+
+            options = [
+
+                {
+                    style: "casual",
+                    text: "👖 Straight-leg jeans, T-shirt & sneakers"
+                },
+
+                {
+                    style: "streetwear",
+                    text: "🖤 Oversized hoodie, cargos & sneakers"
+                },
+
+                {
+                    style: "preppy",
+                    text: "🎀 Knit sweater, trousers & loafers"
+                },
+
+                {
+                    style: "elegant",
+                    text: "✨ Midi skirt, knit top & ballet flats"
+                }
+
+            ];
+
+        }
+
+        else if (userGender === "male") {
+
+            options = [
+
+                {
+                    style: "casual",
+                    text: "👖 Straight-leg jeans, T-shirt & sneakers"
+                },
+
+                {
+                    style: "streetwear",
+                    text: "🖤 Oversized hoodie, cargos & sneakers"
+                },
+
+                {
+                    style: "preppy",
+                    text: "🎒 Knit sweater, chinos & sneakers"
+                },
+
+                {
+                    style: "elegant",
+                    text: "✨ Button-up shirt, trousers & loafers"
+                }
+
+            ];
+
+        }
+
+        else {
+
+            options = [
+
+                {
+                    style: "casual",
+                    text: "👖 Straight-leg jeans, relaxed T-shirt & sneakers"
+                },
+
+                {
+                    style: "streetwear",
+                    text: "🖤 Oversized hoodie, cargos & sneakers"
+                },
+
+                {
+                    style: "preppy",
+                    text: "🎒 Knit sweater, straight-leg trousers & sneakers"
+                },
+
+                {
+                    style: "elegant",
+                    text: "✨ Midi skirt or relaxed trousers, knit top & flats"
+                }
+
+            ];
+
+        }
+
+    }
+
+
+    /* -------------------------
+       ADULT
+    ------------------------- */
+
+    else {
+
+        if (userGender === "female") {
+
+            options = [
+
+                {
+                    style: "y2k",
+                    text: "💿 Baggy jeans, crop top & chunky sneakers"
+                },
+
+                {
+                    style: "streetwear",
+                    text: "🖤 Oversized hoodie, cargos & sneakers"
+                },
+
+                {
+                    style: "casual",
+                    text: "👖 Jorts, fitted top & Converse"
+                },
+
+                {
+                    style: "elegant",
+                    text: "✨ Flowy skirt, corset top & ballet flats"
+                }
+
+            ];
+
+        }
+
+        else if (userGender === "male") {
+
+            options = [
+
+                {
+                    style: "y2k",
+                    text: "💿 Baggy jeans, fitted T-shirt & chunky sneakers"
+                },
+
+                {
+                    style: "streetwear",
+                    text: "🖤 Oversized hoodie, cargos & sneakers"
+                },
+
+                {
+                    style: "casual",
+                    text: "👖 Jorts, fitted T-shirt & Converse"
+                },
+
+                {
+                    style: "elegant",
+                    text: "✨ Relaxed trousers, button-up shirt & loafers"
+                }
+
+            ];
+
+        }
+
+        else {
+
+            options = [
+
+                {
+                    style: "y2k",
+                    text: "💿 Baggy jeans, fitted top & chunky sneakers"
+                },
+
+                {
+                    style: "streetwear",
+                    text: "🖤 Oversized hoodie, cargos & sneakers"
+                },
+
+                {
+                    style: "casual",
+                    text: "👖 Jorts, relaxed top & Converse"
+                },
+
+                {
+                    style: "elegant",
+                    text: "✨ Flowy trousers, structured top & clean shoes"
+                }
+
+            ];
+
+        }
+
+    }
+
+
+    addAnswers("outfitAnswers", options);
+
+}
+
+
+/* =====================================================
+   QUESTION 4 — ACCESSORIES
+===================================================== */
+
+function createAccessoryAnswers() {
+
+    let options = [];
+
+
+    if (userAge === "child") {
+
+        options = [
+
+            {
+                style: "casual",
+                text: "🌈 Colourful backpack"
+            },
+
+            {
+                style: "sporty",
+                text: "🏃 Sports watch"
+            },
+
+            {
+                style: "preppy",
+                text: "🎀 Fun hair accessory or cap"
+            },
+
+            {
+                style: "y2k",
+                text: "💿 Colourful bracelet or fun sunglasses"
+            }
+
+        ];
+
+    }
+
+    else if (userAge === "teen") {
+
+        options = [
+
+            {
+                style: "streetwear",
+                text: "🖤 Crossbody bag & cap"
+            },
+
+            {
+                style: "casual",
+                text: "🎒 Canvas tote bag"
+            },
+
+            {
+                style: "preppy",
+                text: "🎀 Simple watch & classic bag"
+            },
+
+            {
+                style: "elegant",
+                text: "✨ Simple necklace or bracelet"
+            }
+
+        ];
+
+    }
+
+    else {
+
+        options = [
+
+            {
+                style: "y2k",
+                text: "💿 Silver chain belt & statement accessories"
+            },
+
+            {
+                style: "streetwear",
+                text: "🖤 Crossbody bag & cap"
+            },
+
+            {
+                style: "chic",
+                text: "🤍 Minimal gold jewellery"
+            },
+
+            {
+                style: "elegant",
+                text: "✨ Elegant watch & delicate jewellery"
+            }
+
+        ];
+
+    }
+
+
+    addAnswers("accessoryAnswers", options);
+
+}
+
+
+/* =====================================================
+   QUESTION 5 — FIT
+===================================================== */
+
+function createFitAnswers() {
+
+    let options = [];
+
+
+    if (userAge === "child") {
+
+        options = [
+
+            {
+                style: "casual",
+                text: "Comfortable and relaxed"
+            },
+
+            {
+                style: "sporty",
+                text: "Loose and easy to move in"
+            },
+
+            {
+                style: "preppy",
+                text: "Neat and comfortable"
+            },
+
+            {
+                style: "y2k",
+                text: "Fun and colourful"
+            }
+
+        ];
+
+    }
+
+    else if (userAge === "teen") {
+
+        options = [
+
+            {
+                style: "casual",
+                text: "Relaxed and comfortable"
+            },
+
+            {
+                style: "streetwear",
+                text: "Oversized and loose"
+            },
+
+            {
+                style: "preppy",
+                text: "Neat and classic"
+            },
+
+            {
+                style: "elegant",
+                text: "Clean and structured"
+            }
+
+        ];
+
+    }
+
+    else {
+
+        options = [
+
+            {
+                style: "y2k",
+                text: "Baggy bottoms + fitted top"
+            },
+
+            {
+                style: "streetwear",
+                text: "Oversized everything"
+            },
+
+            {
+                style: "casual",
+                text: "Relaxed and comfortable"
+            },
+
+            {
+                style: "chic",
+                text: "Structured and fitted"
+            },
+
+            {
+                style: "elegant",
+                text: "Clean and refined"
+            },
+
+            {
+                style: "minimalist",
+                text: "Simple and streamlined"
+            }
+
+        ];
+
+    }
+
+
+    addAnswers("fitAnswers", options);
+
+}
+
+
+/* =====================================================
+   QUESTION 6 — JACKETS
+===================================================== */
+
+function createJacketAnswers() {
+
+    let options = [];
+
+
+    if (userAge === "child") {
+
+        options = [
+
+            {
+                style: "casual",
+                text: "🧥 Colourful zip-up jacket"
+            },
+
+            {
+                style: "sporty",
+                text: "🏃 Lightweight sports jacket"
+            },
+
+            {
+                style: "streetwear",
+                text: "🖤 Oversized sweatshirt jacket"
+            },
+
+            {
+                style: "preppy",
+                text: "🎒 Classic cardigan"
+            }
+
+        ];
+
+    }
+
+    else if (userAge === "teen") {
+
+        options = [
+
+            {
+                style: "casual",
+                text: "👖 Denim jacket"
+            },
+
+            {
+                style: "streetwear",
+                text: "🖤 Oversized bomber jacket"
+            },
+
+            {
+                style: "preppy",
+                text: "🎀 Varsity jacket"
+            },
+
+            {
+                style: "elegant",
+                text: "✨ Structured blazer"
+            }
+
+        ];
+
+    }
+
+    else {
+
+        options = [
+
+            {
+                style: "y2k",
+                text: "💿 Cropped denim jacket"
+            },
+
+            {
+                style: "streetwear",
+                text: "🖤 Oversized leather bomber jacket"
+            },
+
+            {
+                style: "chic",
+                text: "🤍 Tailored blazer"
+            },
+
+            {
+                style: "elegant",
+                text: "✨ Classic structured jacket"
+            }
+
+        ];
+
+    }
+
+
+    addAnswers("jacketAnswers", options);
+
+}
+
+
+/* =====================================================
+   QUESTION 7 — COLOURS
+===================================================== */
+
+function createColourAnswers() {
+
+    let options = [];
+
+
+    if (userAge === "child") {
+
+        options = [
+
+            {
+                style: "y2k",
+                text: "🌈 Bright pink, blue, purple & colourful shades"
+            },
+
+            {
+                style: "sporty",
+                text: "🏃 Blue, red, black & white"
+            },
+
+            {
+                style: "casual",
+                text: "👕 Denim, green, blue & yellow"
+            },
+
+            {
+                style: "preppy",
+                text: "🎀 Navy, white, light blue & pastel"
+            }
+
+        ];
+
+    }
+
+    else if (userAge === "teen") {
+
+        options = [
+
+            {
+                style: "streetwear",
+                text: "🖤 Black, grey & dark green"
+            },
+
+            {
+                style: "casual",
+                text: "👖 Denim, white, beige & blue"
+            },
+
+            {
+                style: "preppy",
+                text: "🎀 Navy, white, burgundy & pastel"
+            },
+
+            {
+                style: "elegant",
+                text: "✨ Cream, navy, brown & neutral tones"
+            }
+
+        ];
+
+    }
+
+    else {
+
+        options = [
+
+            {
+                style: "y2k",
+                text: "💿 Pink, silver, denim & black"
+            },
+
+            {
+                style: "streetwear",
+                text: "🖤 Black, grey & dark green"
+            },
+
+            {
+                style: "chic",
+                text: "🤍 Cream, beige & white"
+            },
+
+            {
+                style: "elegant",
+                text: "✨ Black, cream, navy & neutral tones"
+            },
+
+            {
+                style: "preppy",
+                text: "🎀 Navy, white, burgundy & pastel"
+            },
+
+            {
+                style: "minimalist",
+                text: "🌿 White, beige, grey & soft earth tones"
+            }
+
+        ];
+
+    }
+
+
+    addAnswers("colourAnswers", options);
+
+}
+
+
+/* =====================================================
+   QUESTION 8 — PRIORITIES
+===================================================== */
+
+function createPriorityAnswers() {
+
+    let options = [];
+
+
+    if (userAge === "child") {
+
+        options = [
+
+            {
+                style: "casual",
+                text: "😊 Being comfortable"
+            },
+
+            {
+                style: "sporty",
+                text: "🏃 Being able to move around easily"
+            },
+
+            {
+                style: "y2k",
+                text: "🌈 Wearing fun and colourful clothes"
+            },
+
+            {
+                style: "preppy",
+                text: "🎒 Looking neat and put-together"
+            }
+
+        ];
+
+    }
+
+    else if (userAge === "teen") {
+
+        options = [
+
+            {
+                style: "streetwear",
+                text: "🖤 Making a statement"
+            },
+
+            {
+                style: "casual",
+                text: "😊 Feeling comfortable"
+            },
+
+            {
+                style: "preppy",
+                text: "🎀 Looking neat and coordinated"
+            },
+
+            {
+                style: "elegant",
+                text: "✨ Looking polished"
+            }
+
+        ];
+
+    }
+
+    else {
+
+        options = [
+
+            {
+                style: "y2k",
+                text: "💿 Looking unique & trendy"
+            },
+
+            {
+                style: "streetwear",
+                text: "🖤 Making a statement"
+            },
+
+            {
+                style: "casual",
+                text: "😊 Feeling comfortable"
+            },
+
+            {
+                style: "chic",
+                text: "🤍 Looking polished"
+            },
+
+            {
+                style: "elegant",
+                text: "✨ Looking sophisticated"
+            },
+
+            {
+                style: "minimalist",
+                text: "🌿 Keeping things simple"
+            },
+
+            {
+                style: "sporty",
+                text: "🏃 Being comfortable and active"
+            },
+
+            {
+                style: "preppy",
+                text: "🎀 Looking neat and put-together"
+            }
+
+        ];
+
+    }
+
+
+    addAnswers("priorityAnswers", options);
+
+}
+
+
+/* =====================================================
+   SHOW QUESTION
+===================================================== */
 
 function showQuestion() {
 
@@ -807,7 +1653,7 @@ function showQuestion() {
     });
 
 
-    let percent =
+    const percent =
         ((currentQuestion + 1)
         / questions.length) * 100;
 
@@ -815,50 +1661,83 @@ function showQuestion() {
     document.getElementById("progress")
         .style.width = percent + "%";
 
+
+    const nextButton =
+        document.getElementById("nextButton");
+
+
+    if (currentQuestion === questions.length - 1) {
+
+        nextButton.textContent =
+            "See My Style ✨";
+
+    }
+
+    else {
+
+        nextButton.textContent =
+            "Next →";
+
+    }
+
 }
 
 
-
-/* NEXT QUESTION */
+/* =====================================================
+   NEXT
+===================================================== */
 
 function nextQuestion() {
 
+    const selected =
+        questions[currentQuestion]
+        .querySelector(".selected");
 
-    /* Check answer for multiple choice */
+
+    /*
+       All questions except the
+       description need an answer.
+    */
 
     if (currentQuestion <
         questions.length - 1) {
 
-
-        const selected =
-            questions[currentQuestion]
-            .querySelector(".selected");
-
-
         if (!selected) {
 
-            alert("Please choose an answer first! 💗");
+            alert(
+                "Please choose an answer first! 💗"
+            );
 
             return;
 
         }
 
 
-        /* Add style point */
+        /*
+           Q1 = age
+           Q2 = gender
+           Q3-Q8 = style scores
+        */
 
-        const style =
-            selected.dataset.style;
+        if (
+            currentQuestion >= 2 &&
+            selected.dataset.style
+        ) {
 
+            scores[
+                selected.dataset.style
+            ]++;
 
-        scores[style]++;
+        }
 
 
         currentQuestion++;
 
         showQuestion();
 
+    }
 
-    } else {
+    else {
 
         showResult();
 
@@ -867,8 +1746,9 @@ function nextQuestion() {
 }
 
 
-
-/* BACK BUTTON */
+/* =====================================================
+   BACK
+===================================================== */
 
 function previousQuestion() {
 
@@ -883,18 +1763,17 @@ function previousQuestion() {
 }
 
 
-
-/* CALCULATE RESULT */
+/* =====================================================
+   RESULT
+===================================================== */
 
 function showResult() {
 
-
     const description =
-        document.getElementById("styleDescription")
-        .value;
+        document.getElementById(
+            "styleDescription"
+        ).value.trim();
 
-
-    /* Turn scores into an array */
 
     const sortedStyles =
         Object.entries(scores)
@@ -904,54 +1783,74 @@ function showResult() {
     const first =
         sortedStyles[0];
 
-
     const second =
         sortedStyles[1];
 
 
-    /* Calculate percentages */
-
     const total =
         Object.values(scores)
-        .reduce((a, b) => a + b, 0);
+        .reduce(
+            (a, b) => a + b,
+            0
+        );
 
 
-    const firstPercent =
-        Math.round((first[1] / total) * 100);
+    let firstPercent = 0;
+    let secondPercent = 0;
 
 
-    const secondPercent =
-        Math.round((second[1] / total) * 100);
+    if (total > 0) {
+
+        firstPercent =
+            Math.round(
+                (first[1] / total) * 100
+            );
+
+        secondPercent =
+            Math.round(
+                (second[1] / total) * 100
+            );
+
+    }
 
 
-    /* STYLE TITLE */
+    document.getElementById(
+        "styleName"
+    ).textContent =
 
-    document.getElementById("styleName")
-        .textContent =
         styleNames[first[0]]
         + " × "
         + styleNames[second[0]];
 
 
-    /* DESCRIPTION */
+    document.getElementById(
+        "styleDescriptionResult"
+    ).textContent =
 
-    document.getElementById("styleDescriptionResult")
-        .textContent =
-        "Your answers suggest that you love "
-        + styleNames[first[0]]
-        + " with a touch of "
+        styleDescriptions[first[0]]
+        + " You also have a touch of "
         + styleNames[second[0]]
-        + ". Your E-couture recommendations will be personalised around these preferences.";
+        + " in your wardrobe preferences.";
 
 
-    /* STYLE CARDS */
+    const remaining =
+        Math.max(
+            0,
+            100 -
+            firstPercent -
+            secondPercent
+        );
 
-    document.getElementById("styleCards")
-        .innerHTML = `
+
+    document.getElementById(
+        "styleCards"
+    ).innerHTML = `
 
         <div class="style-card">
 
-            <strong>${firstPercent}%</strong>
+            <strong>
+                ${firstPercent}%
+            </strong>
 
             <br>
 
@@ -962,7 +1861,9 @@ function showResult() {
 
         <div class="style-card">
 
-            <strong>${secondPercent}%</strong>
+            <strong>
+                ${secondPercent}%
+            </strong>
 
             <br>
 
@@ -973,41 +1874,103 @@ function showResult() {
 
         <div class="style-card">
 
-            <strong>${100 - firstPercent - secondPercent}%</strong>
+            <strong>
+                ${remaining}%
+            </strong>
 
             <br>
 
-            Other
+            Other styles
 
         </div>
 
     `;
 
 
-    /* USER'S OWN WORDS */
+    document.getElementById(
+        "userWords"
+    ).textContent =
 
-    document.getElementById("userWords")
-        .textContent =
         description ||
         "You didn't add a description.";
 
 
-    /* HIDE QUIZ */
+    document.getElementById(
+        "quizQuestions"
+    ).style.display = "none";
 
-    document.getElementById("quizQuestions")
-        .style.display = "none";
 
-
-    /* SHOW RESULT */
-
-    document.getElementById("result")
-        .style.display = "block";
+    document.getElementById(
+        "result"
+    ).style.display = "block";
 
 }
 
 
-</script>
+/* =====================================================
+   RESTART
+===================================================== */
 
+function restartQuiz() {
+
+    currentQuestion = 0;
+
+    userAge = "";
+    userGender = "";
+
+
+    scores = {
+
+        y2k: 0,
+        streetwear: 0,
+        casual: 0,
+        chic: 0,
+        elegant: 0,
+        sporty: 0,
+        minimalist: 0,
+        preppy: 0
+
+    };
+
+
+    document
+        .querySelectorAll(".answer")
+        .forEach(answer => {
+
+            answer.classList.remove(
+                "selected"
+            );
+
+        });
+
+
+    document.getElementById(
+        "styleDescription"
+    ).value = "";
+
+
+    document.getElementById(
+        "result"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "intro"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "quizQuestions"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "outfitAnswers"
+    ).innerHTML = "";
+
+}
+
+</script>
 
 </body>
 </html>
