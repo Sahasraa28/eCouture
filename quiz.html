@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-couture Style Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="navbar">
+  <div class="logo">ecouture</div>
+  <nav>
+    <a href="ecouture3.html">Home</a>
+    <a href="closet3.html">Digital Closet</a>
+    <a href="features.html">Features</a>
+    <a href="#">Impact</a>
+    <a href="quiz.html">Style Quiz</a>
+    <a href="Chat with us.html">Chat with us</a>
+  </nav>
+</header>
+<section class="quiz">
+  <div id="intro">
+    <h1>What's your style?</h1>
+    <p class="subtitle">
+      Discover your personal aesthetic and find out how
+      E-couture can help you style the clothes you already own.
+    </p>
+    <button onclick="startQuiz()">Start Quiz →</button>
+  </div>
+  <div id="quizQuestions">
+    <div class="progress">
+      <div class="progress-bar" id="progress"></div>
+    </div>
+    <div class="question active">
+      <p>QUESTION 1 OF 9</p>
+      <h2>What is your age group?</h2>
+      <div class="answers">
+        <div class="answer" data-value="child">🧸 Child</div>
+        <div class="answer" data-value="teen">🎧 Teen</div>
+        <div class="answer" data-value="adult">✨ Adult</div>
+      </div>
+    </div>
+    <div class="question">
+      <p>QUESTION 2 OF 9</p>
+      <h2>Which style collection would you like to explore?</h2>
+      <p>This helps us show outfit examples that fit your preferences.</p>
+      <div class="answers">
+        <div class="answer" data-value="female">🌸 Female</div>
+        <div class="answer" data-value="male">🖤 Male</div>
+        <div class="answer" data-value="neutral">🤍 Gender-neutral</div>
+      </div>
+    </div>
+    <div class="question">
+      <p>QUESTION 3 OF 9</p>
+      <h2>Pick an outfit you'd actually wear.</h2>
+      <div class="answers" id="outfitAnswers"></div>
+    </div>
+    <div class="question">
+      <p>QUESTION 4 OF 9</p>
+      <h2>Which accessory would you choose?</h2>
+      <div class="answers" id="accessoryAnswers"></div>
+    </div>
+    <div class="question">
+      <p>QUESTION 5 OF 9</p>
+      <h2>What kind of fit do you prefer?</h2>
+      <div class="answers" id="fitAnswers"></div>
+    </div>
+    <div class="question">
+      <p>QUESTION 6 OF 9</p>
+      <h2>Pick your ideal jacket.</h2>
+      <div class="answers" id="jacketAnswers"></div>
+    </div>
+    <div class="question">
+      <p>QUESTION 7 OF 9</p>
+      <h2>Which colour palette feels most like you?</h2>
+      <div class="answers" id="colourAnswers"></div>
+    </div>
+    <div class="question">
+      <p>QUESTION 8 OF 9</p>
+      <h2>What matters most when getting dressed?</h2>
+      <div class="answers" id="priorityAnswers"></div>
+    </div>
+    <div class="question">
+      <p>QUESTION 9 OF 9</p>
+      <h2>How would you describe your personal style?</h2>
+      <p>Don't know the name of your aesthetic? That's completely fine!</p>
+      <textarea id="styleDescription"
+        placeholder="Tell us about the clothes, colours and outfits you love..."></textarea>
+    </div>
+    <div class="buttons">
+      <button class="back" onclick="previousQuestion()">← Back</button>
+      <button id="nextButton" onclick="nextQuestion()">Next →</button>
+    </div>
+  </div>
+  <div class="result" id="result">
+    <p>YOUR E-COUTURE STYLE</p>
+    <h2>Your style is...</h2>
+    <div class="style-name" id="styleName"></div>
+    <p class="style-description" id="styleDescriptionResult"></p>
+    <div class="styles" id="styleCards"></div>
+    <div class="user-style">
+      <strong>Your description:</strong>
+      <p id="userWords"></p>
+    </div>
+    <button onclick="restartQuiz()">Retake Quiz ↻</button>
+    <button onclick="location.href='closet3.html'">
+      Go to my Digital Closet →
+    </button>
+  </div>
+</section>
+<script src="quiz.js"></script>
+</body>
+</html>
