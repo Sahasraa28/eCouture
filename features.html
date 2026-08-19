@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Features - E-couture</title>
+<link rel="stylesheet" href="features.css">
+</head>
+<body>
+<header class="navbar">
+    <div class="logo">ecouture</div>
+    <nav>
+        <a href="ecouture3.html">Home</a>
+        <a href="closet3.html">Digital Closet</a>
+        <a href="features.html">Features</a>
+        <a href="#">Impact</a>
+        <a href="quiz.html">Style Quiz</a>
+    </nav>
+</header>
+<section class="features">
+    <div class="features-intro">
+        <span class="tag">WHAT WE OFFER</span>
+        <h1>Fashion, but <span>more sustainable.</span></h1>
+        <p>
+            Discover simple ways to make the most of your wardrobe
+            while reducing fashion waste.
+        </p>
+    </div>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="icon">👗</div>
+            <h2>Digital Closet</h2>
+            <p>
+                Upload your clothes and discover simple ways
+                to repair and reuse them.
+            </p>
+            <a href="closet3.html">Explore →</a>
+        </div>
+        <div class="feature-card">
+            <div class="icon">✨</div>
+            <h2>Style Quiz</h2>
+            <p>
+                Discover your personal style and learn how
+                to make the most of what you already own.
+            </p>
+            <a href="quiz.html">Take Quiz →</a>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🧵</div>
+            <h2>Repair Tips</h2>
+            <p>
+                Learn simple ways to repair damaged clothing
+                instead of throwing it away.
+            </p>
+            <button onclick="showTips()">View Tips →</button>
+            <p id="tips"></p>
+        </div>
+    </div>
+    <!-- SDG 12 GAME -->
+    <div class="game">
+        <span class="tag">SDG 12 CHALLENGE</span>
+        <h2>♻️ Make the Sustainable Choice</h2>
+        <p>Test your sustainable fashion knowledge!</p>
+        <p id="q"></p>
+        <div id="answers"></div>
+        <p id="result"></p>
+    </div>
+</section>
+<script>
+const questions = [
+    [
+        "Your shirt has a small tear. What do you do?",
+        ["Throw it away 🗑️", "Repair it 🧵", "Buy a new one 🛍️"],
+        1
+    ],
+    [
+        "You don't wear your jeans anymore. What should you do?",
+        ["Throw them away 🗑️", "Donate them ♻️", "Buy new ones 🛍️"],
+        1
+    ],
+    [
+        "How can you make clothes last longer?",
+        ["Take care of them 🧵", "Replace them often 🛍️", "Throw them away 🗑️"],
+        0
+    ]
+];
+let n = 0;
+let score = 0;
+function show() {
+    let x = questions[n];
+    document.getElementById("q").textContent = x[0];
+    document.getElementById("answers").innerHTML =
+        x[1].map((a, i) =>
+        `<button onclick="answer(${i})">${a}</button>`
+        ).join("");
+}
+function answer(i) {
+    if (i == questions[n][2]) score++;
+    n++;
+    if (n < questions.length) {
+        show();
+    } else {
+        document.getElementById("q").textContent =
+            "🌱 Game Complete!";
+        document.getElementById("answers").innerHTML = "";
+        document.getElementById("result").textContent =
+            `You scored ${score}/3!`;
+    }
+}
+function showTips() {
+    document.getElementById("tips").textContent =
+        "Small hole? Try stitching it. Loose button? Sew it back on. Don't replace it before trying to repair it! 🧵";
+}
+show();
+</script>
+</body>
+</html>
