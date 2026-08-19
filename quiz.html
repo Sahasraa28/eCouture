@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>E-couture Style Quiz</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #cba18e, #b8907e);
+    color: #314640;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+    width: 90%;
+    margin: 25px auto;
+    background: white;
+    border-radius: 15px;
+    padding: 18px 35px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: #51753a;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 30px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #333;
+}
+
+
+/* QUIZ BOX */
+
+.quiz {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+
+    background: #8da89f;
+    color: white;
+
+    padding: 55px;
+
+    border-radius: 25px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+}
+
+.quiz h1 {
+    font-family: Georgia, serif;
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+
+/* PROGRESS BAR */
+
+.progress {
+    height: 8px;
+    background: rgba(255,255,255,.3);
+    border-radius: 20px;
+    margin: 30px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 20%;
+    background: #f5e6d9;
+    border-radius: 20px;
+    transition: .3s;
+}
+
+
+/* QUESTIONS */
+
+.question {
+    display: none;
+}
+
+.question.active {
+    display: block;
+}
+
+.question h2 {
+    font-size: 28px;
+    margin-top: 20px;
+}
+
+.question p {
+    opacity: .9;
+}
+
+
+/* ANSWERS */
+
+.answers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.answer {
+    background: rgba(255,255,255,.2);
+    color: white;
+
+    border: 2px solid transparent;
+    border-radius: 15px;
+
+    padding: 20px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.answer:hover {
+    background: rgba(255,255,255,.35);
+}
+
+.answer.selected {
+    background: #f5e6d9;
+    color: #314640;
+    border-color: white;
+}
+
+
+/* TEXT BOX */
+
+textarea {
+    width: 100%;
+    min-height: 150px;
+
+    border: none;
+    border-radius: 15px;
+
+    padding: 18px;
+
+    font-size: 16px;
+    font-family: Arial;
+
+    resize: vertical;
+
+    margin-top: 20px;
+}
+
+textarea:focus {
+    outline: 3px solid rgba(255,255,255,.4);
+}
+
+
+/* BUTTONS */
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 35px;
+}
+
+button {
+    background: #314640;
+    color: white;
+
+    border: none;
+    border-radius: 25px;
+
+    padding: 13px 25px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background: #243833;
+}
+
+.back {
+    background: transparent;
+    border: 2px solid white;
+}
+
+
+/* RESULT */
+
+.result {
+    display: none;
+    text-align: center;
+}
+
+.result h2 {
+    font-family: Georgia, serif;
+    font-size: 45px;
+}
+
+.style-name {
+    font-size: 32px;
+    font-weight: bold;
+    color: #f5e6d9;
+}
+
+.style-description {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.styles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+
+    margin-top: 30px;
+}
+
+.style-card {
+    background: rgba(255,255,255,.2);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.style-card strong {
+    font-size: 25px;
+}
+
+.user-style {
+    background: rgba(255,255,255,.15);
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 25px;
+    font-style: italic;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navbar nav {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .quiz {
+        padding: 30px 20px;
+    }
+
+    .quiz h1 {
+        font-size: 40px;
+    }
+
+    .answers {
+        grid-template-columns: 1fr;
+    }
+
+    .styles {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <div class="logo">
+        ecouture
+    </div>
+
+    <nav>
+
+        <a href="ecouture.html">
+            Home
+        </a>
+
+        <a href="closet3.html">
+            Digital Closet
+        </a>
+
+        <a href="quiz.html">
+            Style Quiz
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- QUIZ -->
+
+<section class="quiz">
+
+
+    <!-- INTRO -->
+
+    <div id="intro">
+
+        <h1>
+            What's your style?
+        </h1>
+
+        <p class="subtitle">
+            Discover your personal aesthetic and find
+            out how E-couture can help you style the
+            clothes you already own.
+        </p>
+
+        <br>
+
+        <button onclick="startQuiz()">
+            Start Quiz →
+        </button>
+
+    </div>
+
+
+
+    <!-- QUESTIONS -->
+
+    <div id="quizQuestions" style="display:none;">
+
+        <div class="progress">
+            <div class="progress-bar" id="progress"></div>
+        </div>
+
+
+        <!-- QUESTION 1 -->
+
+        <div class="question active">
+
+            <p>QUESTION 1 OF 7</p>
+
+            <h2>
+                Pick an outfit you'd actually wear.
+            </h2>
+
+            <div class="answers">
+
+                <div class="answer"
+                     data-style="y2k"
+                     onclick="selectAnswer(this)">
+                    💿 Baggy jeans, baby tee &
+                    chunky sneakers
+                </div>
+
+                <div class="answer"
+                     data-style="streetwear"
+                     onclick="selectAnswer(this)">
+                    🖤 Oversized hoodie, cargos &
+                    sneakers
+                </div>
+
+                <div class="answer"
+                     data-style="chic"
+                     onclick="selectAnswer(this)">
+                    🤍 Tailored trousers, fitted top &
+                    loafers
+                </div>
+
+                <div class="answer"
+                     data-style="romantic"
+                     onclick="selectAnswer(this)">
+                    🌸 Flowy skirt, cute top &
+                    ballet flats
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUESTION 2 -->
+
+        <div class="question">
+
+            <p>QUESTION 2 OF 7</p>
+
+            <h2>
+                Which accessory would you choose?
+            </h2>
+
+            <div class="answers">
+
+                <div class="answer"
+                     data-style="y2k"
+                     onclick="selectAnswer(this)">
+                    💿 Silver chain belt
+                </div>
+
+                <div class="answer"
+                     data-style="streetwear"
+                     onclick="selectAnswer(this)">
+                    🖤 Crossbody bag & cap
+                </div>
+
+                <div class="answer"
+                     data-style="chic"
+                     onclick="selectAnswer(this)">
+                    🤍 Minimal gold jewellery
+                </div>
+
+                <div class="answer"
+                     data-style="romantic"
+                     onclick="selectAnswer(this)">
+                    🌸 Delicate necklace & bow
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUESTION 3 -->
+
+        <div class="question">
+
+            <p>QUESTION 3 OF 7</p>
+
+            <h2>
+                What kind of fit do you prefer?
+            </h2>
+
+            <div class="answers">
+
+                <div class="answer"
+                     data-style="y2k"
+                     onclick="selectAnswer(this)">
+                    Baggy bottoms + fitted top
+                </div>
+
+                <div class="answer"
+                     data-style="streetwear"
+                     onclick="selectAnswer(this)">
+                    Oversized everything
+                </div>
+
+                <div class="answer"
+                     data-style="chic"
+                     onclick="selectAnswer(this)">
+                    Structured and fitted
+                </div>
+
+                <div class="answer"
+                     data-style="romantic"
+                     onclick="selectAnswer(this)">
+                    Fitted top + flowy bottom
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUESTION 4 -->
+
+        <div class="question">
+
+            <p>QUESTION 4 OF 7</p>
+
+            <h2>
+                Which colour palette feels most like you?
+            </h2>
+
+            <div class="answers">
+
+                <div class="answer"
+                     data-style="y2k"
+                     onclick="selectAnswer(this)">
+                    💿 Pink, silver, denim & black
+                </div>
+
+                <div class="answer"
+                     data-style="streetwear"
+                     onclick="selectAnswer(this)">
+                    🖤 Black, grey & dark green
+                </div>
+
+                <div class="answer"
+                     data-style="chic"
+                     onclick="selectAnswer(this)">
+                    🤍 Cream, beige & white
+                </div>
+
+                <div class="answer"
+                     data-style="romantic"
+                     onclick="selectAnswer(this)">
+                    🌸 Pastels, pink & cream
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUESTION 5 -->
+
+        <div class="question">
+
+            <p>QUESTION 5 OF 7</p>
+
+            <h2>
+                What matters most when getting dressed?
+            </h2>
+
+            <div class="answers">
+
+                <div class="answer"
+                     data-style="y2k"
+                     onclick="selectAnswer(this)">
+                    Looking unique & trendy
+                </div>
+
+                <div class="answer"
+                     data-style="streetwear"
+                     onclick="selectAnswer(this)">
+                    Making a statement
+                </div>
+
+                <div class="answer"
+                     data-style="chic"
+                     onclick="selectAnswer(this)">
+                    Looking polished
+                </div>
+
+                <div class="answer"
+                     data-style="romantic"
+                     onclick="selectAnswer(this)">
+                    Looking cute & feminine
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUESTION 6 -->
+
+        <div class="question">
+
+            <p>QUESTION 6 OF 7</p>
+
+            <h2>
+                Pick your ideal jacket.
+            </h2>
+
+            <div class="answers">
+
+                <div class="answer"
+                     data-style="y2k"
+                     onclick="selectAnswer(this)">
+                    💿 Cropped denim jacket
+                </div>
+
+                <div class="answer"
+                     data-style="streetwear"
+                     onclick="selectAnswer(this)">
+                    🖤 Oversized bomber
+                </div>
+
+                <div class="answer"
+                     data-style="chic"
+                     onclick="selectAnswer(this)">
+                    🤍 Tailored blazer
+                </div>
+
+                <div class="answer"
+                     data-style="romantic"
+                     onclick="selectAnswer(this)">
+                    🌸 Cropped cardigan
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUESTION 7 -->
+
+        <div class="question">
+
+            <p>QUESTION 7 OF 7</p>
+
+            <h2>
+                How would you describe your personal style?
+            </h2>
+
+            <p>
+                Don't know the name of your aesthetic?
+                That's completely fine!
+            </p>
+
+            <textarea
+                id="styleDescription"
+                placeholder="e.g. I love baggy jeans, silver jewellery, cute tops and vintage clothes..."></textarea>
+
+        </div>
+
+
+
+        <!-- NAVIGATION -->
+
+        <div class="buttons">
+
+            <button
+                class="back"
+                onclick="previousQuestion()">
+                ← Back
+            </button>
+
+            <button
+                onclick="nextQuestion()">
+                Next →
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- RESULT -->
+
+    <div class="result" id="result">
+
+        <p>
+            YOUR E-COUTURE STYLE
+        </p>
+
+        <h2>
+            Your style is...
+        </h2>
+
+        <div class="style-name" id="styleName"></div>
+
+        <p class="style-description" id="styleDescriptionResult"></p>
+
+
+        <div class="styles" id="styleCards"></div>
+
+
+        <div class="user-style">
+
+            <strong>Your description:</strong>
+
+            <p id="userWords"></p>
+
+        </div>
+
+
+        <br>
+
+        <button onclick="location.href='closet3.html'">
+
+            Go to my Digital Closet →
+
+        </button>
+
+    </div>
+
+
+</section>
+
+
+
+<script>
+
+
+/* VARIABLES */
+
+let currentQuestion = 0;
+
+const questions =
+    document.querySelectorAll(".question");
+
+
+/* STYLE POINTS */
+
+let scores = {
+
+    y2k: 0,
+
+    streetwear: 0,
+
+    chic: 0,
+
+    romantic: 0
+
+};
+
+
+/* STYLE NAMES */
+
+const styleNames = {
+
+    y2k: "💿 Y2K",
+
+    streetwear: "🖤 Streetwear",
+
+    chic: "🤍 Chic",
+
+    romantic: "🌸 Romantic"
+
+};
+
+
+
+/* START QUIZ */
+
+function startQuiz() {
+
+    document.getElementById("intro")
+        .style.display = "none";
+
+    document.getElementById("quizQuestions")
+        .style.display = "block";
+
+    showQuestion();
+
+}
+
+
+
+/* SELECT ANSWER */
+
+function selectAnswer(answer) {
+
+    const answers =
+        answer.parentElement
+        .querySelectorAll(".answer");
+
+
+    answers.forEach(a => {
+
+        a.classList.remove("selected");
+
+    });
+
+
+    answer.classList.add("selected");
+
+}
+
+
+
+/* SHOW QUESTION */
+
+function showQuestion() {
+
+    questions.forEach((question, index) => {
+
+        question.classList.toggle(
+            "active",
+            index === currentQuestion
+        );
+
+    });
+
+
+    let percent =
+        ((currentQuestion + 1)
+        / questions.length) * 100;
+
+
+    document.getElementById("progress")
+        .style.width = percent + "%";
+
+}
+
+
+
+/* NEXT QUESTION */
+
+function nextQuestion() {
+
+
+    /* Check answer for multiple choice */
+
+    if (currentQuestion <
+        questions.length - 1) {
+
+
+        const selected =
+            questions[currentQuestion]
+            .querySelector(".selected");
+
+
+        if (!selected) {
+
+            alert("Please choose an answer first! 💗");
+
+            return;
+
+        }
+
+
+        /* Add style point */
+
+        const style =
+            selected.dataset.style;
+
+
+        scores[style]++;
+
+
+        currentQuestion++;
+
+        showQuestion();
+
+
+    } else {
+
+        showResult();
+
+    }
+
+}
+
+
+
+/* BACK BUTTON */
+
+function previousQuestion() {
+
+    if (currentQuestion > 0) {
+
+        currentQuestion--;
+
+        showQuestion();
+
+    }
+
+}
+
+
+
+/* CALCULATE RESULT */
+
+function showResult() {
+
+
+    const description =
+        document.getElementById("styleDescription")
+        .value;
+
+
+    /* Turn scores into an array */
+
+    const sortedStyles =
+        Object.entries(scores)
+        .sort((a, b) => b[1] - a[1]);
+
+
+    const first =
+        sortedStyles[0];
+
+
+    const second =
+        sortedStyles[1];
+
+
+    /* Calculate percentages */
+
+    const total =
+        Object.values(scores)
+        .reduce((a, b) => a + b, 0);
+
+
+    const firstPercent =
+        Math.round((first[1] / total) * 100);
+
+
+    const secondPercent =
+        Math.round((second[1] / total) * 100);
+
+
+    /* STYLE TITLE */
+
+    document.getElementById("styleName")
+        .textContent =
+        styleNames[first[0]]
+        + " × "
+        + styleNames[second[0]];
+
+
+    /* DESCRIPTION */
+
+    document.getElementById("styleDescriptionResult")
+        .textContent =
+        "Your answers suggest that you love "
+        + styleNames[first[0]]
+        + " with a touch of "
+        + styleNames[second[0]]
+        + ". Your E-couture recommendations will be personalised around these preferences.";
+
+
+    /* STYLE CARDS */
+
+    document.getElementById("styleCards")
+        .innerHTML = `
+
+        <div class="style-card">
+
+            <strong>${firstPercent}%</strong>
+
+            <br>
+
+            ${styleNames[first[0]]}
+
+        </div>
+
+
+        <div class="style-card">
+
+            <strong>${secondPercent}%</strong>
+
+            <br>
+
+            ${styleNames[second[0]]}
+
+        </div>
+
+
+        <div class="style-card">
+
+            <strong>${100 - firstPercent - secondPercent}%</strong>
+
+            <br>
+
+            Other
+
+        </div>
+
+    `;
+
+
+    /* USER'S OWN WORDS */
+
+    document.getElementById("userWords")
+        .textContent =
+        description ||
+        "You didn't add a description.";
+
+
+    /* HIDE QUIZ */
+
+    document.getElementById("quizQuestions")
+        .style.display = "none";
+
+
+    /* SHOW RESULT */
+
+    document.getElementById("result")
+        .style.display = "block";
+
+}
+
+
+</script>
+
+
+</body>
+</html>

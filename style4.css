@@ -1,0 +1,172 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'DM Sans',sans-serif;
+    background:#f6f5ef;
+    color:#222;
+}
+
+.navbar{
+    width:90%;
+    margin:25px auto;
+    background:#fff;
+    border-radius:15px;
+    padding:18px 35px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.logo{
+    font-size:26px;
+    font-weight:700;
+    color:#51753a;
+}
+
+
+.nav-btns{
+    display:flex;
+    gap:20px;
+    align-items:center;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 15px 30px;
+}
+
+.navbar nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 30px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+
+.hero{
+    width:90%;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    border-radius:25px;
+    overflow:hidden;
+
+    min-height:650px;
+}
+
+.left{
+    background:#8da89f;
+    color:white;
+
+    padding:80px 70px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.tag{
+    display:inline-block;
+    background:rgba(255,255,255,.2);
+    width:max-content;
+
+    padding:10px 18px;
+    border-radius:30px;
+    margin-bottom:35px;
+
+    font-size:13px;
+    letter-spacing:1px;
+}
+
+.left h1{
+    font-family:'Playfair Display',serif;
+    font-size:70px;
+    line-height:1.05;
+    margin-bottom:30px;
+}
+
+.left h1 span{
+    font-style:italic;
+}
+
+.left p{
+    font-size:18px;
+    line-height:1.8;
+    max-width:500px;
+    opacity:.95;
+    margin-bottom:40px;
+}
+
+.buttons{
+    display:flex;
+    gap:18px;
+}
+
+.right img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+@media(max-width:900px){
+
+.hero{
+grid-template-columns:1fr;
+}
+
+.left{
+padding:50px 35px;
+}
+
+.left h1{
+font-size:48px;
+}
+
+.right{
+height:450px;
+}
+
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #e8f5e9, #80605a);
+}
+.orange {
+    background: #80605a;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+}
+
+.outline {
+    border: 2px solid #2e7d32;
+    color: #2e7d32;
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 0.8;
+    transition: 0.3s;
+}
