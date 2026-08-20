@@ -1,46 +1,53 @@
 * {
   box-sizing: border-box;
 }
-
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: linear-gradient(to right, #cba18e, #b8907e);
   color: #314640;
 }
-
 /* NAVBAR */
-
 .navbar {
   width: 90%;
   margin: 25px auto;
+  padding: 15px 35px;
   background: white;
   border-radius: 15px;
-  padding: 18px 35px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 8px 25px rgba(0,0,0,.08);
 }
-
-.logo {
-  font-size: 26px;
-  font-weight: bold;
-  color: #51753a;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
-
+.logo-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.logo-text {
+  width: 155px;
+  height: auto;
+  object-fit: contain;
+}
 .navbar nav {
   display: flex;
   gap: 30px;
 }
-
 .navbar a {
   text-decoration: none;
   color: #333;
+  font-weight: 500;
 }
-
+.navbar a:hover {
+  color: #8da89f;
+}
 /* QUIZ */
-
 .quiz {
   width: 90%;
   max-width: 900px;
@@ -51,27 +58,22 @@ body {
   border-radius: 25px;
   box-shadow: 0 10px 30px rgba(0,0,0,.15);
 }
-
 .quiz h1 {
   font-family: Georgia, serif;
   font-size: 55px;
   margin-bottom: 10px;
 }
-
 .subtitle {
   font-size: 18px;
   line-height: 1.6;
 }
-
 /* PROGRESS */
-
 .progress {
   height: 8px;
   background: rgba(255,255,255,.3);
   border-radius: 20px;
   margin: 30px 0;
 }
-
 .progress-bar {
   height: 100%;
   width: 0;
@@ -79,35 +81,27 @@ body {
   border-radius: 20px;
   transition: .3s;
 }
-
 /* QUESTIONS */
-
 .question {
   display: none;
 }
-
 .question.active {
   display: block;
 }
-
 .question h2 {
   font-size: 28px;
   margin-top: 20px;
 }
-
 .question p {
   opacity: .9;
 }
-
 /* ANSWERS */
-
 .answers {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
   margin-top: 25px;
 }
-
 .answer {
   background: rgba(255,255,255,.2);
   color: white;
@@ -117,19 +111,15 @@ body {
   cursor: pointer;
   transition: .2s;
 }
-
 .answer:hover {
   background: rgba(255,255,255,.35);
 }
-
 .answer.selected {
   background: #f5e6d9;
   color: #314640;
   border-color: white;
 }
-
 /* TEXTAREA */
-
 textarea {
   width: 100%;
   min-height: 150px;
@@ -141,19 +131,15 @@ textarea {
   resize: vertical;
   margin-top: 20px;
 }
-
 textarea:focus {
   outline: 3px solid rgba(255,255,255,.4);
 }
-
 /* BUTTONS */
-
 .buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 35px;
 }
-
 button {
   background: #314640;
   color: white;
@@ -164,56 +150,45 @@ button {
   cursor: pointer;
   margin-top: 10px;
 }
-
 button:hover {
   background: #243833;
 }
-
 .back {
   background: transparent;
   border: 2px solid white;
 }
-
 /* RESULT */
-
 .result {
   display: none;
   text-align: center;
 }
-
 .result h2 {
   font-family: Georgia, serif;
   font-size: 45px;
 }
-
 .style-name {
   font-size: 32px;
   font-weight: bold;
   color: #f5e6d9;
 }
-
 .style-description {
   font-size: 18px;
   line-height: 1.7;
 }
-
 .styles {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
   margin-top: 30px;
 }
-
 .style-card {
   background: rgba(255,255,255,.2);
   border-radius: 15px;
   padding: 20px;
 }
-
 .style-card strong {
   font-size: 25px;
 }
-
 .user-style {
   background: rgba(255,255,255,.15);
   padding: 20px;
@@ -221,29 +196,23 @@ button:hover {
   margin: 25px 0;
   font-style: italic;
 }
-
 /* MOBILE */
-
 @media (max-width: 700px) {
   .navbar {
     flex-direction: column;
     gap: 15px;
   }
-
   .navbar nav {
     gap: 12px;
     flex-wrap: wrap;
     justify-content: center;
   }
-
   .quiz {
     padding: 30px 20px;
   }
-
   .quiz h1 {
     font-size: 40px;
   }
-
   .answers,
   .styles {
     grid-template-columns: 1fr;
