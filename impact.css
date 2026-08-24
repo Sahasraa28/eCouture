@@ -1,0 +1,257 @@
+body { 
+    margin: 0; 
+    font-family: 'Poppins', sans-serif; 
+    background: linear-gradient(to right, #7e9f94, #c9a7a1); 
+} 
+ 
+.navbar { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 40px; 
+    margin: 20px;     
+    background: rgba(255, 255, 255, 0.7); 
+    backdrop-filter: blur(12px); 
+    border-radius: 20px; 
+} 
+
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.box:nth-child(1) { transition-delay: 0.1s; }
+.box:nth-child(2) { transition-delay: 0.2s; }
+.box:nth-child(3) { transition-delay: 0.3s; }
+.box:nth-child(4) { transition-delay: 0.4s; }
+ 
+/* logo area */ 
+.brand { 
+    display: flex; 
+    align-items: center; 
+} 
+ 
+.logo-icon { 
+    height: 40px; 
+    margin-right: 10px; 
+} 
+ 
+.logo-text { 
+    height: 30px; 
+} 
+ 
+/* nav links */ 
+nav a { 
+    margin: 0 15px; 
+    text-decoration: none; 
+    color: #333; 
+    font-weight: 500; 
+    transition: 0.3s; 
+} 
+ 
+nav a:hover { 
+    color: #6c8f84; 
+} 
+ 
+.hero { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 60px; 
+    gap: 40px; 
+} 
+ 
+/* TEXT */  
+    .hero-text h1 {
+    font-size: 65px;
+    font-family: 'Playfair Display', serif;
+
+    background: linear-gradient(to right, #ffffff, #e0e0e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    line-height: 1.1;
+}
+ 
+.hero-text p { 
+   color: rgba(255,255,255,0.85);
+    font-size: 18px;
+    line-height: 1.7;
+    margin-top: 20px;
+} 
+ 
+/* IMAGE */ 
+.hero-image img { 
+    width: 400px; 
+    border-radius: 20px; 
+} 
+ 
+/* GLASS BOX EFFECT */ 
+.hero-image { 
+    background: rgba(255, 255, 255, 0.15); 
+    padding: 20px; 
+    border-radius: 20px; 
+    backdrop-filter: blur(10px); 
+} 
+
+ 
+.content h2 { 
+    margin-top: 30px; 
+} 
+.hero-text { 
+    animation: slideIn 1s ease; 
+     background: rgba(255, 255, 255, 0.08);
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    max-width: 500px;
+} 
+
+ 
+.hero-image { 
+    animation: fadeIn 1.5s ease; 
+} 
+ 
+@keyframes slideIn { 
+    from { 
+        transform: translateX(-50px); 
+        opacity: 0; 
+    } 
+    to { 
+        transform: translateX(0); 
+        opacity: 1; 
+    } 
+} 
+ 
+@keyframes fadeIn { 
+    from { 
+        opacity: 0; 
+    } 
+    to { 
+        opacity: 1; 
+    } 
+} 
+/* FONTS */ 
+body { 
+    font-family: 'Poppins', sans-serif; 
+} 
+ 
+h1, h2 { 
+    font-family: 'Playfair Display', serif; 
+} 
+ 
+
+ 
+/* GLASS BOXES */ 
+.box { 
+    background: rgba(255, 255, 255, 0.15); 
+    padding: 25px 30px; 
+    border-radius: 20px; 
+    backdrop-filter: blur(12px); 
+    color: white; 
+    max-width: 700px; 
+ 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
+    transition: 0.3s; 
+} 
+ 
+/* HOVER EFFECT */ 
+.box:hover { 
+    transform: translateY(-5px); 
+} 
+ 
+/* SPECIAL BOX */ 
+.highlight { 
+    background: rgba(255, 255, 255, 0.25); 
+    font-weight: 500; 
+} 
+ 
+/* TEXT STYLE */ 
+.box p { 
+    line-height: 1.7; 
+    font-size: 16px; 
+} 
+.content-image { 
+    flex: 1; 
+    display: flex; 
+    justify-content: center; 
+} 
+ 
+.content-image img { 
+    background: rgba(255, 255, 255, 0.15); 
+    padding:20px; 
+    backdrop-filter: blur(10px);
+     height: 100%;
+    width: 320px;
+    object-fit: cover;
+    border-radius: 20px; 
+}
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.content-boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+
+.content-boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    flex: 1;           
+    max-width: 800px;  
+}
+
+
+.content-image {
+    flex-shrink: 0;   
+}
+
+.content > div {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.content img {
+    width: 300px;
+    border-radius: 20px;
+}
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 50px 60px;
+    align-items: stretch;
+
+}
+.content-image {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+     display: flex;
+}
+.content-image:hover {
+    transform: scale(1.03);
+    transition: 0.3s;
+}

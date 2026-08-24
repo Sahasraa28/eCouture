@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Impact</title>
+<link rel="stylesheet" href="impact.css">
+</head>
+
+<body>
+
+
+<header class="navbar">
+  <div class="brand">
+    <img src="logo.jpeg" class="logo-icon">
+    <img src="logo2.jpeg" class="logo-text">
+  </div>
+
+  <nav>
+    <a href="ecouture3.html">Home</a>
+    <a href="closet3.html">Digital Closet</a>
+    <a href="features.html">Features</a>
+    <a href="impact.html">Impact</a>
+    <a href="quiz.html">Style Quiz</a>
+    <a href="Chat with us.html">Chat with us</a>
+  </nav>
+</header>
+
+
+<section class="hero">
+
+  <div class="hero-text">
+    <h1><b>Style more cute,<br>Style more sustainable</b></h1>
+
+    <p>
+      Our project aims to bring a <b>new kind of fashion era</b> — a more 
+      <i>sustainable</i> one.<br><br>
+
+      Fast fashion creates waste, pollution, and even supports <i>child</i> labor. 
+      It's time to change how we <b>shop and style.</b>
+    </p>
+  </div>
+
+  <div class="hero-image">
+    <img src="Zalando_883ca1d439.webp" alt="Sustainable fashion">
+  </div>
+</section>
+
+<section class="content">
+
+  <div>
+    <div class="box fade-in">
+      <p>
+        We align with <b>SDG 12: Responsible Consumption and Production</b>, rethinking the way fashion is consumed in a fast-moving world. The rise of fast fashion has made clothing feel <b>temporary</b>, leading to excessive waste, pollution, and overproduction that continues to <i>harm our planet.</i>
+      </p>
+    </div>
+
+    <div class="box fade-in">
+      <p>
+        With our <b>Digital Wardrobe</b> and <b>Style Quiz</b>, <i>you</i> can stay effortlessly stylish while becoming more mindful of your choices. Instead of constantly buying new pieces, you can explore new ways to style what you already own while reducing your impact on the <b>fast fashion crisis</b>.
+      </p>
+    </div>
+
+    <div class="box fade-in">
+      <p>
+        <b><i>Rediscover</i></b> your wardrobe. <b><i>Restyle</i></b> your outfits with creativity. <b><i>Repair</i></b> pieces you love and give them a <i>second life</i>. Small changes in how we treat our clothes can create a <b>powerful shift toward sustainability.</b>
+      </p>
+    </div>
+
+    <div class="box highlight fade-in">
+      <p>
+        Because true style isn’t about having more — it’s about <b>intention, identity, and expressing</b> who <i>you</i> are in a way that lasts.
+      </p>
+    </div>
+  </div>
+
+  <div class="content-image">
+  <img src="peepeepoopic.jpg" alt="fashion">
+</div>
+
+</section>
+<script>
+const faders = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+});
+
+faders.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
