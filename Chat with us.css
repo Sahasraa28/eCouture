@@ -326,3 +326,6 @@ body {
     max-width: 90%;
   }
 }
+.quick-questions button {
+    color: #314640;
+}
