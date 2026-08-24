@@ -39,9 +39,12 @@ body {
 } 
  
 .logo-icon { 
-    height: 40px; 
-    margin-right: 10px; 
-} 
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
  
 .logo-text { 
     height: 30px; 
