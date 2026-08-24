@@ -45,7 +45,7 @@ body {
   font-weight: 500;
 }
 .navbar a:hover {
-  color: #8da89f;
+  color: rgba(225, 225, 225, 0.7);
 }
 /* QUIZ */
 .quiz {
