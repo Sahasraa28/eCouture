@@ -6,14 +6,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    color: #314640;
-    background: linear-gradient(
-        110deg,
-        #e8f0e7 0%,
-        #c9d5c9 35%,
-        #a58d88 70%,
-        #8c6d68 100%
-    );
+    background: linear-gradient(to right, #7e9f94, #c9a7a1); 
     min-height: 100vh;
 }
 
