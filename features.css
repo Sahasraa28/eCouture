@@ -75,7 +75,7 @@ nav a:hover {
 
 .features-intro {
     text-align: center;
-    background: #6dab8c;
+    background: transparent;
     padding: 40px 30px;
     border-radius: 25px;
     margin: 0 auto 50px;
