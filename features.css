@@ -66,24 +66,19 @@ nav a:hover {
 
 .features {
     position: relative;
-    background: #8df7c2;
-    margin: 30px 4.5% 50px;
-    padding: 65px 6% 70px;
-    border-radius: 30px;
-    overflow: hidden;
-    box-shadow: none;
 }
 
 /* Introduction */
 
 .features-intro {
     text-align: center;
-    background: rgba(255, 255, 255, 0.4);
+    background: #6dab8c;
     padding: 40px 30px;
     border-radius: 25px;
     max-width: 800px;
     margin: 0 auto 50px;
-    backdrop-filter: blur(6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+
 }
 
 .tag {
