@@ -1,28 +1,16 @@
 const buttons = document.querySelectorAll(".question");
 
 buttons.forEach(button => {
-
     button.addEventListener("click", () => {
 
-        // Check if this question already has an answer
-        let answerBox = button.nextElementSibling;
-
-        // Close ALL other answers
+        // Close any currently open answer
         document.querySelectorAll(".answer-box").forEach(answer => {
-            if (answer !== answerBox) {
-                answer.remove();
-            }
+            answer.remove();
         });
 
-        // If this question is already open, close it
-        if (answerBox && answerBox.classList.contains("answer-box")) {
-            answerBox.remove();
-            return;
-        }
-
-        // Create the answer
-        answerBox = document.createElement("div");
-        answerBox.classList.add("answer-box");
+        // Create the answer box
+        const answerBox = document.createElement("div");
+        answerBox.className = "answer-box";
 
         const answer = button.getAttribute("data-answer");
 
@@ -31,8 +19,7 @@ buttons.forEach(button => {
             <p>${answer}</p>
         `;
 
-        // Put answer DIRECTLY below the clicked question
-        button.insertAdjacentElement("afterend", answerBox);
+        // Put it directly underneath THIS question
+        button.parentNode.insertBefore(answerBox, button.nextSibling);
     });
-
 });
