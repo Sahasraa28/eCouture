@@ -1,5 +1,4 @@
 const buttons = document.querySelectorAll(".question");
-const chatBox = document.getElementById("chatMessages");
 
 buttons.forEach(button => {
   button.addEventListener("click", () => {
@@ -10,6 +9,6 @@ buttons.forEach(button => {
 
     message.innerHTML = "<strong>eCouture</strong><p>" + answer + "</p>";
 
-    chatBox.appendChild(message);
+    button.insertAdjacentElement("afterend", message);
   });
 });
