@@ -1,17 +1,18 @@
 const buttons = document.querySelectorAll(".question");
 
 buttons.forEach(button => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", function () {
 
-        // Close any currently open answer
+        // Close any answer that is currently open
         document.querySelectorAll(".answer-box").forEach(answer => {
             answer.remove();
         });
 
         // Create the answer box
         const answerBox = document.createElement("div");
-        answerBox.className = "answer-box";
+        answerBox.classList.add("answer-box");
 
+        // Get the answer from the question
         const answer = button.getAttribute("data-answer");
 
         answerBox.innerHTML = `
@@ -19,7 +20,7 @@ buttons.forEach(button => {
             <p>${answer}</p>
         `;
 
-        // Put it directly underneath THIS question
-        button.parentNode.insertBefore(answerBox, button.nextSibling);
+        // Place the answer directly below the clicked question
+        button.insertAdjacentElement("afterend", answerBox);
     });
 });
