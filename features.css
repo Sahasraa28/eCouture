@@ -66,7 +66,7 @@ nav a:hover {
 
 .features {
     position: relative;
-
+    background: #8df7c2;
     margin: 30px 4.5% 50px;
     padding: 65px 6% 70px;
     border-radius: 30px;
@@ -80,6 +80,7 @@ nav a:hover {
     text-align: center;
     max-width: 800px;
     margin: 0 auto 50px;
+    
 }
 
 .tag {
@@ -95,7 +96,7 @@ nav a:hover {
 
 .features-intro h1 {
     margin: 0;
-    background: #8df7c2;
+    
     font-family: Georgia, "Times New Roman", serif;
     font-size: 58px;
     font-weight: normal;
