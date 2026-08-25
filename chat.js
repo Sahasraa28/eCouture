@@ -1,42 +1,15 @@
 const buttons = document.querySelectorAll(".question");
-const chatMessages = document.querySelector("#chatMessages");
+const chatBox = document.getElementById("chatMessages");
 
-buttons.forEach(function(button) {
-    button.addEventListener("click", function() {
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    const answer = button.getAttribute("data-answer");
 
-        const question = button.textContent.trim();
-        const answer = button.dataset.answer;
+    const message = document.createElement("div");
+    message.classList.add("message", "bot");
 
-        askQuestion(question, answer);
-    });
+    message.innerHTML = "<strong>eCouture</strong><p>" + answer + "</p>";
+
+    chatBox.appendChild(message);
+  });
 });
-
-
-function askQuestion(question, answer) {
-
-    // Show the user's question
-    const userMessage = document.createElement("div");
-    userMessage.classList.add("message", "user");
-
-    userMessage.innerHTML = `
-        <p>${question}</p>
-    `;
-
-    chatMessages.appendChild(userMessage);
-
-
-    // Show eCouture's answer
-    const botMessage = document.createElement("div");
-    botMessage.classList.add("message", "bot");
-
-    botMessage.innerHTML = `
-        <strong>eCouture</strong>
-        <p>${answer}</p>
-    `;
-
-    chatMessages.appendChild(botMessage);
-
-
-    // Scroll to the newest message
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
