@@ -76,14 +76,6 @@ nav a:hover {
 
     margin: 30px 4.5% 50px;
     padding: 65px 6% 70px;
-
-    background: linear-gradient(
-        135deg,
-        #edf4e9 0%,
-        #e4efdf 45%,
-        #d8eadb 100%
-    );
-
     border-radius: 30px;
     overflow: hidden;
     box-shadow: none;
