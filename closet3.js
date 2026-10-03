@@ -437,13 +437,55 @@ document.getElementById("aiStyleButton").addEventListener("click", () => {
 
   });
 
+/* =========================
+   AI PERSONAL STYLIST
+========================= */
 
-  // Show test result
-  document.getElementById("aiResult").innerHTML = `
-    <h3>✨ AI Stylist Information</h3>
+const aiButton = document.getElementById("aiStyleButton");
+
+aiButton.onclick = function () {
+
+  console.log("AI STYLE ME button clicked");
+
+  const occasion = document.getElementById("occasion").value;
+  const result = document.getElementById("aiResult");
+
+  if (occasion === "") {
+    result.innerHTML = `
+      <p><strong>Please choose an occasion first.</strong></p>
+    `;
+    return;
+  }
+
+  const mainStyle = localStorage.getItem("userStyle");
+  const secondStyle = localStorage.getItem("userSecondStyle");
+
+  const mainPercent = localStorage.getItem("userStylePercent");
+  const secondPercent = localStorage.getItem("userSecondStylePercent");
+
+  const cards = document.querySelectorAll("#clothingContainer .card");
+
+  let wardrobe = [];
+
+  cards.forEach(function(card) {
+
+    const name = card.querySelector("h3").textContent;
+    const category = card.querySelector("p").textContent;
+    const condition = card.querySelector(".tag").textContent;
+
+    wardrobe.push({
+      name: name,
+      category: category,
+      condition: condition
+    });
+
+  });
+
+  result.innerHTML = `
+    <h3>✨ Your AI Stylist</h3>
 
     <p>
-      <strong>Your Style:</strong>
+      <strong>Style Profile:</strong>
       ${mainPercent}% ${mainStyle}
       + ${secondPercent}% ${secondStyle}
     </p>
@@ -454,19 +496,14 @@ document.getElementById("aiStyleButton").addEventListener("click", () => {
     </p>
 
     <p>
-      <strong>Your Wardrobe:</strong>
+      <strong>Available clothes:</strong>
       ${wardrobe.map(item => item.name).join(", ")}
     </p>
 
     <p>
-      Your wardrobe is ready for AI styling ✨
+      ✨ Your wardrobe information is ready for AI styling.
     </p>
   `;
 
-
-  // See all information in console
-  console.log("Style:", mainStyle, secondStyle);
-  console.log("Occasion:", occasion);
-  console.log("Wardrobe:", wardrobe);
-
-});
+  console.log(wardrobe);
+};
