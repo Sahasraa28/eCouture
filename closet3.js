@@ -1,3 +1,26 @@
+const userStyle =
+  localStorage.getItem("userStyle");
+
+const secondStyle =
+  localStorage.getItem("userSecondStyle");
+
+const stylePercent =
+  localStorage.getItem("userStylePercent");
+
+const secondStylePercent =
+  localStorage.getItem("userSecondStylePercent");
+
+
+if (userStyle) {
+
+  document.getElementById("savedStyle").innerHTML = `
+    <strong>${stylePercent}% ${userStyle.toUpperCase()}</strong>
+    &nbsp; + &nbsp;
+    <strong>${secondStylePercent}% ${secondStyle.toUpperCase()}</strong>
+  `;
+
+}
+
 let cameraStream = null;
 let uploadedImage = null;
 
