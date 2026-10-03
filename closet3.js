@@ -381,3 +381,92 @@ document.onkeydown = event => {
     closeUploadModal();
   }
 };
+
+/* =========================
+   AI PERSONAL STYLIST
+========================= */
+
+document.getElementById("aiStyleButton").addEventListener("click", () => {
+
+  // Get selected occasion
+  const occasion =
+    document.getElementById("occasion").value;
+
+  // Make sure an occasion was selected
+  if (!occasion) {
+    alert("Please choose an occasion first.");
+    return;
+  }
+
+  // Get style quiz results
+  const mainStyle =
+    localStorage.getItem("userStyle");
+
+  const secondStyle =
+    localStorage.getItem("userSecondStyle");
+
+  const mainPercent =
+    localStorage.getItem("userStylePercent");
+
+  const secondPercent =
+    localStorage.getItem("userSecondStylePercent");
+
+
+  // Get clothes currently in wardrobe
+  const cards =
+    document.querySelectorAll("#clothingContainer .card");
+
+  const wardrobe = [];
+
+  cards.forEach(card => {
+
+    const name =
+      card.querySelector("h3").textContent;
+
+    const category =
+      card.querySelector("p").textContent;
+
+    const condition =
+      card.querySelector(".tag").textContent;
+
+    wardrobe.push({
+      name: name,
+      category: category,
+      condition: condition
+    });
+
+  });
+
+
+  // Show test result
+  document.getElementById("aiResult").innerHTML = `
+    <h3>✨ AI Stylist Information</h3>
+
+    <p>
+      <strong>Your Style:</strong>
+      ${mainPercent}% ${mainStyle}
+      + ${secondPercent}% ${secondStyle}
+    </p>
+
+    <p>
+      <strong>Occasion:</strong>
+      ${occasion}
+    </p>
+
+    <p>
+      <strong>Your Wardrobe:</strong>
+      ${wardrobe.map(item => item.name).join(", ")}
+    </p>
+
+    <p>
+      Your wardrobe is ready for AI styling ✨
+    </p>
+  `;
+
+
+  // See all information in console
+  console.log("Style:", mainStyle, secondStyle);
+  console.log("Occasion:", occasion);
+  console.log("Wardrobe:", wardrobe);
+
+});
