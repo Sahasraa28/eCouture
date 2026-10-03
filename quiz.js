@@ -291,8 +291,6 @@ function nextQuestion() {
 }
 
 
-/* BACK */
-
 function previousQuestion() {
 
   if (current > 0) {
@@ -300,9 +298,6 @@ function previousQuestion() {
     showQuestion();
   }
 }
-
-
-/* RESULT */
 
 function showResult() {
 
@@ -328,12 +323,13 @@ function showResult() {
 
   const other =
     100 - firstPercent - secondPercent;
-  
+
   localStorage.setItem("userStyle", first[0]);
-localStorage.setItem("userSecondStyle", second[0]);
-localStorage.setItem("userStylePercent", firstPercent);
-localStorage.setItem("userSecondStylePercent", secondPercent);
-localStorage.setItem("userStyleDescription", description);
+  localStorage.setItem("userSecondStyle", second[0]);
+  localStorage.setItem("userStylePercent", firstPercent);
+  localStorage.setItem("userSecondStylePercent", secondPercent);
+  localStorage.setItem("userStyleDescription", description);
+
 
   document.getElementById("styleName").textContent =
     `${names[first[0]]} × ${names[second[0]]}`;
@@ -363,9 +359,8 @@ localStorage.setItem("userStyleDescription", description);
 
   document.getElementById("quizQuestions").style.display = "none";
   document.getElementById("result").style.display = "block";
-
-  `${names[first[0]]} × ${names[second[0]]}`;
 }
+
 
 
 function restartQuiz() {
