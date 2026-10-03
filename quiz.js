@@ -359,8 +359,14 @@ function showResult() {
   document.getElementById("result").style.display = "block";
 }
 
+localStorage.setItem("userStyle", first[0]);
+localStorage.setItem("userSecondStyle", second[0]);
 
-/* RESTART */
+localStorage.setItem("userStylePercent", firstPercent);
+localStorage.setItem("userSecondStylePercent", secondPercent);
+
+localStorage.setItem("userStyleDescription", description);
+
 
 function restartQuiz() {
 
