@@ -430,7 +430,7 @@ button:hover {
   max-width: 900px;
   margin: 25px auto 40px;
   padding: 30px;
-  background: #E6E6E6;
+  background: #f6f1ec;
   border-radius: 20px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   text-align: center;
@@ -449,7 +449,7 @@ button:hover {
   margin: 5px 0 10px;
 
   /* Keeps the main heading in your original font */
-  font-family: Arial, sans-serif;
+  font-family: "Edwardian Script ITC", cursive;
 }
 
 .ai-stylist-heading p {
@@ -520,7 +520,7 @@ button:hover {
   margin-bottom: 8px;
 
   /* Keeps the main heading in your original font */
-  font-family: Arial, sans-serif;
+  font-family: "Edwardian Script ITC", cursive;
 }
 
 .style-profile p {
