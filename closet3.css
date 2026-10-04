@@ -449,7 +449,7 @@ button:hover {
   margin: 5px 0 10px;
 
   /* Keeps the main heading in your original font */
-  font-family: "Edwardian Script ITC", cursive;
+  font-family: Georgia, serif;
 }
 
 .ai-stylist-heading p {
@@ -520,7 +520,7 @@ button:hover {
   margin-bottom: 8px;
 
   /* Keeps the main heading in your original font */
-  font-family: "Edwardian Script ITC", cursive;
+  font-family:  Georgia, serif;
 }
 
 .style-profile p {
