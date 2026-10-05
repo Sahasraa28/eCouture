@@ -135,7 +135,7 @@ const wasteCountries = {
   china: {
     id: "china",
     number: "01",
-    rank: #1 IN THIS GLOBAL DATASET
+    rank: "#1 IN THIS GLOBAL DATASET",
     name: "CHINA",
     waste: "≈ 26 MILLION",
 
@@ -150,7 +150,7 @@ const wasteCountries = {
   usa: {
     id: "usa",
     number: "02",
-    rank: #2 IN THIS GLOBAL DATASET
+    rank: "#2 IN THIS GLOBAL DATASET",
     name: "USA",
     waste: "≈ 17 MILLION",
 
@@ -165,7 +165,7 @@ const wasteCountries = {
   india: {
     id: "india",
     number: "03",
-    rank: #3 IN THIS GLOBAL DATASET
+    rank: "#3 IN THIS GLOBAL DATASET",
     name: "INDIA",
     waste: "≈ 7.8 MILLION",
 
