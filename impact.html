@@ -141,6 +141,115 @@
 
 </section>
 
+  <!-- =========================
+     GLOBAL FASHION WASTE GLOBE
+========================= -->
+
+<section class="global-impact">
+
+  <div class="global-heading">
+
+    <p class="global-small-title">
+      E-COUTURE GLOBAL IMPACT
+    </p>
+
+    <h2>
+      The Global Cost of <i>Fashion</i>
+    </h2>
+
+    <p>
+      Explore three major generators of textile and clothing waste
+      and discover why extending the life of our clothes matters.
+    </p>
+
+  </div>
+
+
+  <div class="globe-layout">
+
+    <!-- 3D GLOBE -->
+    <div class="globe-box">
+      <div id="fashionGlobe"></div>
+
+      <p class="globe-help">
+        DRAG TO EXPLORE • CLICK A MARKER
+      </p>
+    </div>
+
+
+    <!-- INFORMATION PANEL -->
+    <div class="country-panel">
+
+      <p class="country-number" id="countryNumber">
+        01
+      </p>
+
+      <p class="country-label">
+        TEXTILE WASTE SPOTLIGHT
+      </p>
+
+      <h3 id="countryName">
+        CHINA
+      </h3>
+
+      <div class="country-stat">
+        <span id="countryWaste">
+          ≈ 26 MILLION
+        </span>
+
+        <p>
+          TONNES OF TEXTILE & CLOTHING WASTE
+        </p>
+      </div>
+
+      <p id="countryDescription" class="country-description">
+        China generates an estimated 26 million tonnes of
+        textile and clothing waste, highlighting the enormous
+        scale of the global fashion waste challenge.
+      </p>
+
+
+      <div class="ecouture-action">
+
+        <p>E-COUTURE ACTION</p>
+
+        <div>
+          <span>REWEAR</span>
+          <span>REPAIR</span>
+          <span>RESTYLE</span>
+          <span>UPCYCLE</span>
+        </div>
+
+      </div>
+
+
+      <div class="country-buttons">
+
+        <button onclick="selectWasteCountry('china')" class="active">
+          CHINA
+        </button>
+
+        <button onclick="selectWasteCountry('usa')">
+          USA
+        </button>
+
+        <button onclick="selectWasteCountry('india')">
+          INDIA
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <p class="globe-source">
+    Solid textile & clothing waste generation — 2022.
+    Figures are approximate and shown for awareness and comparison.
+  </p>
+
+</section>
 
 
 <!-- =========================
@@ -205,6 +314,7 @@
 
 </section>
 
+<script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
 <script src="impact.js"></script>
 
 </body>
