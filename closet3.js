@@ -368,6 +368,26 @@ currentGarment = {
 /* =========================
    AI GARMENT DOCTOR
 ========================= */
+async function getGarmentImageData(image) {
+
+  // Uploaded images are already ready for Gemini
+  if (image.startsWith("data:image/")) {
+    return image;
+  }
+
+  // Convert existing/default clothing images to Base64
+  const response = await fetch(image);
+  const blob = await response.blob();
+
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+
+    reader.readAsDataURL(blob);
+  });
+}
 
 async function scanGarment() {
 
@@ -396,9 +416,13 @@ async function scanGarment() {
     </div>
   `;
 
-  try {
+ try {
 
-    const response = await fetch("/api/garment-doctor", {
+  const imageData = await getGarmentImageData(
+    currentGarment.image
+  );
+
+  const response = await fetch("/api/garment-doctor", {
       method: "POST",
 
       headers: {
@@ -406,7 +430,7 @@ async function scanGarment() {
       },
 
       body: JSON.stringify({
-      image: currentGarment.image,
+      image: imageData,
       name: currentGarment.name,
       category: currentGarment.category
       })
