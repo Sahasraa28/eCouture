@@ -253,7 +253,8 @@ function addClothing() {
   const category = document.getElementById("clothingCategory").value;
   const condition = document.getElementById("clothingCondition").value;
   const style = document.getElementById("clothingStyle").value;
-
+  const clothingImage = uploadedImage;
+	
   if (!uploadedImage || !name) {
     alert("Please add a photo and clothing name.");
     return;
@@ -283,7 +284,7 @@ function addClothing() {
   card.className = "card";
 
   card.innerHTML = `
-    <img src="${uploadedImage}" alt="${name}">
+    <img src="${clothingImage}" alt="${name}">
     <h3>${name}</h3>
     <p>${category}</p>
     <span class="tag ${tagClass}">${conditionText}</span>
@@ -297,7 +298,7 @@ function addClothing() {
       name,
       category,
       conditionText,
-      uploadedImage,
+      clothingImage,
       condition,
       style
     );
