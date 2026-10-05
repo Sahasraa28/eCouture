@@ -660,7 +660,7 @@ async function visualiseUpcycle() {
 
   visual.innerHTML = `
     <div class="tailor-result">
-      <h3>✨ Creating Your Upcycle Preview...</h3>
+      <h3> Creating Your Upcycle Preview...</h3>
       <p>AI Tailor is transforming your garment.</p>
     </div>
   `;
@@ -698,31 +698,87 @@ async function visualiseUpcycle() {
     }
 
     visual.innerHTML = `
-      <div class="tailor-result">
+  <div class="tailor-result upcycle-preview">
 
-        <p class="tailor-label">
-          E-COUTURE AI UPCYCLE PREVIEW
-        </p>
+    <p class="tailor-label">
+      E-COUTURE AI UPCYCLE PREVIEW
+    </p>
 
-        <h3>✨ Your Transformed Garment</h3>
+    <h3>✨ See Your Garment Reimagined</h3>
 
-        <img
-          src="${data.image}"
-          alt="AI generated upcycle preview"
-          style="
-            width:100%;
-            max-width:420px;
-            border-radius:12px;
-            margin-top:15px;
-          "
-        >
+    <p class="preview-intro">
+      From what you already own to what it could become.
+    </p>
 
-        <p style="margin-top:12px;">
-          AI-generated preview based on your original garment.
-        </p>
+    <div class="before-after">
+
+      <div class="garment-preview">
+
+        <span class="preview-tag">
+          BEFORE
+        </span>
+
+        <div class="preview-image-box">
+          <img
+            src="${currentGarment.image}"
+            alt="Original garment"
+          >
+        </div>
+
+        <p>Original Garment</p>
 
       </div>
-    `;
+
+
+      <div class="transformation-arrow">
+
+        <span>AI UPCYCLE</span>
+
+        <div class="arrow">
+          →
+        </div>
+
+      </div>
+
+
+      <div class="garment-preview">
+
+        <span class="preview-tag after-tag">
+          AFTER
+        </span>
+
+        <div class="preview-image-box">
+          <img
+            src="${data.image}"
+            alt="AI generated upcycled garment"
+          >
+        </div>
+
+        <p>Upcycled Concept</p>
+
+      </div>
+
+    </div>
+
+
+    <div class="upcycle-concept">
+
+      <span>AI TAILOR CONCEPT</span>
+
+      <p>
+        ${currentUpcycleSuggestion}
+      </p>
+
+    </div>
+
+
+    <p class="ai-disclaimer">
+      ✦ AI-generated concept preview. The final result may vary
+      depending on materials, construction and tailoring.
+    </p>
+
+  </div>
+`;
 
   } catch (error) {
 
