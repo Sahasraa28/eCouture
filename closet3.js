@@ -557,6 +557,10 @@ async function askTailor(action) {
     const secondStyle =
       localStorage.getItem("userSecondStyle");
 
+	const imageData = await getGarmentImageData(
+  currentGarment.image
+);
+
     const response = await fetch("/api/ai-tailor", {
 
       method: "POST",
@@ -569,7 +573,7 @@ async function askTailor(action) {
 
         action: action,
 
-        image: currentGarment.image,
+        image: imageData,
 
         name: currentGarment.name,
 
