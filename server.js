@@ -785,7 +785,7 @@ Do not add text, labels, logos or watermarks to the image.
 `;
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.1-flash-image-preview",
+      model: "model: "gemini-3.1-flash-image",
 
       contents: [
         {
