@@ -395,7 +395,11 @@ function selectWasteCountry(countryId) {
     "countryNumber"
   ).textContent =
     country.number;
-
+  
+document.getElementById(
+  "countryRank"
+).textContent =
+  country.rank;
 
   document.getElementById(
     "countryName"
