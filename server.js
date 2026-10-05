@@ -711,6 +711,152 @@ Do not use asterisks.
 
 });
 
+/* =========================
+   AI UPCYCLE VISUALISER
+========================= */
+
+app.post("/api/visualise-upcycle", async (req, res) => {
+
+  try {
+
+    const {
+      image,
+      suggestion,
+      name,
+      category
+    } = req.body;
+
+    if (!image || !suggestion) {
+      return res.status(400).json({
+        error: "Garment image or upcycle idea is missing."
+      });
+    }
+
+    const match = image.match(
+      /^data:(image\/[a-zA-Z0-9.+-]+);base64,(.+)$/
+    );
+
+    if (!match) {
+      return res.status(400).json({
+        error: "The garment image format is not supported."
+      });
+    }
+
+    const mimeType = match[1];
+    const imageData = match[2];
+
+    const prompt = `
+You are the eCouture AI Upcycle Visualiser.
+
+The supplied image shows the user's ORIGINAL garment.
+
+Garment name:
+${name || "Unknown"}
+
+Garment category:
+${category || "Unknown"}
+
+The eCouture AI Tailor has recommended this upcycle:
+
+${suggestion}
+
+Create a realistic fashion product visualisation showing
+what THIS SAME garment could look like after the recommended
+upcycle has been completed.
+
+IMPORTANT:
+
+Preserve the recognisable identity of the original garment.
+
+Keep its main colour, material appearance and overall garment
+type unless the upcycle instructions specifically require a
+change.
+
+Apply only the modifications described in the upcycle idea.
+
+Do not replace it with a completely unrelated garment.
+
+Show the transformed garment clearly.
+
+Use a clean, simple fashion presentation suitable for the
+eCouture website.
+
+Do not add text, labels, logos or watermarks to the image.
+`;
+
+    const response = await ai.models.generateContent({
+      model: "gemini-3.1-flash-image-preview",
+
+      contents: [
+        {
+          role: "user",
+          parts: [
+            {
+              text: prompt
+            },
+            {
+              inlineData: {
+                mimeType: mimeType,
+                data: imageData
+              }
+            }
+          ]
+        }
+      ]
+    });
+
+    let generatedImage = null;
+    let generatedMimeType = "image/png";
+
+    for (const candidate of response.candidates || []) {
+
+      for (
+        const part of candidate.content?.parts || []
+      ) {
+
+        if (part.inlineData?.data) {
+          generatedImage = part.inlineData.data;
+
+          generatedMimeType =
+            part.inlineData.mimeType || "image/png";
+
+          break;
+        }
+      }
+
+      if (generatedImage) break;
+    }
+
+    if (!generatedImage) {
+      throw new Error(
+        "Gemini did not return a generated image."
+      );
+    }
+
+    res.json({
+      image:
+        `data:${generatedMimeType};base64,${generatedImage}`
+    });
+
+  } catch (error) {
+
+    console.error(
+      "========== UPCYCLE VISUAL ERROR =========="
+    );
+
+    console.error(error);
+
+    console.error(
+      "=========================================="
+    );
+
+    res.status(500).json({
+      error:
+        "The AI Tailor could not create the upcycle preview."
+    });
+  }
+});
+
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`eCouture is running on port ${PORT}`);
 });
