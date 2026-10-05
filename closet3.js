@@ -326,8 +326,6 @@ function openViewModal(
   document.getElementById("viewStyle").textContent = style;
   document.getElementById("viewImage").src = image;
 
-image = document.getElementById("viewImage").src;
-
 currentGarment = {
   name,
   category,
@@ -408,7 +406,7 @@ async function scanGarment() {
       },
 
       body: JSON.stringify({
-      image: currentGarment.image || document.getElementById("viewImage").src,
+      image: currentGarment.image,
       name: currentGarment.name,
       category: currentGarment.category
       })
@@ -481,12 +479,12 @@ async function scanGarment() {
 
   } catch (error) {
 
-    console.error("Garment Doctor Error:", error);
+    console.error("AI TAILOR Error:", error);
 
     recommendations.innerHTML = `
       <div class="option garment-doctor">
 
-        <h3>AI Garment Doctor</h3>
+        <h3>AI TAILOR</h3>
 
         <p>
           The garment could not be analysed.
