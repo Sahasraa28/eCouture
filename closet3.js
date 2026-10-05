@@ -311,6 +311,7 @@ function addClothing() {
 }
 
 let currentGarment = null;
+let currentUpcycleSuggestion = "";
 
 function openViewModal(
   name,
@@ -585,6 +586,9 @@ async function askTailor(action) {
     });
 
     const data = await response.json();
+	if (action === "upcycle") {
+        currentUpcycleSuggestion = data.recommendation;
+    }
 
     if (!response.ok) {
       throw new Error(
@@ -603,9 +607,17 @@ async function askTailor(action) {
           ${actionNames[action]}
         </h3>
 
-        <p>
-          ${data.recommendation.replace(/\n/g, "<br>")}
-        </p>
+       <p>
+      ${data.recommendation.replace(/\n/g, "<br>")}
+      </p>
+
+      ${action === "upcycle" ? `
+    <button onclick="visualiseUpcycle()">
+        VISUALISE MY UPCYCLE
+    </button>
+
+        <div id="upcycleVisual"></div>
+        ` : ""}
 
       </div>
     `;
@@ -628,6 +640,102 @@ async function askTailor(action) {
 
   }
 
+}
+
+/* =========================
+   AI UPCYCLE VISUALISER
+========================= */
+
+async function visualiseUpcycle() {
+
+  if (!currentGarment || !currentUpcycleSuggestion) return;
+
+  const visual =
+    document.getElementById("upcycleVisual");
+
+  visual.innerHTML = `
+    <div class="tailor-result">
+      <h3>✨ Creating Your Upcycle Preview...</h3>
+      <p>AI Tailor is transforming your garment.</p>
+    </div>
+  `;
+
+  try {
+
+    const imageData = await getGarmentImageData(
+      currentGarment.image
+    );
+
+    const response = await fetch(
+      "/api/visualise-upcycle",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          image: imageData,
+          suggestion: currentUpcycleSuggestion,
+          name: currentGarment.name,
+          category: currentGarment.category
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        data.error || "Upcycle visualisation failed"
+      );
+    }
+
+    visual.innerHTML = `
+      <div class="tailor-result">
+
+        <p class="tailor-label">
+          E-COUTURE AI UPCYCLE PREVIEW
+        </p>
+
+        <h3>✨ Your Transformed Garment</h3>
+
+        <img
+          src="${data.image}"
+          alt="AI generated upcycle preview"
+          style="
+            width:100%;
+            max-width:420px;
+            border-radius:12px;
+            margin-top:15px;
+          "
+        >
+
+        <p style="margin-top:12px;">
+          AI-generated preview based on your original garment.
+        </p>
+
+      </div>
+    `;
+
+  } catch (error) {
+
+    console.error(
+      "Upcycle Visualisation Error:",
+      error
+    );
+
+    visual.innerHTML = `
+      <div class="tailor-result">
+        <p>
+          The AI Tailor couldn't create the preview.
+          Please try again.
+        </p>
+      </div>
+    `;
+
+  }
 }
 
 function closeViewModal() {
