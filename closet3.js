@@ -635,5 +635,9 @@ async function askTailor(action) {
 
 };
 
+function closeViewModal() {
+  viewModal.classList.remove("show");
+}
+
 
 
