@@ -526,3 +526,329 @@ button:hover {
 .style-profile p {
   margin: 0;
 }
+
+/* =====================================================
+   E-COUTURE AI TAILOR
+===================================================== */
+
+.garment-doctor {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.96),
+    rgba(239,244,241,0.96)
+  );
+
+  border: 1px solid rgba(49,70,64,0.15);
+  border-radius: 20px;
+
+  padding: 28px;
+
+  box-shadow:
+    0 10px 30px rgba(49,70,64,0.08);
+
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* Small AI label */
+
+.garment-doctor > p:first-child {
+  color: #718c83;
+  font-size: 11px !important;
+  letter-spacing: 2.5px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+}
+
+
+/* AI Tailor headings */
+
+.garment-doctor h3 {
+  color: #314640;
+  font-family: Georgia, serif;
+  font-size: 25px;
+  margin: 10px 0 18px;
+}
+
+
+/* Analysis text */
+
+.garment-doctor p {
+  line-height: 1.6;
+  color: #455b54;
+}
+
+
+/* Analysis categories */
+
+.garment-doctor p strong {
+  display: inline-block;
+
+  color: #314640;
+
+  font-size: 11px;
+  letter-spacing: 1.5px;
+
+  margin-bottom: 4px;
+}
+
+
+/* =====================================================
+   AI TAILOR ACTION BUTTONS
+===================================================== */
+
+.tailor-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 12px;
+
+  margin-top: 25px;
+  padding-top: 22px;
+
+  border-top: 1px solid #dde5e1;
+}
+
+
+.tailor-actions button {
+  background: #314640;
+  color: white;
+
+  border: 1px solid #314640;
+
+  padding: 13px 10px;
+
+  border-radius: 10px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 0.8px;
+
+  transition: all 0.25s ease;
+}
+
+
+.tailor-actions button:hover {
+  background: #8da89f;
+
+  border-color: #8da89f;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 6px 15px rgba(49,70,64,0.18);
+}
+
+
+/* =====================================================
+   AI TAILOR RESULT
+===================================================== */
+
+#tailorResult {
+  margin-top: 18px;
+}
+
+
+.tailor-result {
+  background: #f6f1ec;
+
+  border: 1px solid rgba(49,70,64,0.12);
+
+  border-radius: 16px;
+
+  padding: 22px;
+
+  color: #314640;
+
+  text-align: left;
+
+  animation: tailorFade 0.35s ease;
+}
+
+
+.tailor-label {
+  color: #7e9f94 !important;
+
+  font-size: 10px !important;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 8px;
+}
+
+
+.tailor-result h3 {
+  font-family: Georgia, serif;
+
+  color: #314640;
+
+  font-size: 22px;
+
+  margin: 6px 0 14px;
+}
+
+
+.tailor-result p {
+  line-height: 1.7;
+  margin: 0;
+}
+
+
+/* =====================================================
+   VISUALISE MY UPCYCLE BUTTON
+===================================================== */
+
+.tailor-result > button {
+  width: 100%;
+
+  margin-top: 20px;
+
+  padding: 14px 20px;
+
+  background: #314640;
+
+  color: white;
+
+  border-radius: 12px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  transition: all 0.25s ease;
+}
+
+
+.tailor-result > button:hover {
+  background: #8da89f;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 18px rgba(49,70,64,0.2);
+}
+
+
+/* =====================================================
+   AI UPCYCLE VISUAL
+===================================================== */
+
+#upcycleVisual {
+  margin-top: 20px;
+}
+
+
+#upcycleVisual .tailor-result {
+  text-align: center;
+
+  background: white;
+
+  padding: 25px;
+}
+
+
+#upcycleVisual img {
+  display: block;
+
+  width: 100% !important;
+  max-width: 420px !important;
+
+  max-height: 500px;
+
+  object-fit: contain;
+
+  margin: 20px auto 10px !important;
+
+  background: #f6f1ec;
+
+  border-radius: 16px !important;
+
+  padding: 10px;
+
+  box-shadow:
+    0 10px 25px rgba(49,70,64,0.12);
+}
+
+
+/* =====================================================
+   VIEW GARMENT MODAL POLISH
+===================================================== */
+
+.view-header {
+  background: rgba(255,255,255,0.55);
+
+  padding: 20px;
+
+  border-radius: 16px;
+
+  border: 1px solid rgba(49,70,64,0.08);
+}
+
+
+.view-header img {
+  border: 1px solid #e3e3e3;
+
+  box-shadow:
+    0 5px 18px rgba(0,0,0,0.07);
+}
+
+
+.view-info h2 {
+  font-family: Georgia, serif;
+
+  color: #314640;
+}
+
+
+.view-info p {
+  line-height: 1.6;
+}
+
+
+/* =====================================================
+   SUBTLE ANIMATION
+===================================================== */
+
+@keyframes tailorFade {
+
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =====================================================
+   AI TAILOR MOBILE
+===================================================== */
+
+@media(max-width:600px) {
+
+  .garment-doctor {
+    padding: 20px;
+  }
+
+  .tailor-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .tailor-actions button {
+    width: 100%;
+  }
+
+  .tailor-result {
+    padding: 18px;
+  }
+
+}
