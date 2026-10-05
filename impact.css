@@ -596,3 +596,474 @@ h2 {
         font-size: 12px;
     }
 }
+
+/* =====================================================
+   GLOBAL FASHION WASTE GLOBE
+===================================================== */
+
+.global-impact {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 30px auto 70px;
+    padding: 55px 45px;
+
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.10);
+
+    color: white;
+
+    overflow: hidden;
+}
+
+
+/* HEADING */
+
+.global-heading {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 45px;
+}
+
+.global-small-title {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+
+    margin-bottom: 10px;
+}
+
+.global-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 46px;
+
+    margin-bottom: 15px;
+}
+
+.global-heading p:last-child {
+    font-size: 15px;
+    line-height: 1.7;
+
+    opacity: 0.9;
+}
+
+
+/* =====================================================
+   GLOBE + INFORMATION
+===================================================== */
+
+.globe-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.15fr)
+        minmax(320px, 0.85fr);
+
+    gap: 40px;
+
+    align-items: center;
+}
+
+
+/* GLOBE */
+
+.globe-box {
+    position: relative;
+
+    min-height: 570px;
+
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,0.16),
+            rgba(53,74,68,0.32)
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#fashionGlobe {
+    width: 100%;
+    height: 570px;
+
+    cursor: grab;
+}
+
+#fashionGlobe:active {
+    cursor: grabbing;
+}
+
+.globe-help {
+    position: absolute;
+
+    bottom: 18px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 10px;
+    font-weight: 500;
+
+    letter-spacing: 2px;
+
+    white-space: nowrap;
+
+    opacity: 0.7;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   COUNTRY PANEL
+===================================================== */
+
+.country-panel {
+    padding: 38px;
+
+    background: rgba(255,255,255,0.14);
+
+    border: 1px solid rgba(255,255,255,0.20);
+
+    border-radius: 24px;
+
+    min-height: 500px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    transition: 0.3s;
+}
+
+.country-number {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 15px;
+
+    opacity: 0.6;
+
+    margin-bottom: 10px;
+}
+
+.country-label {
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 2.5px;
+
+    margin-bottom: 8px;
+
+    opacity: 0.8;
+}
+
+.country-panel h3 {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 48px;
+
+    margin-bottom: 25px;
+}
+
+
+/* BIG COUNTRY NUMBER */
+
+.country-stat {
+    margin-bottom: 25px;
+}
+
+.country-stat span {
+    display: block;
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: 35px;
+
+    font-weight: bold;
+
+    margin-bottom: 4px;
+}
+
+.country-stat p {
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    opacity: 0.75;
+}
+
+
+/* DESCRIPTION */
+
+.country-description {
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    margin-bottom: 28px;
+
+    opacity: 0.9;
+}
+
+
+/* =====================================================
+   E-COUTURE ACTION
+===================================================== */
+
+.ecouture-action {
+    padding-top: 20px;
+
+    border-top:
+        1px solid rgba(255,255,255,0.20);
+}
+
+.ecouture-action > p {
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    font-weight: bold;
+
+    margin-bottom: 12px;
+}
+
+.ecouture-action div {
+    display: flex;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+}
+
+.ecouture-action span {
+    padding: 7px 10px;
+
+    border:
+        1px solid rgba(255,255,255,0.40);
+
+    border-radius: 20px;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   COUNTRY BUTTONS
+===================================================== */
+
+.country-buttons {
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: 28px;
+}
+
+.country-buttons button {
+    flex: 1;
+
+    padding: 10px;
+
+    border:
+        1px solid rgba(255,255,255,0.45);
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.country-buttons button:hover,
+.country-buttons button.active {
+    background: white;
+
+    color: #6f8f85;
+
+    transform: translateY(-2px);
+}
+
+
+/* SOURCE */
+
+.globe-source {
+    text-align: center;
+
+    margin-top: 30px;
+
+    font-size: 10px;
+
+    opacity: 0.65;
+}
+
+
+/* =====================================================
+   GLOBE LABELS
+===================================================== */
+
+.globe-marker {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    cursor: pointer;
+
+    pointer-events: auto;
+}
+
+.globe-marker-dot {
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    border:
+        3px solid rgba(255,255,255,0.45);
+
+    box-shadow:
+        0 0 0 7px rgba(255,255,255,0.12);
+
+    animation:
+        globePulse 1.8s infinite;
+}
+
+.globe-marker-label {
+    background:
+        rgba(40,55,51,0.82);
+
+    color: white;
+
+    padding:
+        7px 11px;
+
+    border-radius: 15px;
+
+    font-family:
+        'Poppins', sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+
+    backdrop-filter: blur(5px);
+}
+
+
+@keyframes globePulse {
+
+    0% {
+        box-shadow:
+            0 0 0 0
+            rgba(255,255,255,0.35);
+    }
+
+    70% {
+        box-shadow:
+            0 0 0 12px
+            rgba(255,255,255,0);
+    }
+
+    100% {
+        box-shadow:
+            0 0 0 0
+            rgba(255,255,255,0);
+    }
+}
+
+
+/* =====================================================
+   GLOBE MOBILE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .global-impact {
+        padding: 40px 25px;
+    }
+
+    .globe-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .globe-box {
+        min-height: 500px;
+    }
+
+    #fashionGlobe {
+        height: 500px;
+    }
+
+    .country-panel {
+        min-height: auto;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .global-impact {
+        width: calc(100% - 40px);
+
+        padding:
+            35px 18px;
+    }
+
+    .global-heading h2 {
+        font-size: 35px;
+    }
+
+    .globe-box {
+        min-height: 390px;
+    }
+
+    #fashionGlobe {
+        height: 390px;
+    }
+
+    .country-panel {
+        padding: 28px 22px;
+    }
+
+    .country-panel h3 {
+        font-size: 38px;
+    }
+
+    .country-stat span {
+        font-size: 28px;
+    }
+
+}
