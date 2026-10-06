@@ -143,7 +143,7 @@ const wasteCountries = {
     lng: 104.1954,
 
     description:
-      "China generates an estimated 26 million tonnes of textile and clothing waste. Extending garment life through reuse, repair and recycling can help reduce the pressure created by disposable fashion."
+      "China generates an estimated 26 million tonnes of textile and clothing waste. China plays a major role in the global fashion industry. Its high level of textile waste highlights the growing need for reuse and recycling."
   },
 
 
@@ -158,7 +158,7 @@ const wasteCountries = {
     lng: -95.7129,
 
     description:
-      "The United States generates an estimated 17 million tonnes of textile and clothing waste. Rewearing clothes for longer can help challenge the culture of frequent disposal and replacement."
+      "The United States generates an estimated 17 million tonnes of textile and clothing waste. The United States has high levels of clothing consumption, with large quantities of unwanted garments discarded each year."
   },
 
 
@@ -173,7 +173,7 @@ const wasteCountries = {
     lng: 78.9629,
 
     description:
-      "India generates an estimated 7.8 million tonnes of textile and clothing waste. Repair, reuse and upcycling can help keep garments in use and support a more circular fashion system."
+      "India generates an estimated 7.8 million tonnes of textile and clothing waste. India has a large textile and garment industry, with clothing production and consumption contributing to growing textile waste."
   }
 
 };
