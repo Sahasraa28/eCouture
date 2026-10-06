@@ -544,7 +544,7 @@ async function askTailor(action) {
 
   result.innerHTML = `
     <div class="tailor-result">
-      <h3>✨ Creating Your ${actionNames[action]}...</h3>
+      <h3> Creating Your ${actionNames[action]}...</h3>
       <p>AI Tailor is working on your garment.</p>
     </div>
   `;
@@ -726,7 +726,7 @@ if (aiStyleButton) {
     // Loading message
     aiResult.innerHTML = `
       <p>
-        ✨ Your AI Personal Stylist is creating your look...
+         Your AI Personal Stylist is creating your look...
       </p>
     `;
 
@@ -769,7 +769,7 @@ if (aiStyleButton) {
         </p>
 
         <h3>
-          ✨ Your ${occasion} Look
+           Your ${occasion} Look
         </h3>
 
         <p>
@@ -777,7 +777,7 @@ if (aiStyleButton) {
         </p>
 
         <p class="ai-sustainability-note">
-          ♻ Styled using pieces already in your Digital Wardrobe.
+           Styled using pieces already in your Digital Wardrobe.
         </p>
       `;
 
