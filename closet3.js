@@ -639,5 +639,167 @@ function closeViewModal() {
   viewModal.classList.remove("show");
 }
 
+// =====================================================
+// AI PERSONAL STYLIST
+// =====================================================
 
+const aiStyleButton =
+  document.getElementById("aiStyleButton");
+
+if (aiStyleButton) {
+
+  aiStyleButton.addEventListener("click", async () => {
+
+    const occasion =
+      document.getElementById("occasion").value.trim();
+
+    const aiResult =
+      document.getElementById("aiResult");
+
+
+    // Make sure an occasion was entered
+    if (!occasion) {
+
+      aiResult.innerHTML = `
+        <p>
+          Please tell your AI stylist what you're dressing for.
+        </p>
+      `;
+
+      return;
+    }
+
+
+    // Get the user's Style Quiz results
+    const mainStyle =
+      localStorage.getItem("userStyle") || "Casual";
+
+    const secondStyle =
+      localStorage.getItem("userSecondStyle") || "";
+
+
+    // Read clothing currently shown in the Digital Wardrobe
+    const clothingCards =
+      document.querySelectorAll("#clothingContainer .card");
+
+
+    const wardrobe = [];
+
+
+    clothingCards.forEach(card => {
+
+      const name =
+        card.querySelector("h3")?.textContent.trim();
+
+      const category =
+        card.querySelector("p")?.textContent.trim();
+
+      const condition =
+        card.querySelector(".tag")?.textContent.trim();
+
+
+      if (name) {
+
+        wardrobe.push({
+          name,
+          category,
+          condition
+        });
+
+      }
+
+    });
+
+
+    if (wardrobe.length === 0) {
+
+      aiResult.innerHTML = `
+        <p>
+          Add some clothing to your Digital Wardrobe first.
+        </p>
+      `;
+
+      return;
+    }
+
+
+    // Loading message
+    aiResult.innerHTML = `
+      <p>
+        ✨ Your AI Personal Stylist is creating your look...
+      </p>
+    `;
+
+
+    try {
+
+      const response = await fetch("/api/style-me", {
+
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          occasion,
+          wardrobe,
+          mainStyle,
+          secondStyle
+        })
+
+      });
+
+
+      const data = await response.json();
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          data.error || "AI styling request failed"
+        );
+
+      }
+
+
+      aiResult.innerHTML = `
+        <p class="ai-result-label">
+          E-COUTURE AI PERSONAL STYLIST
+        </p>
+
+        <h3>
+          ✨ Your ${occasion} Look
+        </h3>
+
+        <p>
+          ${data.recommendation.replace(/\n/g, "<br>")}
+        </p>
+
+        <p class="ai-sustainability-note">
+          ♻ Styled using pieces already in your Digital Wardrobe.
+        </p>
+      `;
+
+
+    } catch (error) {
+
+      console.error(
+        "AI Personal Stylist Error:",
+        error
+      );
+
+
+      aiResult.innerHTML = `
+        <p>
+          Your AI stylist is temporarily unavailable.
+          Please try again.
+        </p>
+      `;
+
+    }
+
+  });
+
+}
 
