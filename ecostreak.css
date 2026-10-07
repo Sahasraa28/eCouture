@@ -398,4 +398,22 @@ nav a:hover {
     display: none;
   }
 
+.streak-icon img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.camera-icon img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.challenge-icon img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
 }
