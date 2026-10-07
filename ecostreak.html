@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EcoStreak | E-couture</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="ecostreak.css">
+</head>
+
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header class="navbar">
+
+  <div class="brand">
+    <img src="logo.jpeg" class="logo-icon" alt="E-couture logo">
+    <img src="logo2.jpeg" class="logo-text" alt="E-couture">
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="closet3.html">Digital Closet</a>
+    <a href="ecostreak.html">EcoStreak</a>
+    <a href="features.html">Features</a>
+    <a href="impact.html">Impact</a>
+    <a href="quiz.html">Style Quiz</a>
+    <a href="chatwithus.html">Chat with us</a>
+  </nav>
+
+</header>
+
+
+<main>
+
+<!-- =========================
+     ECOSTREAK HERO
+========================= -->
+
+<section class="eco-hero">
+
+  <div class="hero-text">
+
+    <p class="small-title">
+      E-COUTURE ECOSTREAK
+    </p>
+
+    <h1>
+      Make repeating outfits
+      <i>worth repeating.</i>
+    </h1>
+
+    <p class="hero-description">
+      Turn sustainable fashion into a daily habit.
+      Check in an outfit made from clothes you already own
+      and keep your EcoStreak alive.
+    </p>
+
+  </div>
+
+
+  <div class="streak-card">
+
+    <div class="fire">
+      🔥
+    </div>
+
+    <p class="streak-title">
+      YOUR ECOSTREAK
+    </p>
+
+    <div class="streak-number">
+      <span id="streakNumber">0</span>
+      <span class="days">DAYS</span>
+    </div>
+
+    <p class="streak-message" id="streakMessage">
+      Complete today's outfit check-in to start your streak.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     DAILY CHECK-IN
+========================= -->
+
+<section class="checkin-section">
+
+  <div class="section-heading">
+
+    <p class="small-title">
+      TODAY'S OUTFIT CHECK-IN
+    </p>
+
+    <h2>
+      What are you wearing today?
+    </h2>
+
+    <p>
+      Upload a photo of your outfit and let E-Couture AI
+      find clothes that may already exist in your Digital Closet.
+    </p>
+
+  </div>
+
+
+  <div class="checkin-card">
+
+    <input
+      type="file"
+      id="outfitInput"
+      accept="image/*"
+      hidden
+    >
+
+
+    <!-- UPLOAD -->
+
+    <div
+      class="upload-area"
+      id="uploadArea"
+    >
+
+      <div class="camera-icon">
+        📸
+      </div>
+
+      <h3>
+        Add Today's Outfit
+      </h3>
+
+      <p>
+        Take a photo or upload one from your device.
+      </p>
+
+      <button
+        type="button"
+        id="chooseOutfitButton"
+      >
+        CHOOSE PHOTO
+      </button>
+
+    </div>
+
+
+    <!-- IMAGE PREVIEW -->
+
+    <div
+      class="outfit-preview"
+      id="outfitPreview"
+      style="display:none;"
+    >
+
+      <img
+        id="outfitImage"
+        src=""
+        alt="Today's outfit"
+      >
+
+      <button
+        type="button"
+        id="analyseOutfitButton"
+      >
+        AI CHECK MY OUTFIT
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     AI OUTFIT RESULT
+========================= -->
+
+<section
+  class="ai-result-section"
+  id="aiResultSection"
+  style="display:none;"
+>
+
+  <p class="small-title">
+    E-COUTURE AI VISION
+  </p>
+
+  <h2>
+    Your Outfit Check
+  </h2>
+
+  <p class="ai-intro">
+    AI will suggest possible matches from your Digital Closet.
+    You stay in control by confirming the result.
+  </p>
+
+  <div id="outfitResult"></div>
+
+</section>
+
+
+
+<!-- =========================
+     ECO CHALLENGE
+========================= -->
+
+<section class="challenge-section">
+
+  <div class="challenge-text">
+
+    <p class="small-title">
+      YOUR ECO CHALLENGE
+    </p>
+
+    <h2>
+      Give an old favourite
+      another day out.
+    </h2>
+
+    <p id="ecoChallenge">
+      Complete your first outfit check-in to unlock
+      a personalised challenge.
+    </p>
+
+  </div>
+
+  <div class="challenge-icon">
+    ♻️
+  </div>
+
+</section>
+
+
+</main>
+
+
+<script src="ecostreak.js"></script>
+
+</body>
+</html>
