@@ -351,6 +351,31 @@ nav a:hover {
   font-size: 80px;
 }
 
+/* =====================================================
+   CUSTOM ICON IMAGES
+===================================================== */
+
+.streak-icon img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 12px;
+}
+
+.camera-icon img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  display: block;
+}
+
+.challenge-icon img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
+}
 
 /* =====================================================
    MOBILE
@@ -397,42 +422,5 @@ nav a:hover {
   .challenge-icon {
     display: none;
   }
-
-.streak-icon img {
-  width: 55px;
-  height: 55px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto 12px;
-}
-
-.camera-icon {
-  width: 80px;
-  height: 80px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: #dfe9e4;
-  border-radius: 50%;
-
-  margin-bottom: 20px;
-  overflow: hidden;
-}
-
-.camera-icon img {
-  width: 42px;
-  height: 42px;
-  object-fit: contain;
-  display: block;
-}
-
-.challenge-icon img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  display: block;
-}
 
 }
