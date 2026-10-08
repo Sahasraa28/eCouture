@@ -305,10 +305,29 @@ function addClothing() {
   };
 
   document
-    .getElementById("clothingContainer")
-    .appendChild(card);
+  .getElementById("clothingContainer")
+  .appendChild(card);
 
-  closeUploadModal();
+// Save garment information for EcoStreak
+const savedWardrobe = JSON.parse(
+  localStorage.getItem("ecoutureWardrobe") || "[]"
+);
+
+savedWardrobe.push({
+  id: "garment-" + Date.now() + "-" +
+      Math.random().toString(36).slice(2, 8),
+  name: name,
+  category: category,
+  condition: conditionText,
+  style: style
+});
+
+localStorage.setItem(
+  "ecoutureWardrobe",
+  JSON.stringify(savedWardrobe)
+);
+
+closeUploadModal();
 }
 
 let currentGarment = null;
