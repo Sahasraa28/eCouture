@@ -127,12 +127,6 @@
       accept="image/*"
       hidden
     >
-    <input type="file" 
-      id="cameraInput" 
-      accept="image/*" 
-      capture="environment" 
-      hidden
-    >
 
 
     <!-- UPLOAD -->
@@ -158,7 +152,30 @@
     <button type="button" id="chooseOutfitButton"> CHOOSE PHOTO</button>
     <button type="button" id="openCameraButton">OPEN CAMERA</button>
       </div>
+<!-- LIVE CAMERA -->
+<div id="cameraSection" style="display:none; text-align:center; margin-top:20px;">
 
+  <video
+    id="cameraVideo"
+    autoplay
+    playsinline
+    muted
+    style="width:100%; max-width:420px; border-radius:18px;">
+  </video>
+
+  <div style="margin-top:15px;">
+    <button type="button" id="takePhotoButton">
+      TAKE PHOTO
+    </button>
+
+    <button type="button" id="closeCameraButton">
+      CLOSE CAMERA
+    </button>
+  </div>
+
+  <canvas id="cameraCanvas" style="display:none;"></canvas>
+
+</div>
 
     <!-- IMAGE PREVIEW -->
 
