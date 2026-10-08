@@ -382,7 +382,9 @@ window.addEventListener(
    CHANGE OUTFIT PHOTO
 ========================================= */
 
-$("changeOutfitButton").addEventListener(
+<button type="button" id="changeOutfitButton">
+  CHANGE PHOTO
+</button>
   "click",
   () => {
 
