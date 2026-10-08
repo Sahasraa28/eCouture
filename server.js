@@ -711,6 +711,119 @@ Do not use asterisks.
 
 });
 
+/* =========================================
+   ECOSTREAK — AI OUTFIT MATCHING
+========================================= */
+
+app.post("/api/ecostreak-analyse", async (req, res) => {
+  try {
+    const { image, wardrobe } = req.body;
+
+    if (!image || !Array.isArray(wardrobe)) {
+      return res.status(400).json({
+        error: "Outfit photo or wardrobe is missing."
+      });
+    }
+
+    const match = image.match(
+      /^data:(image\/[a-zA-Z0-9.+-]+);base64,(.+)$/
+    );
+
+    if (!match) {
+      return res.status(400).json({
+        error: "Unsupported outfit image."
+      });
+    }
+
+    const wardrobeList = wardrobe.map(item => ({
+      id: String(item.id),
+      name: String(item.name),
+      category: String(item.category)
+    }));
+
+    const prompt = `
+You are the E-Couture EcoStreak AI Vision Assistant.
+
+Examine the uploaded outfit photograph and identify
+the clothing items that are clearly visible.
+
+The user's Digital Closet inventory is:
+${JSON.stringify(wardrobeList)}
+
+Suggest possible matches ONLY from that inventory.
+
+The inventory contains item names and categories, not
+reference photographs. Therefore, matches are tentative,
+not visually verified garment identities.
+
+Do not invent clothing items or IDs.
+Do not claim that a match is certain.
+If there is insufficient evidence, return no matches.
+
+Return ONLY valid JSON:
+{
+  "description": "Short description of visible outfit",
+  "matches": [
+    {
+      "id": "exact inventory ID",
+      "reason": "Why this may be a match"
+    }
+  ],
+  "tip": "One short idea for rewearing this outfit"
+}
+
+Use a maximum of 5 matches.
+No markdown or extra explanation.
+`;
+
+    const response = await ai.models.generateContent({
+      model: "gemini-3.5-flash-lite",
+      contents: [{
+        role: "user",
+        parts: [
+          { text: prompt },
+          {
+            inlineData: {
+              mimeType: match[1],
+              data: match[2]
+            }
+          }
+        ]
+      }]
+    });
+
+    const raw = response.text
+      .replace(/```json/gi, "")
+      .replace(/```/g, "")
+      .trim();
+
+    const result = JSON.parse(raw);
+    const allowed = new Set(wardrobeList.map(i => i.id));
+
+    const matches = Array.isArray(result.matches)
+      ? result.matches.filter(
+          item => allowed.has(String(item.id))
+        ).map(item => ({
+          id: String(item.id),
+          reason: String(item.reason || "Possible match")
+        }))
+      : [];
+
+    res.json({
+      description: String(result.description || ""),
+      matches,
+      tip: String(result.tip || "")
+    });
+
+  } catch (error) {
+    console.error("ECOSTREAK AI ERROR:", error);
+
+    res.status(500).json({
+      error: "EcoStreak AI could not analyse the outfit."
+    });
+  }
+});
+
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`eCouture is running on port ${PORT}`);
 });
