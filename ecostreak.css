@@ -530,3 +530,22 @@ $("closeCameraButton").addEventListener("click", () => {
 // STOP CAMERA WHEN LEAVING PAGE
 window.addEventListener("pagehide", stopEcoCamera);
 }
+
+/* ENSURE CAPTURED PHOTO IS VISIBLE */
+
+.outfit-preview {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.outfit-preview img {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 18px;
+  margin: 0 auto 20px;
+}
