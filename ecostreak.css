@@ -370,6 +370,27 @@ nav a:hover {
   display: block;
 }
 
+/* ECOSTREAK CAMERA & UPLOAD BUTTONS */
+
+.outfit-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.outfit-buttons button {
+  padding: 13px 22px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+#openCameraButton {
+  background: #253c35;
+  color: white;
+  border: none;
+}
+
 /* =====================================================
    MOBILE
 ===================================================== */
