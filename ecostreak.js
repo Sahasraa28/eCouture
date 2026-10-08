@@ -178,8 +178,53 @@ refresh();
 // CHOOSE OUTFIT PHOTO
 // =========================================
 
-$("chooseOutfitButton").addEventListener("click", () => {
-  input.click();
+/* =====================================
+   TAKE PHOTO — FIXED
+===================================== */
+
+$("takePhotoButton").addEventListener("click", () => {
+
+  if (!cameraStream || cameraVideo.videoWidth === 0) {
+    alert("Camera is not ready. Please wait a moment.");
+    return;
+  }
+
+  // Set canvas dimensions
+  cameraCanvas.width = cameraVideo.videoWidth;
+  cameraCanvas.height = cameraVideo.videoHeight;
+
+  const ctx = cameraCanvas.getContext("2d");
+
+  // Capture current camera frame
+  ctx.drawImage(
+    cameraVideo,
+    0,
+    0,
+    cameraCanvas.width,
+    cameraCanvas.height
+  );
+
+  // Convert captured frame to image
+  outfitPhoto = cameraCanvas.toDataURL("image/jpeg", 0.85);
+
+  // Display captured photo
+  const previewImage = $("outfitImage");
+
+  previewImage.onload = () => {
+    $("uploadArea").style.display = "none";
+    $("outfitPreview").style.display = "block";
+    $("aiResultSection").style.display = "none";
+
+    // Stop camera after photo has loaded
+    stopEcoCamera();
+  };
+
+  previewImage.onerror = () => {
+    alert("The captured photo could not be displayed.");
+  };
+
+  previewImage.src = outfitPhoto;
+
 });
 
 /* =====================================
