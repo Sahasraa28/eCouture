@@ -319,7 +319,6 @@ $("closeCameraButton").addEventListener("click", () => {
 
 // STOP CAMERA WHEN LEAVING PAGE
 window.addEventListener("pagehide", stopEcoCamera);
-}
 
 
 // OPEN CAMERA
@@ -382,7 +381,8 @@ $("takePhotoButton").addEventListener("click", () => {
     cameraCanvas.height
   );
 
-  outfitPhoto = cameraCanvas.toDataURL("image/jpeg", 0.8);
+  photo = cameraCanvas.toDataURL("image/jpeg", 0.8);
+$("outfitImage").src = photo;
 
   $("outfitImage").src = outfitPhoto;
 
