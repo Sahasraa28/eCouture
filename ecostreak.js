@@ -130,10 +130,44 @@ function refresh() {
       (progress.wears[b.id] || 0)
   );
 
-  $("ecoChallenge").textContent = ranked.length
-    ? `Your Eco Challenge: Create a fresh outfit using your ${ranked[0].name} instead of buying something new!`
-    : "Add clothes to your Digital Closet to unlock a personalised challenge.";
+const dailyChallenges = [
+  "Style your {item} in a completely different way today!",
+  "Create a new outfit using your {item} without buying anything.",
+  "Give your {item} another day out!",
+  "Mix your {item} with something you haven't worn recently.",
+  "Create a casual look using your {item}.",
+  "Make your {item} the highlight of today's outfit!",
+  "Rewear your {item} with different accessories.",
+  "Create a fresh look using your {item} and other clothes you own.",
+  "Style your {item} for a different occasion.",
+  "Build a sustainable outfit around your {item} today!"
+];
 
+const today = new Date();
+
+const dayNumber = Math.floor(
+  Date.UTC(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate()
+  ) / 86400000
+);
+
+const challengeIndex = dayNumber % dailyChallenges.length;
+
+if (ranked.length > 0) {
+  const itemIndex = dayNumber % ranked.length;
+  const selectedItem = ranked[itemIndex];
+
+  $("ecoChallenge").textContent =
+    dailyChallenges[challengeIndex].replace(
+      "{item}",
+      selectedItem.name
+    );
+} else {
+  $("ecoChallenge").textContent =
+    "Add clothes to your Digital Closet to unlock your daily Eco Challenge!";
+}
   save();
 }
 
@@ -211,7 +245,7 @@ $("analyseOutfitButton").addEventListener("click", async () => {
   }
 
   result.replaceChildren(
-    element("p", "✨ AI is analysing your outfit...")
+    element("p", " AI is analysing your outfit...")
   );
 
   try {
@@ -345,7 +379,7 @@ function renderMatches() {
     result.append(
       element(
         "p",
-        `♻️ Styling idea: ${analysis.tip}`
+        ` Styling idea: ${analysis.tip}`
       )
     );
   }
@@ -410,7 +444,7 @@ function confirmOutfit(ids) {
   result.replaceChildren(
     element(
       "h3",
-      `🔥 ${progress.count} DAY ECOSTREAK!`
+      ` ${progress.count} DAY ECOSTREAK!`
     ),
     element(
       "p",
