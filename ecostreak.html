@@ -127,6 +127,12 @@
       accept="image/*"
       hidden
     >
+    <input type="file" 
+      id="cameraInput" 
+      accept="image/*" 
+      capture="environment" 
+      hidden
+    >
 
 
     <!-- UPLOAD -->
@@ -148,14 +154,10 @@
         Take a photo or upload one from your device.
       </p>
 
-      <button
-        type="button"
-        id="chooseOutfitButton"
-      >
-        CHOOSE PHOTO
-      </button>
-
-    </div>
+      <div class="outfit-buttons">
+    <button type="button" id="chooseOutfitButton"> CHOOSE PHOTO</button>
+    <button type="button" id="openCameraButton">OPEN CAMERA</button>
+      </div>
 
 
     <!-- IMAGE PREVIEW -->
