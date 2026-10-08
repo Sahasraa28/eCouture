@@ -182,57 +182,98 @@ $("chooseOutfitButton").addEventListener("click", () => {
   input.click();
 });
 
-// OPEN DEVICE CAMERA
-const cameraInput = $("cameraInput");
+/* =====================================
+   LIVE CAMERA — ECOSTREAK
+===================================== */
 
-$("openCameraButton").addEventListener("click", () => {
-  cameraInput.click();
+const cameraSection = $("cameraSection");
+const cameraVideo = $("cameraVideo");
+const cameraCanvas = $("cameraCanvas");
+
+let cameraStream = null;
+
+
+// OPEN CAMERA
+$("openCameraButton").addEventListener("click", async () => {
+  try {
+    if (!navigator.mediaDevices?.getUserMedia) {
+      alert("Camera access requires HTTPS or localhost.");
+      return;
+    }
+
+    cameraStream = await navigator.mediaDevices.getUserMedia({
+      video: {
+        facingMode: "environment"
+      },
+      audio: false
+    });
+
+    cameraVideo.srcObject = cameraStream;
+
+    cameraSection.style.display = "block";
+
+    await cameraVideo.play();
+
+  } catch (error) {
+    console.error("Camera error:", error);
+    alert("Unable to open camera. Please allow camera access in your browser.");
+  }
 });
 
-cameraInput.addEventListener("change", () => {
-  const file = cameraInput.files[0];
 
-  if (!file) return;
+// STOP CAMERA
+function stopEcoCamera() {
+  if (cameraStream) {
+    cameraStream.getTracks().forEach(track => track.stop());
+    cameraStream = null;
+  }
 
-  // Reuse the existing photo upload and preview logic
-  const transfer = new DataTransfer();
-  transfer.items.add(file);
+  cameraVideo.srcObject = null;
+  cameraSection.style.display = "none";
+}
 
-  outfitInput.files = transfer.files;
-  outfitInput.dispatchEvent(new Event("change"));
-});
 
-input.addEventListener("change", () => {
-  const file = input.files[0];
-
-  if (!file) return;
-
-  if (!file.type.startsWith("image/")) {
-    alert("Please choose a photo.");
+// TAKE PHOTO
+$("takePhotoButton").addEventListener("click", () => {
+  if (!cameraStream || !cameraVideo.videoWidth) {
+    alert("Camera is not ready yet.");
     return;
   }
 
-  if (file.size > 8 * 1024 * 1024) {
-    alert("Please choose a photo smaller than 8 MB.");
-    return;
-  }
+  cameraCanvas.width = cameraVideo.videoWidth;
+  cameraCanvas.height = cameraVideo.videoHeight;
 
-  const reader = new FileReader();
+  const context = cameraCanvas.getContext("2d");
 
-  reader.onload = () => {
-    photo = reader.result;
+  context.drawImage(
+    cameraVideo,
+    0,
+    0,
+    cameraCanvas.width,
+    cameraCanvas.height
+  );
 
-    $("outfitImage").src = photo;
+  outfitPhoto = cameraCanvas.toDataURL("image/jpeg", 0.8);
 
-    $("uploadArea").style.display = "none";
-    $("outfitPreview").style.display = "block";
+  $("outfitImage").src = outfitPhoto;
 
-    section.style.display = "none";
-  };
+  $("uploadArea").style.display = "none";
+  $("outfitPreview").style.display = "block";
 
-  reader.readAsDataURL(file);
+  $("aiResultSection").style.display = "none";
+
+  stopEcoCamera();
 });
 
+
+// CLOSE CAMERA
+$("closeCameraButton").addEventListener("click", () => {
+  stopEcoCamera();
+});
+
+
+// STOP CAMERA WHEN LEAVING PAGE
+window.addEventListener("pagehide", stopEcoCamera);
 
 // =========================================
 // SAFE TEXT DISPLAY
