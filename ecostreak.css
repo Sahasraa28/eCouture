@@ -10,7 +10,7 @@
 
 body {
   font-family: "DM Sans", sans-serif;
-  background: #f4eee7;
+  background: linear-gradient(to right, #7e9f94, #c9a7a1);
   color: #253c35;
 }
 
@@ -29,7 +29,7 @@ h2 {
   align-items: center;
   justify-content: space-between;
   padding: 18px 6%;
-  background: #fff;
+  background: white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
@@ -79,14 +79,7 @@ nav a:hover {
   grid-template-columns: 1.25fr 0.75fr;
   align-items: center;
   gap: 70px;
-
-  background:
-    radial-gradient(
-      circle at 85% 20%,
-      rgba(244, 179, 174, 0.45),
-      transparent 35%
-    ),
-    #dfe9e4;
+ background: linear-gradient(to right, #7e9f94, #c9a7a1);
 }
 
 .small-title {
@@ -196,15 +189,15 @@ nav a:hover {
 .checkin-card {
   min-height: 430px;
   border-radius: 28px;
-  background: #fff;
+  background: ;
   padding: 25px;
   box-shadow: 0 15px 45px rgba(37, 60, 53, 0.1);
 }
 
 
-/* =====================================================
-   UPLOAD AREA
-===================================================== */
+
+   *UPLOAD AREA*
+
 
 .upload-area {
   min-height: 380px;
@@ -331,7 +324,7 @@ nav a:hover {
   align-items: center;
   gap: 40px;
 
-  background: #efc1bc;
+  background: #8c6d68;
   border-radius: 30px;
 }
 
