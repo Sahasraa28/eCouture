@@ -378,32 +378,30 @@ window.addEventListener(
   stopEcoCamera
 );
 
+
 /* =========================================
    CHANGE OUTFIT PHOTO
 ========================================= */
 
-<button type="button" id="changeOutfitButton">
-  CHANGE PHOTO
-</button>
-  "click",
-  () => {
+$("changeOutfitButton").addEventListener("click", () => {
 
-    stopEcoCamera();
+  stopEcoCamera();
 
-    photo = null;
-    analysis = null;
+  photo = null;
+  analysis = null;
 
-    input.value = "";
+  input.value = "";
 
-    $("outfitImage").removeAttribute("src");
+  $("outfitImage").removeAttribute("src");
 
-    $("outfitPreview").style.display = "none";
-    $("uploadArea").style.display = "flex";
+  $("outfitPreview").style.display = "none";
+  $("uploadArea").style.display = "flex";
 
-    section.style.display = "none";
-    result.replaceChildren();
-  }
-);
+  section.style.display = "none";
+  result.replaceChildren();
+
+});
+
 
 /* =========================================
    SAFE TEXT DISPLAY
