@@ -182,6 +182,26 @@ $("chooseOutfitButton").addEventListener("click", () => {
   input.click();
 });
 
+// OPEN DEVICE CAMERA
+const cameraInput = $("cameraInput");
+
+$("openCameraButton").addEventListener("click", () => {
+  cameraInput.click();
+});
+
+cameraInput.addEventListener("change", () => {
+  const file = cameraInput.files[0];
+
+  if (!file) return;
+
+  // Reuse the existing photo upload and preview logic
+  const transfer = new DataTransfer();
+  transfer.items.add(file);
+
+  outfitInput.files = transfer.files;
+  outfitInput.dispatchEvent(new Event("change"));
+});
+
 input.addEventListener("change", () => {
   const file = input.files[0];
 
