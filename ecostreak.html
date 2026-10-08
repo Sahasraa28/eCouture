@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +15,6 @@
 
   <link rel="stylesheet" href="ecostreak.css">
 </head>
-
 
 <body>
 
@@ -121,6 +121,8 @@
 
   <div class="checkin-card">
 
+    <!-- HIDDEN FILE INPUT -->
+
     <input
       type="file"
       id="outfitInput"
@@ -129,15 +131,14 @@
     >
 
 
-    <!-- UPLOAD -->
+    <!-- =========================
+         UPLOAD AREA
+    ========================= -->
 
-    <div
-      class="upload-area"
-      id="uploadArea"
-    >
+    <div class="upload-area" id="uploadArea">
 
       <div class="camera-icon">
-       <img src="Cam-icon.jpeg" alt="Upload outfit">
+        <img src="Cam-icon.jpeg" alt="Upload outfit">
       </div>
 
       <h3>
@@ -148,47 +149,77 @@
         Take a photo or upload one from your device.
       </p>
 
+
+      <!-- PHOTO BUTTONS -->
+
       <div class="outfit-buttons">
-    <button type="button" id="chooseOutfitButton"> CHOOSE PHOTO</button>
-    <button type="button" id="openCameraButton">OPEN CAMERA</button>
+
+        <button type="button" id="chooseOutfitButton">
+          CHOOSE PHOTO
+        </button>
+
+        <button type="button" id="openCameraButton">
+          OPEN CAMERA
+        </button>
+
       </div>
-<!-- LIVE CAMERA -->
-<div id="cameraSection" style="display:none; text-align:center; margin-top:20px;">
 
-  <video
-    id="cameraVideo"
-    autoplay
-    playsinline
-    muted
-    style="width:100%; max-width:420px; border-radius:18px;">
-  </video>
 
-  <div style="margin-top:15px;">
-    <button type="button" id="takePhotoButton">
-      TAKE PHOTO
-    </button>
+      <!-- =========================
+           LIVE CAMERA
+      ========================= -->
 
-    <button type="button" id="closeCameraButton">
-      CLOSE CAMERA
-    </button>
-  </div>
+      <div
+        id="cameraSection"
+        style="display:none; text-align:center; margin-top:20px;"
+      >
 
-  <canvas id="cameraCanvas" style="display:none;"></canvas>
+        <video
+          id="cameraVideo"
+          autoplay
+          playsinline
+          muted
+          style="display:block; width:100%; max-width:420px; height:auto; margin:0 auto; border-radius:18px; background:#253c35;"
+        ></video>
 
-</div>
+        <div style="margin-top:15px;">
 
-    <!-- IMAGE PREVIEW -->
+          <button type="button" id="takePhotoButton">
+            TAKE PHOTO
+          </button>
+
+          <button type="button" id="closeCameraButton">
+            CLOSE CAMERA
+          </button>
+
+        </div>
+
+        <canvas
+          id="cameraCanvas"
+          style="display:none;"
+        ></canvas>
+
+      </div>
+
+    </div>
+    <!-- END UPLOAD AREA -->
+
+
+    <!-- =========================
+         IMAGE PREVIEW
+    ========================= -->
 
     <div
       class="outfit-preview"
       id="outfitPreview"
-      style="display:none;"
+      style="display:none; text-align:center;"
     >
 
       <img
         id="outfitImage"
         src=""
         alt="Today's outfit"
+        style="display:block; width:100%; max-width:420px; max-height:450px; height:auto; object-fit:contain; margin:0 auto 20px; border-radius:18px;"
       >
 
       <button
@@ -201,6 +232,7 @@
     </div>
 
   </div>
+  <!-- END CHECK-IN CARD -->
 
 </section>
 
@@ -260,7 +292,7 @@
   </div>
 
   <div class="challenge-icon">
-   <img src="Recycle-icon.jpeg" alt="Eco challenge">
+    <img src="Recycle-icon.jpeg" alt="Eco challenge">
   </div>
 
 </section>
@@ -268,6 +300,10 @@
 
 </main>
 
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script src="ecostreak.js"></script>
 
