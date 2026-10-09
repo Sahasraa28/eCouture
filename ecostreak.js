@@ -55,7 +55,6 @@ let progress = read(storageKey, {
 });
 
 progress.count = Number(progress.count) || 0;
-progress.totalOutfits = Number(progress.totalOutfits) || 0;
 progress.wears ||= {};
 progress.history ||= [];
 
@@ -104,33 +103,6 @@ function wardrobe() {
 /* =========================================
    UPDATE STREAK AND ECO CHALLENGE
 ========================================= */
-
-function updateGarden() {
-  const total = progress.totalOutfits;
-
-  let plant = "🪴";
-  let stage = "Your Garden Awaits";
-
-  if (total >= 10) {
-    plant = "🌺";
-    stage = "Full Bloom";
-  } else if (total >= 5) {
-    plant = "🌸";
-    stage = "First Bloom";
-  } else if (total >= 3) {
-    plant = "🌿";
-    stage = "Growing Green";
-  } else if (total >= 1) {
-    plant = "🌱";
-    stage = "Little Sprout";
-  }
-
-  $("gardenPlant").textContent = plant;
-  $("gardenStage").textContent = stage;
-  $("gardenCount").textContent =
-    total + " outfits confirmed";
-
-
 function refresh() {
 
   if (
@@ -141,25 +113,6 @@ function refresh() {
   ) {
     progress.count = 0;
   }
-
-  updateGarden();
-
-  if (progress.lastCheckin === dateKey()) {
-
-  $("streakMessage").textContent =
-    "Today's outfit is confirmed. Your garden is growing!";
-
-} else if (progress.totalOutfits > 0) {
-
-  $("streakMessage").textContent =
-    "Confirm an outfit today to help your garden grow!";
-
-} else {
-
-  $("streakMessage").textContent =
-    "Confirm your first outfit to plant your seed!";
-
-}
 
   const items = wardrobe();
 
@@ -681,7 +634,6 @@ function confirmOutfit(ids) {
       : 1;
 
   progress.lastCheckin = dateKey();
-  progress.totalOutfits += 1;
 
   ids.forEach(id => {
 
