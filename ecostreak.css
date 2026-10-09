@@ -137,23 +137,6 @@ nav a:hover {
   font-weight: 700;
 }
 
-.streak-number {
-  margin: 10px 0;
-}
-
-#streakNumber {
-  display: block;
-  font-family: "Playfair Display", serif;
-  font-size: 82px;
-  line-height: 1;
-}
-
-.days {
-  font-size: 13px;
-  letter-spacing: 4px;
-  font-weight: 700;
-}
-
 .streak-message {
   margin-top: 18px;
   line-height: 1.6;
@@ -605,40 +588,4 @@ nav a:hover {
   font-size: 14px;
   color: #667770;
 }
-
-/* FASHION PASSPORT */
-
-.fashion-passport {
-  margin-top: 25px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(37, 60, 53, 0.2);
-}
-
-.fashion-passport h3 {
-  font-size: 13px;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
-}
-
-#passportBadges {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-#passportBadges span {
-  display: block;
-  padding: 12px;
-  border-radius: 14px;
-  background: #dfe9e4;
-  color: #667770;
-  font-size: 13px;
-}
-
-#passportBadges span.unlocked {
-  background: #efc1bc;
-  color: #253c35;
-  border: 1px solid #d96c63;
-}
-
 
