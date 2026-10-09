@@ -1,0 +1,67 @@
+/* E-COUTURE OUTFIT CHECK-IN — CLEAN STYLES */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "DM Sans", sans-serif; background: linear-gradient(to right, #7e9f94, #c9a7a1); color: #253c35; }
+h1, h2, h3 { font-family: "Playfair Display", serif; }
+.navbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 6%; background: white; border-bottom: 1px solid rgba(0,0,0,.08); }
+.brand { display: flex; align-items: center; gap: 8px; }
+.logo-icon { width: 42px; height: 42px; object-fit: contain; }
+.logo-text { width: 120px; object-fit: contain; }
+nav { display: flex; align-items: center; flex-wrap: wrap; gap: 26px; }
+nav a { color: #253c35; text-decoration: none; font-size: 14px; font-weight: 500; }
+nav a:hover { opacity: .6; }
+.small-title { font-family: "DM Sans", sans-serif; font-size: 12px; letter-spacing: 2.5px; font-weight: 700; margin-bottom: 14px; }
+/* HERO */
+.eco-hero { width: 100%; padding: 75px 8% 40px; }
+.hero-text { max-width: 920px; }
+.hero-text h1 { max-width: 800px; font-size: clamp(48px, 6vw, 78px); line-height: 1.03; font-weight: 400; }
+.hero-text h1 i { color: #d96c63; }
+.hero-description { max-width: 690px; margin-top: 26px; font-size: 17px; line-height: 1.7; }
+/* OUTFIT CHECK-IN */
+.checkin-section { width: 100%; padding: 45px 8% 85px; display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 70px; align-items: center; }
+.section-heading, .checkin-card { min-width: 0; width: 100%; }
+.section-heading h2 { font-size: clamp(36px, 3.5vw, 48px); line-height: 1.08; margin-bottom: 20px; }
+.section-heading > p:last-child { line-height: 1.7; max-width: 480px; }
+.checkin-card { border-radius: 28px; box-shadow: 0 15px 45px rgba(37,60,53,.1); }
+.upload-area { min-height: 380px; width: 100%; border: 2px dashed #9db2aa; border-radius: 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px; }
+.camera-icon { width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; background: #dfe9e4; border-radius: 50%; margin-bottom: 20px; }
+.camera-icon img { width: 42px; height: 42px; object-fit: contain; }
+.upload-area h3 { font-size: 28px; margin-bottom: 10px; }
+.upload-area p { color: #667770; margin-bottom: 22px; }
+.outfit-buttons, .camera-buttons { display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; }
+.upload-area button, #analyseOutfitButton, #changeOutfitButton { border: none; border-radius: 50px; padding: 14px 25px; background: #253c35; color: white; font-family: "DM Sans", sans-serif; font-weight: 700; letter-spacing: 1px; cursor: pointer; }
+.upload-area button:hover, #analyseOutfitButton:hover, #changeOutfitButton:hover { transform: translateY(-2px); }
+#analyseOutfitButton, #takePhotoButton { background: #d96c63; }
+.camera-section { width: 100%; margin-top: 25px; text-align: center; }
+#cameraVideo { display: block; width: 100%; max-width: 420px; height: auto; margin: 0 auto; border-radius: 18px; background: #253c35; }
+.camera-buttons { margin-top: 15px; }
+.outfit-preview { text-align: center; padding: 24px; }
+.outfit-preview img { display: block; width: 100%; max-width: 420px; max-height: 430px; height: auto; object-fit: contain; border-radius: 20px; margin: 0 auto 20px; }
+/* AI RESULT */
+.ai-result-section { margin: 0 8% 90px; padding: 55px; background: #253c35; color: white; border-radius: 30px; }
+.ai-result-section h2 { font-size: 42px; margin-bottom: 10px; }
+.ai-intro { max-width: 650px; line-height: 1.6; opacity: .8; }
+#outfitResult { margin-top: 30px; }
+/* ECO CHALLENGE */
+.challenge-section { margin: 0 8% 100px; padding: 55px 65px; display: flex; justify-content: space-between; align-items: center; gap: 40px; background: #8c6d68; border-radius: 30px; }
+.challenge-text h2 { max-width: 600px; font-size: 42px; line-height: 1.1; margin-bottom: 16px; }
+.challenge-text > p:last-child { max-width: 620px; line-height: 1.6; }
+.challenge-icon img { width: 90px; height: 90px; object-fit: contain; }
+/* TABLET */
+@media (max-width: 900px) {
+  .navbar { flex-direction: column; gap: 15px; }
+  nav { justify-content: center; gap: 14px; }
+  .eco-hero { padding: 60px 6% 25px; }
+  .checkin-section { grid-template-columns: 1fr; padding: 35px 6% 70px; gap: 40px; }
+  .ai-result-section, .challenge-section { margin-left: 6%; margin-right: 6%; }
+  .challenge-section { padding: 40px; }
+  .challenge-icon { display: none; }
+}
+/* MOBILE */
+@media (max-width: 520px) {
+  .upload-area { padding: 22px; }
+  .section-heading h2 { font-size: 36px; }
+  .challenge-text h2 { font-size: 34px; }
+  .ai-result-section { padding: 30px; }
+  .outfit-buttons { gap: 10px; }
+  .upload-area button, #analyseOutfitButton, #changeOutfitButton { padding: 12px 18px; font-size: 12px; }
+}

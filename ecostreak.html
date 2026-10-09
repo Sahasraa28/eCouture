@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outfit Check-In | E-Couture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ecostreak.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">
+      <img src="logo.jpeg" class="logo-icon" alt="E-Couture logo">
+      <img src="logo2.jpeg" class="logo-text" alt="E-Couture">
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="closet3.html">Digital Closet</a>
+      <a href="ecostreak.html">EcoStreak</a>
+      <a href="features.html">Features</a>
+      <a href="impact.html">Impact</a>
+      <a href="quiz.html">Style Quiz</a>
+      <a href="chatwithus.html">Chat with us</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="eco-hero">
+      <div class="hero-text">
+        <p class="small-title">E-COUTURE OUTFIT CHECK-IN</p>
+        <h1>Make repeating outfits <i>worth repeating.</i></h1>
+        <p class="hero-description">Turn sustainable fashion into a daily habit. Rediscover your wardrobe, rewear your favourite pieces, and make every outfit count.</p>
+      </div>
+    </section>
+
+    <section class="checkin-section">
+      <div class="section-heading">
+        <p class="small-title">TODAY'S OUTFIT CHECK-IN</p>
+        <h2>What are you wearing today?</h2>
+        <p>Upload a photo of your outfit and let E-Couture AI find clothes that may already exist in your Digital Closet.</p>
+      </div>
+
+      <div class="checkin-card">
+        <input type="file" id="outfitInput" accept="image/*" hidden>
+        <div class="upload-area" id="uploadArea">
+          <div class="camera-icon"><img src="Cam-icon.jpeg" alt="Upload outfit"></div>
+          <h3>Add Today's Outfit</h3>
+          <p>Take a photo or upload one from your device.</p>
+          <div class="outfit-buttons">
+            <button type="button" id="chooseOutfitButton">CHOOSE PHOTO</button>
+            <button type="button" id="openCameraButton">OPEN CAMERA</button>
+          </div>
+          <div id="cameraSection" class="camera-section" style="display:none;">
+            <video id="cameraVideo" autoplay playsinline muted></video>
+            <div class="camera-buttons">
+              <button type="button" id="takePhotoButton">TAKE PHOTO</button>
+              <button type="button" id="closeCameraButton">CLOSE CAMERA</button>
+            </div>
+            <canvas id="cameraCanvas" style="display:none;"></canvas>
+          </div>
+        </div>
+        <div class="outfit-preview" id="outfitPreview" style="display:none;">
+          <img id="outfitImage" alt="Today's outfit">
+          <div class="outfit-buttons">
+            <button type="button" id="analyseOutfitButton">AI CHECK MY OUTFIT</button>
+            <button type="button" id="changeOutfitButton">CHANGE PHOTO</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ai-result-section" id="aiResultSection" style="display:none;">
+      <p class="small-title">E-COUTURE AI VISION</p>
+      <h2>Your Outfit Check</h2>
+      <p class="ai-intro">AI will suggest possible matches from your Digital Closet. You stay in control by confirming the result.</p>
+      <div id="outfitResult"></div>
+    </section>
+
+    <section class="challenge-section">
+      <div class="challenge-text">
+        <p class="small-title">YOUR ECO CHALLENGE</p>
+        <h2>Give an old favourite another day out.</h2>
+        <p id="ecoChallenge">Complete your first outfit check-in to unlock a personalised challenge.</p>
+      </div>
+      <div class="challenge-icon"><img src="Recycle-icon.jpeg" alt="Eco challenge"></div>
+    </section>
+  </main>
+  <script src="ecostreak.js"></script>
+</body>
+</html>
