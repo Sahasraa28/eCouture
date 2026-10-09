@@ -10,12 +10,22 @@ nav { display: flex; align-items: center; flex-wrap: wrap; gap: 26px; }
 nav a { color: #253c35; text-decoration: none; font-size: 14px; font-weight: 500; }
 nav a:hover { opacity: .6; }
 .small-title { font-family: "DM Sans", sans-serif; font-size: 12px; letter-spacing: 2.5px; font-weight: 700; margin-bottom: 14px; }
+
 /* HERO */
-.eco-hero { width: 100%; padding: 75px 8% 40px; }
-.hero-text { max-width: 920px; }
-.hero-text h1 { max-width: 800px; font-size: clamp(48px, 6vw, 78px); line-height: 1.03; font-weight: 400; }
-.hero-text h1 i { color: #d96c63; }
-.hero-description { max-width: 690px; margin-top: 26px; font-size: 17px; line-height: 1.7; }
+.eco-hero {
+  width: 100%;
+  min-height: 480px;
+  padding: 65px 8% 35px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr);
+  gap: 50px;
+  align-items: center;
+}
+
+.hero-text {
+  min-width: 0;
+  max-width: 100%;
+}
 
 .streak-card {
   max-width: 390px;
