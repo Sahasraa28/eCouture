@@ -71,15 +71,16 @@ nav a:hover {
    HERO
 ========================================= */
 
+
 .eco-hero {
-  min-height: 520px;
+  width: 100%;
+  min-height: 400px;
   padding: 80px 8%;
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
+  display: flex;
   align-items: center;
-  gap: 70px;
   background: linear-gradient(to right, #7e9f94, #c9a7a1);
 }
+
 
 .small-title {
   font-size: 12px;
