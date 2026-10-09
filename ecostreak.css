@@ -576,5 +576,69 @@ nav a:hover {
     padding: 10px 12px;
   }
 
+   
+/* ECO GARDEN DESIGN */
+
+.eco-garden {
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 22px;
+  padding: 25px 15px;
+  margin: 20px 0;
+  text-align: center;
 }
+
+#gardenPlant {
+  display: block;
+  font-size: 90px;
+  line-height: 1.4;
+  margin: 10px 0;
+}
+
+#gardenStage {
+  font-family: "Playfair Display", serif;
+  font-size: 27px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+#gardenCount {
+  font-size: 14px;
+  color: #667770;
+}
+
+/* FASHION PASSPORT */
+
+.fashion-passport {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(37, 60, 53, 0.2);
+}
+
+.fashion-passport h3 {
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+#passportBadges {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#passportBadges span {
+  display: block;
+  padding: 12px;
+  border-radius: 14px;
+  background: #dfe9e4;
+  color: #667770;
+  font-size: 13px;
+}
+
+#passportBadges span.unlocked {
+  background: #efc1bc;
+  color: #253c35;
+  border: 1px solid #d96c63;
+}
+
 
