@@ -104,6 +104,7 @@ function wardrobe() {
 /* =========================================
    UPDATE STREAK AND ECO CHALLENGE
 ========================================= */
+
 function updateGarden() {
   const total = progress.totalOutfits;
 
@@ -137,7 +138,13 @@ function updateGarden() {
 
   $("badge3").textContent =
     total >= 10 ? "🏆 Garden Guardian" : "🔒 Garden Guardian";
+
+  // Change badge colours when unlocked
+  $("badge1").classList.toggle("unlocked", total >= 1);
+  $("badge2").classList.toggle("unlocked", total >= 5);
+  $("badge3").classList.toggle("unlocked", total >= 10);
 }
+
 
 function refresh() {
 
