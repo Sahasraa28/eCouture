@@ -186,7 +186,7 @@ h1, h2, h3 { font-family: "Playfair Display", serif; }
 .ai-intro { max-width: 650px; line-height: 1.6; opacity: .8; }
 #outfitResult { margin-top: 30px; }
 /* ECO CHALLENGE */
-.challenge-section { margin: 0 8% 100px; padding: 55px 65px; display: flex; justify-content: space-between; align-items: center; gap: 40px; background: #8c6d68; border-radius: 30px; }
+.challenge-section { margin: 0 8% 100px; padding: 55px 65px; display: flex; justify-content: space-between; align-items: center; gap: 40px; background: #594845; border-radius: 30px; }
 .challenge-text h2 { max-width: 600px; font-size: 42px; line-height: 1.1; margin-bottom: 16px; }
 .challenge-text > p:last-child { max-width: 620px; line-height: 1.6; }
 .challenge-icon img {width: 150px; height: 150px; object-fit: contain; }
