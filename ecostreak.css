@@ -384,19 +384,23 @@ nav a:hover {
   }
 
   .eco-hero {
-    grid-template-columns: 1fr;
-    padding: 60px 6%;
-  }
+  min-height: 350px;
+  padding: 70px 8% 40px;
+  display: block;
+  background: linear-gradient(to right, #7e9f94, #c9a7a1);
+}
 
   .streak-card {
     justify-self: start;
   }
 
   .checkin-section {
-    grid-template-columns: 1fr;
-    padding: 70px 6%;
-    gap: 40px;
-  }
+  padding: 50px 8% 90px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
 
   .ai-result-section,
   .challenge-section {
@@ -438,3 +442,14 @@ nav a:hover {
     margin: 12px 0 0;
   }
 
+ @media (max-width: 900px) {
+  .checkin-section {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding: 50px 6%;
+  }
+
+  .eco-hero {
+    padding: 60px 6% 30px;
+  }
+}
