@@ -55,6 +55,7 @@ let progress = read(storageKey, {
 });
 
 progress.count = Number(progress.count) || 0;
+progress.totalOutfits = Number(progress.totalOutfits) || 0;
 progress.wears ||= {};
 progress.history ||= [];
 
@@ -103,10 +104,45 @@ function wardrobe() {
 /* =========================================
    UPDATE STREAK AND ECO CHALLENGE
 ========================================= */
+function updateGarden() {
+  const total = progress.totalOutfits;
+
+  let plant = "🪴";
+  let stage = "Your Garden Awaits";
+
+  if (total >= 10) {
+    plant = "🌺";
+    stage = "Full Bloom";
+  } else if (total >= 5) {
+    plant = "🌸";
+    stage = "First Bloom";
+  } else if (total >= 3) {
+    plant = "🌿";
+    stage = "Growing Green";
+  } else if (total >= 1) {
+    plant = "🌱";
+    stage = "Little Sprout";
+  }
+
+  $("gardenPlant").textContent = plant;
+  $("gardenStage").textContent = stage;
+  $("gardenCount").textContent =
+    total + " outfits confirmed";
+
+  $("badge1").textContent =
+    total >= 1 ? "🏅 First Outfit" : "🔒 First Outfit";
+
+  $("badge2").textContent =
+    total >= 5 ? "🌸 Eco Bloomer" : "🔒 Eco Bloomer";
+
+  $("badge3").textContent =
+    total >= 10 ? "🏆 Garden Guardian" : "🔒 Garden Guardian";
+}
 
 function refresh() {
 
   if (
+
     progress.lastCheckin &&
     progress.lastCheckin !== dateKey() &&
     progress.lastCheckin !== yesterday()
@@ -114,23 +150,24 @@ function refresh() {
     progress.count = 0;
   }
 
-  $("streakNumber").textContent = progress.count;
+  updateGarden();
 
   if (progress.lastCheckin === dateKey()) {
 
-    $("streakMessage").textContent =
-      "Today's check-in is complete. Come back tomorrow!";
+  $("streakMessage").textContent =
+    "Today's outfit is confirmed. Your garden is growing!";
 
-  } else if (progress.count > 0) {
+} else if (progress.totalOutfits > 0) {
 
-    $("streakMessage").textContent =
-      "Check in today to keep your EcoStreak alive!";
+  $("streakMessage").textContent =
+    "Confirm an outfit today to help your garden grow!";
 
-  } else {
+} else {
 
-    $("streakMessage").textContent =
-      "Complete today's outfit check-in to start your streak.";
-  }
+  $("streakMessage").textContent =
+    "Confirm your first outfit to plant your seed!";
+
+}
 
   const items = wardrobe();
 
@@ -652,6 +689,7 @@ function confirmOutfit(ids) {
       : 1;
 
   progress.lastCheckin = dateKey();
+  progress.totalOutfits += 1;
 
   ids.forEach(id => {
 
