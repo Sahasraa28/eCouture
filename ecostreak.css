@@ -2,13 +2,61 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: "DM Sans", sans-serif; background: linear-gradient(to right, #7e9f94, #c9a7a1); color: #253c35; }
 h1, h2, h3 { font-family: "Playfair Display", serif; }
-.navbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 6%; background: white; border-bottom: 1px solid rgba(0,0,0,.08); }
-.brand { display: flex; align-items: center; gap: 8px; }
-.logo-icon { width: 42px; height: 42px; object-fit: contain; }
-.logo-text { width: 120px; object-fit: contain; }
-nav { display: flex; align-items: center; flex-wrap: wrap; gap: 26px; }
-nav a { color: #253c35; text-decoration: none; font-size: 14px; font-weight: 500; }
-nav a:hover { opacity: .6; }
+
+/* NAVBAR - SAME AS CHAT WITH US */
+
+.navbar {
+  width: 90%;
+  margin: 25px auto;
+  padding: 15px 35px;
+  background: #e1e1e1;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo-text {
+  width: 155px;
+  height: auto;
+  object-fit: contain;
+}
+
+
+.navbar nav {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: .2s;
+}
+
+.navbar a:hover {
+  color: #8da89f;
+}
+
 .small-title { font-family: "DM Sans", sans-serif; font-size: 12px; letter-spacing: 2.5px; font-weight: 700; margin-bottom: 14px; }
 
 /* HERO */
