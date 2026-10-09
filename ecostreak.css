@@ -16,12 +16,98 @@ nav a:hover { opacity: .6; }
 .hero-text h1 { max-width: 800px; font-size: clamp(48px, 6vw, 78px); line-height: 1.03; font-weight: 400; }
 .hero-text h1 i { color: #d96c63; }
 .hero-description { max-width: 690px; margin-top: 26px; font-size: 17px; line-height: 1.7; }
+
+.streak-card {
+  max-width: 390px;
+  width: 100%;
+  justify-self: center;
+  text-align: center;
+  padding: 40px 30px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(37, 60, 53, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+.streak-icon img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 12px;
+}
+
+.streak-title {
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.streak-number {
+  margin: 10px 0;
+}
+
+#streakNumber {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-size: 82px;
+  line-height: 1;
+}
+
+.days {
+  font-size: 13px;
+  letter-spacing: 4px;
+  font-weight: 700;
+}
+
+.streak-message {
+  margin-top: 18px;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+
 /* OUTFIT CHECK-IN */
-.checkin-section { width: 100%; padding: 45px 8% 85px; display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 70px; align-items: center; }
-.section-heading, .checkin-card { min-width: 0; width: 100%; }
-.section-heading h2 { font-size: clamp(36px, 3.5vw, 48px); line-height: 1.08; margin-bottom: 20px; }
-.section-heading > p:last-child { line-height: 1.7; max-width: 480px; }
-.checkin-card { border-radius: 28px; box-shadow: 0 15px 45px rgba(37,60,53,.1); }
+
+/* OUTFIT CHECK-IN */
+.checkin-section {
+  width: 100%;
+  padding: 60px 8% 90px;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 50px;
+  align-items: stretch;
+}
+
+.section-heading {
+  min-width: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 28px;
+  padding: 45px 40px;
+  box-shadow: 0 15px 45px rgba(37, 60, 53, 0.1);
+}
+
+.section-heading h2 {
+  font-size: clamp(36px, 3.5vw, 48px);
+  line-height: 1.08;
+  margin-bottom: 20px;
+}
+
+.section-heading > p:last-child {
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+.checkin-card {
+  min-width: 0;
+  width: 100%;
+  border-radius: 28px;
+  box-shadow: 0 15px 45px rgba(37,60,53,.1);
+}
+
 .upload-area { min-height: 380px; width: 100%; border: 2px dashed #9db2aa; border-radius: 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px; }
 .camera-icon { width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; background: #dfe9e4; border-radius: 50%; margin-bottom: 20px; }
 .camera-icon img { width: 42px; height: 42px; object-fit: contain; }
@@ -50,12 +136,17 @@ nav a:hover { opacity: .6; }
 @media (max-width: 900px) {
   .navbar { flex-direction: column; gap: 15px; }
   nav { justify-content: center; gap: 14px; }
-  .eco-hero { padding: 60px 6% 25px; }
-  .checkin-section { grid-template-columns: 1fr; padding: 35px 6% 70px; gap: 40px; }
-  .ai-result-section, .challenge-section { margin-left: 6%; margin-right: 6%; }
-  .challenge-section { padding: 40px; }
-  .challenge-icon { display: none; }
+
+.eco-hero {
+  min-height: 520px;
+  padding: 80px 8%;
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  align-items: center;
+  gap: 70px;
+  background: linear-gradient(to right, #7e9f94, #c9a7a1);
 }
+
 /* MOBILE */
 @media (max-width: 520px) {
   .upload-area { padding: 22px; }
