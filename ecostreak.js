@@ -130,21 +130,6 @@ function updateGarden() {
   $("gardenCount").textContent =
     total + " outfits confirmed";
 
-  $("badge1").textContent =
-    total >= 1 ? "🏅 First Outfit" : "🔒 First Outfit";
-
-  $("badge2").textContent =
-    total >= 5 ? "🌸 Eco Bloomer" : "🔒 Eco Bloomer";
-
-  $("badge3").textContent =
-    total >= 10 ? "🏆 Garden Guardian" : "🔒 Garden Guardian";
-
-  // Change badge colours when unlocked
-  $("badge1").classList.toggle("unlocked", total >= 1);
-  $("badge2").classList.toggle("unlocked", total >= 5);
-  $("badge3").classList.toggle("unlocked", total >= 10);
-}
-
 
 function refresh() {
 
