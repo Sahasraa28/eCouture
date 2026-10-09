@@ -70,14 +70,11 @@ nav a:hover {
 /* =========================================
    HERO
 ========================================= */
-
-
 .eco-hero {
   width: 100%;
-  min-height: 400px;
-  padding: 80px 8%;
-  display: flex;
-  align-items: center;
+  min-height: auto;
+  padding: 70px 8% 35px;
+  display: block;
   background: linear-gradient(to right, #7e9f94, #c9a7a1);
 }
 
@@ -148,11 +145,13 @@ nav a:hover {
    DAILY CHECK-IN
 ========================================= */
 
+
 .checkin-section {
-  padding: 90px 8%;
+  width: 100%;
+  padding: 35px 8% 80px;
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
-  gap: 80px;
+  gap: 70px;
   align-items: center;
 }
 
@@ -167,11 +166,14 @@ nav a:hover {
   max-width: 480px;
 }
 
+
 .checkin-card {
-  min-height: 430px;
+  width: 100%;
+  min-width: 0;
   border-radius: 28px;
   box-shadow: 0 15px 45px rgba(37, 60, 53, 0.1);
 }
+
 
 /* =========================================
    UPLOAD AREA
