@@ -452,4 +452,53 @@ nav a:hover {
   .eco-hero {
     padding: 60px 6% 30px;
   }
+
+    
+/* FIX ECOSTREAK PAGE LAYOUT */
+
+.eco-hero {
+  display: block;
+  width: 100%;
+  min-height: auto;
+  padding: 75px 8%;
 }
+
+.checkin-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: 100%;
+  gap: 60px;
+  padding: 70px 8%;
+  align-items: center;
+}
+
+.section-heading,
+.checkin-card {
+  width: 100%;
+  min-width: 0;
+}
+
+.checkin-card {
+  min-height: 430px;
+}
+
+.upload-area {
+  width: 100%;
+  min-height: 380px;
+}
+
+.outfit-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .checkin-section {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+}
+
