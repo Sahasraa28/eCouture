@@ -354,6 +354,11 @@ localStorage.setItem(
 closeUploadModal();
 
 // Save garment information for EcoStreak
+document
+  .getElementById("clothingContainer")
+  .appendChild(card);
+
+// Save this garment for EcoStreak
 const savedWardrobe = JSON.parse(
   localStorage.getItem("ecoutureWardrobe") || "[]"
 );
@@ -373,6 +378,9 @@ localStorage.setItem(
 );
 
 closeUploadModal();
+}
+
+let currentGarment = null;
 }
 
 let currentGarment = null;
