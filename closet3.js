@@ -334,11 +334,6 @@ function addClothing() {
 }
 let currentGarment = null;
 
-// Save this garment for EcoStreak
-const savedWardrobe = JSON.parse(
-  localStorage.getItem("ecoutureWardrobe") || "[]"
-);
-
 savedWardrobe.push({
   id: "garment-" + Date.now() + "-" +
       Math.random().toString(36).slice(2, 8),
@@ -359,11 +354,6 @@ closeUploadModal();
 document
   .getElementById("clothingContainer")
   .appendChild(card);
-
-// Save this garment for EcoStreak
-const savedWardrobe = JSON.parse(
-  localStorage.getItem("ecoutureWardrobe") || "[]"
-);
 
 savedWardrobe.push({
   id: "garment-" + Date.now() + "-" +
@@ -880,10 +870,6 @@ if (aiStyleButton) {
 ========================================= */
 
 function restoreDigitalCloset() {
-
-  const savedWardrobe = JSON.parse(
-    localStorage.getItem("ecoutureWardrobe") || "[]"
-  );
 
   const container =
     document.getElementById("clothingContainer");
