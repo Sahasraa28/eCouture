@@ -314,14 +314,16 @@ function addClothing() {
     localStorage.getItem("ecoutureWardrobe") || "[]"
   );
 
-  savedWardrobe.push({
-    id: "garment-" + Date.now() + "-" +
-        Math.random().toString(36).slice(2, 8),
-    name: name,
-    category: category,
-    condition: conditionText,
-    style: style
-  });
+ savedWardrobe.push({
+  id: "garment-" + Date.now() + "-" +
+      Math.random().toString(36).slice(2, 8),
+  name: name,
+  category: category,
+  condition: conditionText,
+  conditionCode: condition,
+  style: style,
+  image: clothingImage
+});
 
   localStorage.setItem(
     "ecoutureWardrobe",
@@ -872,6 +874,67 @@ if (aiStyleButton) {
     }
 
   });
+
+/* =========================================
+   RESTORE SAVED DIGITAL CLOSET
+========================================= */
+
+function restoreDigitalCloset() {
+
+  const savedWardrobe = JSON.parse(
+    localStorage.getItem("ecoutureWardrobe") || "[]"
+  );
+
+  const container =
+    document.getElementById("clothingContainer");
+
+  if (!container || !Array.isArray(savedWardrobe)) return;
+
+  savedWardrobe.forEach(item => {
+
+    if (!item.image) return;
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const tagClass =
+      item.conditionCode === "excellent"
+        ? "excellent"
+        : item.conditionCode === "good"
+          ? ""
+          : "repair";
+
+    card.innerHTML = `
+      <img src="${item.image}" alt="">
+      <h3></h3>
+      <p></p>
+      <span class="tag ${tagClass}"></span>
+      <div class="action">
+        <button>View</button>
+      </div>
+    `;
+
+    card.querySelector("h3").textContent = item.name;
+    card.querySelector("p").textContent = item.category;
+    card.querySelector(".tag").textContent =
+      item.condition || "";
+
+    card.querySelector("button").onclick = () => {
+      openViewModal(
+        item.name,
+        item.category,
+        item.condition,
+        item.image,
+        item.conditionCode,
+        item.style
+      );
+    };
+
+    container.appendChild(card);
+  });
+}
+
+restoreDigitalCloset();
 
 }
 
