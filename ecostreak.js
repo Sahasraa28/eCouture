@@ -15,6 +15,7 @@ const closetKey = "ecoutureWardrobe";
 
 let photo = null;
 let analysis = null;
+let cameraStream = null;
 
 /* =========================================
    DATE HELPERS
@@ -42,7 +43,8 @@ function read(key, fallback) {
   try {
     const value = JSON.parse(localStorage.getItem(key));
     return value ?? fallback;
-  } catch {
+  } catch (error) {
+    console.error("Storage read error:", error);
     return fallback;
   }
 }
@@ -54,9 +56,20 @@ let progress = read(storageKey, {
   history: []
 });
 
+if (!progress || typeof progress !== "object" || Array.isArray(progress)) {
+  progress = {
+    count: 0,
+    lastCheckin: null,
+    wears: {},
+    history: []
+  };
+}
+
 progress.count = Number(progress.count) || 0;
-progress.wears ||= {};
-progress.history ||= [];
+progress.wears = progress.wears || {};
+progress.history = Array.isArray(progress.history)
+  ? progress.history
+  : [];
 
 function save() {
   try {
@@ -70,32 +83,30 @@ function save() {
 }
 
 /* =========================================
-   DIGITAL CLOSET
+   DIGITAL CLOSET CONNECTION
 ========================================= */
 
 function wardrobe() {
-  const saved = read("ecoutureWardrobe", []);
+  const saved = read(closetKey, []);
 
-  if (Array.isArray(saved)) {
-    return saved
-      .filter(item => item && item.name)
-      .map((item, index) => ({
-        ...item,
-        id: item.id ?? "garment-" + index,
-        category: item.category || "Clothing"
-      }));
+  if (!Array.isArray(saved)) {
+    return [];
   }
 
-  return [];
+  return saved
+    .filter(item => item && item.name)
+    .map((item, index) => ({
+      ...item,
+      id: item.id ?? "garment-" + index,
+      category: item.category || "Clothing"
+    }));
 }
-
 
 /* =========================================
    UPDATE STREAK AND ECO CHALLENGE
 ========================================= */
 
 function refresh() {
-
   if (
     progress.lastCheckin &&
     progress.lastCheckin !== dateKey() &&
@@ -138,21 +149,22 @@ function refresh() {
   const challengeIndex =
     dayNumber % dailyChallenges.length;
 
-  if (ranked.length > 0) {
+  const ecoChallenge = $("ecoChallenge");
 
-    const itemIndex = dayNumber % ranked.length;
-    const selectedItem = ranked[itemIndex];
+  if (ecoChallenge) {
+    if (ranked.length > 0) {
+      const itemIndex = dayNumber % ranked.length;
+      const selectedItem = ranked[itemIndex];
 
-    $("ecoChallenge").textContent =
-      dailyChallenges[challengeIndex].replace(
-        "{item}",
-        selectedItem.name
-      );
-
-  } else {
-
-    $("ecoChallenge").textContent =
-      "Add clothes to your Digital Closet to unlock your daily Eco Challenge!";
+      ecoChallenge.textContent =
+        dailyChallenges[challengeIndex].replace(
+          "{item}",
+          selectedItem.name
+        );
+    } else {
+      ecoChallenge.textContent =
+        "Add clothes to your Digital Closet to unlock your daily Eco Challenge!";
+    }
   }
 
   const streakNumber = $("streakNumber");
@@ -179,51 +191,55 @@ refresh();
 ========================================= */
 
 function showOutfitPreview() {
-
   if (!photo) return;
 
-  $("outfitImage").src = photo;
+  const outfitImage = $("outfitImage");
+  const uploadArea = $("uploadArea");
+  const outfitPreview = $("outfitPreview");
 
-  $("uploadArea").style.display = "none";
-  $("outfitPreview").style.display = "block";
-
-  section.style.display = "none";
+  if (outfitImage) outfitImage.src = photo;
+  if (uploadArea) uploadArea.style.display = "none";
+  if (outfitPreview) outfitPreview.style.display = "block";
+  if (section) section.style.display = "none";
 }
 
 /* =========================================
    CHOOSE PHOTO FROM DEVICE
 ========================================= */
 
-$("chooseOutfitButton").addEventListener(
-  "click",
-  () => input.click()
-);
+const chooseOutfitButton = $("chooseOutfitButton");
 
-input.addEventListener("change", () => {
+if (chooseOutfitButton && input) {
+  chooseOutfitButton.addEventListener("click", () => {
+    input.click();
+  });
 
-  const file = input.files && input.files[0];
+  input.addEventListener("change", () => {
+    const file = input.files && input.files[0];
 
-  if (!file) return;
+    if (!file) return;
 
-  if (!file.type.startsWith("image/")) {
-    alert("Please choose an image file.");
-    return;
-  }
+    if (!file.type.startsWith("image/")) {
+      alert("Please choose an image file.");
+      return;
+    }
 
-  const reader = new FileReader();
+    const reader = new FileReader();
 
-  reader.onload = () => {
-    photo = reader.result;
-    stopEcoCamera();
-    showOutfitPreview();
-  };
+    reader.onload = () => {
+      photo = reader.result;
+      analysis = null;
+      stopEcoCamera();
+      showOutfitPreview();
+    };
 
-  reader.onerror = () => {
-    alert("Could not read this image.");
-  };
+    reader.onerror = () => {
+      alert("Could not read this image.");
+    };
 
-  reader.readAsDataURL(file);
-});
+    reader.readAsDataURL(file);
+  });
+}
 
 /* =========================================
    LIVE CAMERA
@@ -233,14 +249,8 @@ const cameraSection = $("cameraSection");
 const cameraVideo = $("cameraVideo");
 const cameraCanvas = $("cameraCanvas");
 
-let cameraStream = null;
-
-/* STOP CAMERA */
-
 function stopEcoCamera() {
-
   if (cameraStream) {
-
     cameraStream.getTracks().forEach(track => {
       track.stop();
     });
@@ -248,26 +258,27 @@ function stopEcoCamera() {
     cameraStream = null;
   }
 
-  cameraVideo.pause();
-  cameraVideo.srcObject = null;
+  if (cameraVideo) {
+    cameraVideo.pause();
+    cameraVideo.srcObject = null;
+  }
 
-  cameraSection.style.display = "none";
+  if (cameraSection) {
+    cameraSection.style.display = "none";
+  }
 }
 
 /* OPEN CAMERA */
 
-$("openCameraButton").addEventListener(
-  "click",
-  async () => {
+const openCameraButton = $("openCameraButton");
 
+if (openCameraButton) {
+  openCameraButton.addEventListener("click", async () => {
     try {
-
       if (!navigator.mediaDevices?.getUserMedia) {
-
         alert(
           "Camera access requires HTTPS or localhost. Please open your deployed E-Couture website."
         );
-
         return;
       }
 
@@ -280,13 +291,11 @@ $("openCameraButton").addEventListener(
         });
 
       cameraVideo.srcObject = cameraStream;
-
       cameraSection.style.display = "block";
 
       await cameraVideo.play();
 
     } catch (error) {
-
       console.error("EcoStreak camera error:", error);
 
       stopEcoCamera();
@@ -296,25 +305,23 @@ $("openCameraButton").addEventListener(
         (error.message || error.name)
       );
     }
-  }
-);
+  });
+}
 
 /* TAKE PHOTO */
 
-$("takePhotoButton").addEventListener(
-  "click",
-  () => {
+const takePhotoButton = $("takePhotoButton");
 
+if (takePhotoButton) {
+  takePhotoButton.addEventListener("click", () => {
     if (
       !cameraStream ||
       !cameraVideo.videoWidth ||
       !cameraVideo.videoHeight
     ) {
-
       alert(
         "Camera is not ready. Please wait a moment."
       );
-
       return;
     }
 
@@ -324,11 +331,9 @@ $("takePhotoButton").addEventListener(
     const context = cameraCanvas.getContext("2d");
 
     if (!context) {
-
       alert(
         "Photo capture is unavailable in this browser."
       );
-
       return;
     }
 
@@ -345,19 +350,23 @@ $("takePhotoButton").addEventListener(
       0.85
     );
 
+    analysis = null;
+
     stopEcoCamera();
     showOutfitPreview();
-  }
-);
+  });
+}
 
 /* CLOSE CAMERA */
 
-$("closeCameraButton").addEventListener(
-  "click",
-  stopEcoCamera
-);
+const closeCameraButton = $("closeCameraButton");
 
-/* STOP CAMERA WHEN LEAVING PAGE */
+if (closeCameraButton) {
+  closeCameraButton.addEventListener(
+    "click",
+    stopEcoCamera
+  );
+}
 
 window.addEventListener(
   "pagehide",
@@ -368,35 +377,48 @@ window.addEventListener(
    CHANGE OUTFIT PHOTO
 ========================================= */
 
-$("changeOutfitButton").addEventListener("click", () => {
+const changeOutfitButton = $("changeOutfitButton");
 
-  stopEcoCamera();
+if (changeOutfitButton) {
+  changeOutfitButton.addEventListener("click", () => {
+    stopEcoCamera();
 
-  photo = null;
-  analysis = null;
+    photo = null;
+    analysis = null;
 
-  input.value = "";
+    if (input) input.value = "";
 
-  $("outfitImage").removeAttribute("src");
+    const outfitImage = $("outfitImage");
 
-  $("outfitPreview").style.display = "none";
-  $("uploadArea").style.display = "flex";
+    if (outfitImage) {
+      outfitImage.removeAttribute("src");
+    }
 
-  section.style.display = "none";
-  result.replaceChildren();
+    if ($("outfitPreview")) {
+      $("outfitPreview").style.display = "none";
+    }
 
-});
+    if ($("uploadArea")) {
+      $("uploadArea").style.display = "flex";
+    }
+
+    if (section) {
+      section.style.display = "none";
+    }
+
+    if (result) {
+      result.replaceChildren();
+    }
+  });
+}
 
 /* =========================================
    SAFE TEXT DISPLAY
 ========================================= */
 
 function element(tag, text) {
-
   const el = document.createElement(tag);
-
   el.textContent = text;
-
   return el;
 }
 
@@ -404,26 +426,26 @@ function element(tag, text) {
    AI OUTFIT ANALYSIS
 ========================================= */
 
-$("analyseOutfitButton").addEventListener(
-  "click",
-  async () => {
+const analyseOutfitButton = $("analyseOutfitButton");
 
+if (analyseOutfitButton) {
+  analyseOutfitButton.addEventListener("click", async () => {
     if (!photo) {
       alert("Please add an outfit photo first.");
       return;
     }
 
+    if (!section || !result) return;
+
     section.style.display = "block";
 
     if (progress.lastCheckin === dateKey()) {
-
       result.replaceChildren(
         element(
           "p",
           "You have already checked in today. Come back tomorrow!"
         )
       );
-
       return;
     }
 
@@ -435,19 +457,15 @@ $("analyseOutfitButton").addEventListener(
     );
 
     try {
-
       const response = await fetch(
         "/api/ecostreak-analyse",
         {
           method: "POST",
-
           headers: {
             "Content-Type": "application/json"
           },
-
           body: JSON.stringify({
             image: photo,
-
             wardrobe: wardrobe().map(
               ({ id, name, category }) => ({
                 id,
@@ -462,22 +480,16 @@ $("analyseOutfitButton").addEventListener(
       const data = await response.json();
 
       if (!response.ok) {
-
         throw new Error(
           data.error || "Analysis failed"
         );
       }
 
       analysis = data;
-
       renderMatches();
 
     } catch (error) {
-
-      console.error(
-        "EcoStreak AI error:",
-        error
-      );
+      console.error("EcoStreak AI error:", error);
 
       result.replaceChildren(
         element(
@@ -486,14 +498,15 @@ $("analyseOutfitButton").addEventListener(
         )
       );
     }
-  }
-);
+  });
+}
 
 /* =========================================
    DISPLAY AI CLOSET MATCHES
 ========================================= */
 
 function renderMatches() {
+  if (!result || !analysis) return;
 
   result.replaceChildren();
 
@@ -555,17 +568,39 @@ function renderMatches() {
   container.style.cssText =
     "display:grid;gap:14px;margin:18px 0";
 
-  if (matched.length) {
+  /* SHOW AI MATCHES OR ALL SAVED CLOTHES */
 
-    result.append(
-      element(
-        "p",
-        "Select only the clothes you're actually wearing. These are AI suggestions, not guaranteed matches."
-      )
+  if (items.length > 0) {
+    if (matched.length > 0) {
+      result.append(
+        element(
+          "p",
+          "AI found possible matches in your Digital Closet. Select only the garments you're actually wearing."
+        )
+      );
+    } else {
+      result.append(
+        element(
+          "p",
+          "AI couldn't identify an exact match. Select the clothes you actually wore from your Digital Closet below."
+        )
+      );
+    }
+
+    /* SHOW MATCHED ITEMS FIRST */
+
+    const matchedIds = new Set(
+      matched.map(item => String(item.id))
     );
 
-    for (const item of matched) {
+    const sortedItems = [
+      ...matched,
+      ...items.filter(item =>
+        !matchedIds.has(String(item.id))
+      )
+    ];
 
+    for (const item of sortedItems) {
       const label = document.createElement("label");
 
       label.style.cssText =
@@ -577,25 +612,26 @@ function renderMatches() {
       checkbox.value = String(item.id);
       checkbox.checked = false;
 
+      const isMatch =
+        matchedIds.has(String(item.id));
+
+      const itemText =
+        `${item.name} (${item.category || "Clothing"})` +
+        (isMatch ? " — possible AI match" : "");
+
       label.append(
         checkbox,
-        element(
-          "span",
-          `${item.name} (${item.category || "Clothing"}) — possible match`
-        )
+        element("span", itemText)
       );
 
       container.append(label);
     }
 
   } else {
-
     result.append(
       element(
         "p",
-        items.length
-          ? "No matching clothes were identified in your Digital Closet."
-          : "Your Digital Closet is empty. Add clothes there to find outfit matches."
+        "No saved garments were found for EcoStreak. Open Digital Closet and add or save your clothing first."
       )
     );
   }
@@ -605,7 +641,6 @@ function renderMatches() {
   /* STYLING SUGGESTION */
 
   if (analysis.tip) {
-
     const tipHeading = element(
       "h4",
       "STYLING SUGGESTION"
@@ -623,8 +658,7 @@ function renderMatches() {
 
   /* CONFIRM OUTFIT */
 
-  if (matched.length) {
-
+  if (items.length > 0) {
     const button = element(
       "button",
       "CONFIRM MY OUTFIT"
@@ -636,17 +670,14 @@ function renderMatches() {
       "background:#efc1bc;color:#253c35;border:0;border-radius:30px;padding:14px 24px;font-weight:bold;cursor:pointer;margin-top:16px";
 
     button.addEventListener("click", () => {
-
       const chosen = [
         ...container.querySelectorAll("input:checked")
       ].map(el => el.value);
 
       if (!chosen.length) {
-
         alert(
           "Please select at least one garment you actually wore."
         );
-
         return;
       }
 
@@ -662,8 +693,11 @@ function renderMatches() {
 ========================================= */
 
 function confirmOutfit(ids) {
-
   if (progress.lastCheckin === dateKey()) {
+    return;
+  }
+
+  if (!Array.isArray(ids) || ids.length === 0) {
     return;
   }
 
@@ -675,7 +709,6 @@ function confirmOutfit(ids) {
   progress.lastCheckin = dateKey();
 
   ids.forEach(id => {
-
     progress.wears[id] =
       (progress.wears[id] || 0) + 1;
   });
@@ -704,7 +737,6 @@ function confirmOutfit(ids) {
   );
 
   heading.style.marginTop = "20px";
-
   result.append(heading);
 
   wardrobe()
@@ -712,7 +744,6 @@ function confirmOutfit(ids) {
       ids.includes(String(item.id))
     )
     .forEach(item => {
-
       result.append(
         element(
           "p",
