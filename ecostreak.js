@@ -76,28 +76,13 @@ function save() {
 function wardrobe() {
   const saved = read(closetKey, []);
 
-  const defaults = [
-    {
-      id: "default-shirt",
-      name: "Shirt",
-      category: "Shirt"
-    },
-    {
-      id: "default-jeans",
-      name: "Jeans",
-      category: "Jeans"
-    },
-    {
-      id: "default-hoodie",
-      name: "Hoodie",
-      category: "Hoodie"
-    }
-  ];
-
-  return [
-    ...defaults,
-    ...(Array.isArray(saved) ? saved : [])
-  ];
+  return Array.isArray(saved)
+    ? saved.filter(item =>
+        item &&
+        item.id != null &&
+        item.name
+      )
+    : [];
 }
 
 /* =========================================
@@ -107,7 +92,6 @@ function wardrobe() {
 function refresh() {
 
   if (
-
     progress.lastCheckin &&
     progress.lastCheckin !== dateKey() &&
     progress.lastCheckin !== yesterday()
@@ -164,6 +148,20 @@ function refresh() {
 
     $("ecoChallenge").textContent =
       "Add clothes to your Digital Closet to unlock your daily Eco Challenge!";
+  }
+
+  const streakNumber = $("streakNumber");
+
+  if (streakNumber) {
+    streakNumber.textContent = String(progress.count);
+  }
+
+  const streakMessage = $("streakMessage");
+
+  if (streakMessage) {
+    streakMessage.textContent = progress.count > 0
+      ? "Keep your EcoStreak alive!"
+      : "Check in with an outfit to start your streak!";
   }
 
   save();
@@ -361,7 +359,6 @@ window.addEventListener(
   stopEcoCamera
 );
 
-
 /* =========================================
    CHANGE OUTFIT PHOTO
 ========================================= */
@@ -384,7 +381,6 @@ $("changeOutfitButton").addEventListener("click", () => {
   result.replaceChildren();
 
 });
-
 
 /* =========================================
    SAFE TEXT DISPLAY
@@ -497,126 +493,163 @@ function renderMatches() {
   result.replaceChildren();
 
   result.append(
-    element(
-      "h3",
-      "AI Outfit Check"
-    )
+    element("h3", "AI Outfit Check")
   );
+
+  /* DETECTED CLOTHES */
+
+  const detectedHeading = element(
+    "h4",
+    "DETECTED IN YOUR PHOTO"
+  );
+
+  detectedHeading.style.cssText =
+    "margin:22px 0 8px;letter-spacing:1.5px;font-size:13px;color:#d5e4dc";
+
+  result.append(detectedHeading);
 
   result.append(
     element(
       "p",
-      analysis.description ||
-      "Your outfit was analysed."
+      analysis.description || "Your outfit was analysed."
     )
   );
 
-  result.append(
-    element(
-      "p",
-      "Select the garments you are actually wearing. AI suggestions are not guaranteed matches."
-    )
+  /* DIGITAL CLOSET MATCHES */
+
+  const closetHeading = element(
+    "h4",
+    "POSSIBLE DIGITAL CLOSET MATCHES"
   );
+
+  closetHeading.style.cssText =
+    "margin:26px 0 8px;letter-spacing:1.5px;font-size:13px;color:#d5e4dc";
+
+  result.append(closetHeading);
 
   const items = wardrobe();
 
   const suggestedIds = new Set(
-    (analysis.matches || []).map(
-      match => String(match.id)
+    (
+      Array.isArray(analysis.matches)
+        ? analysis.matches
+        : []
     )
+      .filter(match =>
+        match && match.id != null
+      )
+      .map(match => String(match.id))
   );
 
-  if (!suggestedIds.size) {
-
-    result.append(
-      element(
-        "p",
-        "No confident closet matches suggested. You can select your garments manually."
-      )
-    );
-  }
+  const matched = items.filter(item =>
+    suggestedIds.has(String(item.id))
+  );
 
   const container = document.createElement("div");
 
   container.style.cssText =
-    "display:grid;gap:12px;margin:18px 0";
+    "display:grid;gap:14px;margin:18px 0";
 
-  const ordered = items.slice().sort(
-    (a, b) =>
-      Number(suggestedIds.has(String(b.id))) -
-      Number(suggestedIds.has(String(a.id)))
-  );
-
-  for (const item of ordered) {
-
-    const label = document.createElement("label");
-
-    label.style.cssText =
-      "display:flex;gap:12px;align-items:center;cursor:pointer";
-
-    const checkbox = document.createElement("input");
-
-    checkbox.type = "checkbox";
-    checkbox.value = item.id;
-    checkbox.checked = false;
-
-    const isSuggested =
-      suggestedIds.has(String(item.id));
-
-    label.append(
-      checkbox,
-      element(
-        "span",
-        `${item.name} (${item.category})${
-          isSuggested ? " — AI possible match" : ""
-        }`
-      )
-    );
-
-    container.append(label);
-  }
-
-  result.append(container);
-
-  if (analysis.tip) {
+  if (matched.length) {
 
     result.append(
       element(
         "p",
-        `Styling idea: ${analysis.tip}`
+        "Select only the clothes you're actually wearing. These are AI suggestions, not guaranteed matches."
+      )
+    );
+
+    for (const item of matched) {
+
+      const label = document.createElement("label");
+
+      label.style.cssText =
+        "display:flex;gap:12px;align-items:center;cursor:pointer";
+
+      const checkbox = document.createElement("input");
+
+      checkbox.type = "checkbox";
+      checkbox.value = String(item.id);
+      checkbox.checked = false;
+
+      label.append(
+        checkbox,
+        element(
+          "span",
+          `${item.name} (${item.category || "Clothing"}) — possible match`
+        )
+      );
+
+      container.append(label);
+    }
+
+  } else {
+
+    result.append(
+      element(
+        "p",
+        items.length
+          ? "No matching clothes were identified in your Digital Closet."
+          : "Your Digital Closet is empty. Add clothes there to find outfit matches."
       )
     );
   }
 
-  const button = element(
-    "button",
-    "CONFIRM MY OUTFIT"
-  );
+  result.append(container);
 
-  button.type = "button";
+  /* STYLING SUGGESTION */
 
-  button.style.cssText =
-    "background:#efc1bc;color:#253c35;border:0;border-radius:30px;padding:14px 24px;font-weight:bold;cursor:pointer";
+  if (analysis.tip) {
 
-  button.addEventListener("click", () => {
+    const tipHeading = element(
+      "h4",
+      "STYLING SUGGESTION"
+    );
 
-    const chosen = [
-      ...container.querySelectorAll("input:checked")
-    ].map(el => el.value);
+    tipHeading.style.cssText =
+      "margin:26px 0 8px;letter-spacing:1.5px;font-size:13px;color:#d5e4dc";
 
-    if (!chosen.length) {
+    result.append(tipHeading);
 
-      alert(
-        "Please select at least one garment you actually wore."
-      );
+    result.append(
+      element("p", analysis.tip)
+    );
+  }
 
-      return;
-    }
+  /* CONFIRM OUTFIT */
 
-    confirmOutfit(chosen);
-  });
+  if (matched.length) {
 
-  result.append(button);
+    const button = element(
+      "button",
+      "CONFIRM MY OUTFIT"
+    );
+
+    button.type = "button";
+
+    button.style.cssText =
+      "background:#efc1bc;color:#253c35;border:0;border-radius:30px;padding:14px 24px;font-weight:bold;cursor:pointer;margin-top:16px";
+
+    button.addEventListener("click", () => {
+
+      const chosen = [
+        ...container.querySelectorAll("input:checked")
+      ].map(el => el.value);
+
+      if (!chosen.length) {
+
+        alert(
+          "Please select at least one garment you actually wore."
+        );
+
+        return;
+      }
+
+      confirmOutfit(chosen);
+    });
+
+    result.append(button);
+  }
 }
 
 /* =========================================
@@ -670,7 +703,9 @@ function confirmOutfit(ids) {
   result.append(heading);
 
   wardrobe()
-    .filter(item => ids.includes(String(item.id)))
+    .filter(item =>
+      ids.includes(String(item.id))
+    )
     .forEach(item => {
 
       result.append(
