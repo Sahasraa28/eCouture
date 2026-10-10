@@ -308,6 +308,30 @@ function addClothing() {
   .getElementById("clothingContainer")
   .appendChild(card);
 
+	
+  // Save this garment for EcoStreak
+  const savedWardrobe = JSON.parse(
+    localStorage.getItem("ecoutureWardrobe") || "[]"
+  );
+
+  savedWardrobe.push({
+    id: "garment-" + Date.now() + "-" +
+        Math.random().toString(36).slice(2, 8),
+    name: name,
+    category: category,
+    condition: conditionText,
+    style: style
+  });
+
+  localStorage.setItem(
+    "ecoutureWardrobe",
+    JSON.stringify(savedWardrobe)
+  );
+
+  closeUploadModal();
+}
+let currentGarment = null;
+
 // Save this garment for EcoStreak
 const savedWardrobe = JSON.parse(
   localStorage.getItem("ecoutureWardrobe") || "[]"
