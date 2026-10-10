@@ -74,16 +74,21 @@ function save() {
 ========================================= */
 
 function wardrobe() {
-  const saved = read(closetKey, []);
+  const saved = read("ecoutureWardrobe", []);
 
-  return Array.isArray(saved)
-    ? saved.filter(item =>
-        item &&
-        item.id != null &&
-        item.name
-      )
-    : [];
+  if (Array.isArray(saved)) {
+    return saved
+      .filter(item => item && item.name)
+      .map((item, index) => ({
+        ...item,
+        id: item.id ?? "garment-" + index,
+        category: item.category || "Clothing"
+      }));
+  }
+
+  return [];
 }
+
 
 /* =========================================
    UPDATE STREAK AND ECO CHALLENGE
