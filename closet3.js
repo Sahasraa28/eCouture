@@ -316,6 +316,29 @@ function createClothingCard(item) {
   };
 
   action.appendChild(button);
+
+const deleteButton = document.createElement("button");
+deleteButton.type = "button";
+deleteButton.textContent = "Delete";
+deleteButton.className = "delete-clothing-btn";
+
+deleteButton.onclick = () => {
+  const confirmDelete = confirm(
+    `Are you sure you want to delete "${item.name}" from your Digital Closet?`
+  );
+
+  if (!confirmDelete) return;
+
+  const updatedWardrobe = getSavedWardrobe().filter(
+    savedItem => savedItem.id !== item.id
+  );
+
+  if (!saveWardrobe(updatedWardrobe)) return;
+
+  card.remove();
+};
+
+action.appendChild(deleteButton);
   card.append(img, heading, category, tag, action);
   container.appendChild(card);
 }
