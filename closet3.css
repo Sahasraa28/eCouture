@@ -1136,3 +1136,20 @@ button:hover {
 #clothingContainer:has(.card) + #noResults {
   display: none !important;
 }
+  /* EMPTY CLOSET WELCOME MESSAGE */
+
+.empty-closet h2 {
+  font-family: Georgia, serif !important;
+  font-size: 34px;
+  font-weight: bold;
+  color: #304740;
+  letter-spacing: 0.5px;
+}
+
+.empty-closet p {
+  font-family: Georgia, serif !important;
+  font-size: 18px;
+  font-weight: normal;
+  color: #52675f;
+  line-height: 1.7;
+}
