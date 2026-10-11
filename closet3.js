@@ -856,18 +856,11 @@ function updateEmptyCloset() {
 
   const hasClothes = container.querySelectorAll(".card").length > 0;
 
-  message.style.display = hasClothes ? "none" : "block";
-}
-
-function updateEmptyCloset() {
-  const container = document.getElementById("clothingContainer");
-  const message = document.getElementById("noResults");
-
-  if (!container || !message) return;
-
-  const numberOfClothes = container.querySelectorAll(".card").length;
-
-  message.style.display = numberOfClothes === 0 ? "block" : "none";
+  message.style.setProperty(
+    "display",
+    hasClothes ? "none" : "block",
+    "important"
+  );
 }
 
 function initialiseDigitalCloset() {
