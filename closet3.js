@@ -375,6 +375,7 @@ function addClothing() {
 
   createClothingCard(item);
   updateEmptyCloset();
+  updateEmptyCloset();
   closeUploadModal();
 }
 
