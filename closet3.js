@@ -858,6 +858,17 @@ function updateEmptyCloset() {
   message.style.display = hasClothes ? "none" : "block";
 }
 
+function updateEmptyCloset() {
+  const container = document.getElementById("clothingContainer");
+  const message = document.getElementById("noResults");
+
+  if (!container || !message) return;
+
+  const numberOfClothes = container.querySelectorAll(".card").length;
+
+  message.style.display = numberOfClothes === 0 ? "block" : "none";
+}
+
 function initialiseDigitalCloset() {
   restoreDigitalCloset();
   initialiseAIStylist();
