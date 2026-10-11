@@ -1081,3 +1081,24 @@ button:hover {
 .card .action .delete-clothing-btn:hover {
   background-color: #a83f3f;
 }
+  /* Space between View and Delete */
+#clothingContainer .card .action {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 18px !important;
+}
+
+/* Red Delete button */
+#clothingContainer .card .action button.delete-clothing-btn {
+  background: #c75b5b !important;
+  background-color: #c75b5b !important;
+  color: white !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 10px !important;
+}
+
+#clothingContainer .card .action button.delete-clothing-btn:hover {
+  background: #a83f3f !important;
+}
