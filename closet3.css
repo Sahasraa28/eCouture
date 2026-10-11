@@ -1040,117 +1040,64 @@ button:hover {
     height: 260px;
   }
 
-  .delete-clothing-btn {
-  background: #a65d58;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-left: 10px;
-  transition: background 0.2s ease;
+/* CLOSE THE EXISTING MOBILE SECTION */
 }
 
-.delete-clothing-btn:hover {
-  background: #85433e;
-}
-  /* VIEW AND DELETE BUTTON SPACING */
-.card .action {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-}
-
-/* VIEW BUTTON */
-.card .action button:not(.delete-clothing-btn) {
-  background-color: #304740;
-  color: white;
-}
-
-/* DELETE BUTTON */
-.card .action .delete-clothing-btn {
-  background-color: #c75b5b;
-  color: white;
-  border: none;
-  margin-left: 0;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.card .action .delete-clothing-btn:hover {
-  background-color: #a83f3f;
-}
-  /* Space between View and Delete */
-#clothingContainer .card .action {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  gap: 18px !important;
-}
-
-/* Red Delete button */
-#clothingContainer .card .action button.delete-clothing-btn {
-  background: #c75b5b !important;
-  background-color: #c75b5b !important;
-  color: white !important;
-  margin: 0 !important;
-  border: none !important;
-  border-radius: 10px !important;
-}
-
-#clothingContainer .card .action button.delete-clothing-btn:hover {
-  background: #a83f3f !important;
-}
-  /* DIGITAL CLOSET GRID */
+/* DIGITAL CLOSET GRID */
 #clothingContainer {
-  display: grid !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  gap: 25px !important;
-  width: 100% !important;
-  justify-content: start !important;
-  align-items: stretch !important;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+  width: 100%;
+  align-items: stretch;
 }
 
 /* CLOTHING CARDS */
 #clothingContainer .card {
-  width: 100% !important;
-  max-width: none !important;
-  margin: 0 !important;
-  box-sizing: border-box !important;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-/* BUTTON SPACING */
+/* VIEW AND DELETE BUTTON SPACING */
 #clothingContainer .card .action {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  gap: 16px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+/* VIEW BUTTON */
+#clothingContainer .card .action button:not(.delete-clothing-btn) {
+  background: #314640;
+  color: white;
 }
 
 /* DELETE BUTTON */
 #clothingContainer .card .action .delete-clothing-btn {
-  background-color: #c65b5b !important;
-  color: white !important;
-  margin: 0 !important;
-  border: none !important;
+  background: #c75b5b;
+  color: white;
+  border: none;
+  margin: 0;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 /* DELETE BUTTON HOVER */
 #clothingContainer .card .action .delete-clothing-btn:hover {
-  background-color: #a63e3e !important;
+  background: #a83f3f;
 }
 
 /* TABLET */
 @media (max-width: 900px) {
   #clothingContainer {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 /* MOBILE */
 @media (max-width: 600px) {
   #clothingContainer {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
   }
 }
