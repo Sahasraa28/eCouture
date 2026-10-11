@@ -541,7 +541,7 @@ async function scanGarment() {
       body: JSON.stringify({
         image: imageData,
         name: currentGarment.name,
-        category: currentGarment.category
+        category: currentGarment.category,
         condition: currentGarment.conditionText
       })
     });
