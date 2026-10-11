@@ -1054,3 +1054,30 @@ button:hover {
 .delete-clothing-btn:hover {
   background: #85433e;
 }
+  /* VIEW AND DELETE BUTTON SPACING */
+.card .action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+/* VIEW BUTTON */
+.card .action button:not(.delete-clothing-btn) {
+  background-color: #304740;
+  color: white;
+}
+
+/* DELETE BUTTON */
+.card .action .delete-clothing-btn {
+  background-color: #c75b5b;
+  color: white;
+  border: none;
+  margin-left: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.card .action .delete-clothing-btn:hover {
+  background-color: #a83f3f;
+}
