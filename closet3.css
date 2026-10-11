@@ -124,7 +124,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
   transition: .25s;
 }
@@ -1046,25 +1046,25 @@ button:hover {
 /* DIGITAL CLOSET GRID */
 #clothingContainer {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 320px));
+  justify-content: center;
   gap: 25px;
   width: 100%;
-  align-items: stretch;
 }
 
-/* CLOTHING CARDS */
 #clothingContainer .card {
   width: 100%;
+  min-height: 420px;
+  padding: 30px 20px;
   margin: 0;
-  box-sizing: border-box;
 }
 
-/* VIEW AND DELETE BUTTON SPACING */
 #clothingContainer .card .action {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 18px;
+  margin-top: auto;
+  padding-top: 20px;
 }
 
 /* VIEW BUTTON */
