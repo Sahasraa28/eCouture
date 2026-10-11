@@ -336,6 +336,7 @@ deleteButton.onclick = () => {
   if (!saveWardrobe(updatedWardrobe)) return;
 
   card.remove();
+  updateEmptyCloset();
 };
 
 action.appendChild(deleteButton);
@@ -373,6 +374,7 @@ function addClothing() {
   if (!saveWardrobe(saved)) return;
 
   createClothingCard(item);
+  updateEmptyCloset();
   closeUploadModal();
 }
 
@@ -845,16 +847,19 @@ function initialiseAIStylist() {
 
 /* START DIGITAL CLOSET */
 
+function updateEmptyCloset() {
+  const container = document.getElementById("clothingContainer");
+  const message = document.getElementById("noResults");
+
+  if (!container || !message) return;
+
+  const hasClothes = container.querySelectorAll(".card").length > 0;
+
+  message.style.display = hasClothes ? "none" : "block";
+}
+
 function initialiseDigitalCloset() {
   restoreDigitalCloset();
   initialiseAIStylist();
-}
-
-if (document.readyState === "loading") {
-  document.addEventListener(
-    "DOMContentLoaded",
-    initialiseDigitalCloset
-  );
-} else {
-  initialiseDigitalCloset();
+  updateEmptyCloset();
 }
