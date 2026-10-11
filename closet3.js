@@ -849,16 +849,16 @@ function initialiseAIStylist() {
 /* START DIGITAL CLOSET */
 
 function updateEmptyCloset() {
-  const container = document.getElementById("clothingContainer");
+  const closet = document.getElementById("clothingContainer");
   const message = document.getElementById("noResults");
 
-  if (!container || !message) return;
+  if (!closet || !message) return;
 
-  const hasClothes = container.querySelectorAll(".card").length > 0;
+  const isEmpty = closet.querySelectorAll(".card").length === 0;
 
   message.style.setProperty(
     "display",
-    hasClothes ? "none" : "block",
+    isEmpty ? "block" : "none",
     "important"
   );
 }
@@ -866,5 +866,11 @@ function updateEmptyCloset() {
 function initialiseDigitalCloset() {
   restoreDigitalCloset();
   initialiseAIStylist();
+  updateEmptyCloset();
+}
+
+document.addEventListener("DOMContentLoaded", updateEmptyCloset);
+
+if (document.readyState !== "loading") {
   updateEmptyCloset();
 }
