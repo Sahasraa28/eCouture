@@ -542,6 +542,7 @@ async function scanGarment() {
         image: imageData,
         name: currentGarment.name,
         category: currentGarment.category
+        condition: currentGarment.conditionText
       })
     });
 
