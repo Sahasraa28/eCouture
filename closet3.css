@@ -1100,4 +1100,32 @@ button:hover {
   #clothingContainer {
     grid-template-columns: 1fr;
   }
+
+  /* EMPTY DIGITAL CLOSET MESSAGE */
+
+.empty-closet {
+  max-width: 550px;
+  margin: 35px auto;
+  padding: 45px 30px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 20px;
+  color: #314640;
 }
+
+.empty-icon {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.empty-closet h2 {
+  font-family: Georgia, serif;
+  font-size: 27px;
+  margin-bottom: 12px;
+}
+
+.empty-closet p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
