@@ -314,7 +314,8 @@ app.post("/api/garment-doctor", async (req, res) => {
     const {
       image,
       name,
-      category
+      category,
+      condition,
     } = req.body;
 
     if (!image) {
@@ -349,37 +350,43 @@ app.post("/api/garment-doctor", async (req, res) => {
     const prompt = `
 You are the eCouture AI Tailor.
 
-Analyse the clothing item shown in the image.
+Carefully examine the garment photograph for visible
+damage, including holes, tears, stains, fading,
+discolouration and worn fabric.
 
-The user has labelled the item:
-
+GARMENT INFORMATION:
 Name: ${name || "Unknown"}
 Category: ${category || "Unknown"}
+User-reported condition: ${condition || "Not provided"}
 
-Use the IMAGE as your main source of information.
+IMPORTANT INSTRUCTIONS:
 
-Identify:
+1. Examine the entire garment image carefully,
+including small details and damaged areas.
 
-1. The garment type.
-2. The main visible colour.
-3. Its apparent visible condition.
-4. Any clearly visible wear, fading, stains, holes,
-   tears or other visible issues.
-5. Whether the garment appears suitable to keep and rewear.
+2. Pay special attention to unusual patches,
+holes, tears, stains and colour differences.
 
-IMPORTANT:
+3. Use the image as your main visual evidence.
 
-Only describe things that can reasonably be observed
-from the photograph.
+4. Consider the user's reported condition as
+additional information.
 
-Do not claim that you can determine fabric strength,
-internal damage, hygiene, safety or other properties
-that cannot be confirmed visually.
+5. If the user reports a hole or stain but it
+cannot be clearly confirmed in the image,
+acknowledge the reported issue and explain
+the visual uncertainty.
 
-If damage cannot clearly be seen, say:
-"No obvious damage is visible in this image."
+6. Never automatically describe the garment
+as being in good condition.
 
-Return ONLY valid JSON using exactly this structure:
+7. Do not invent damage that is not visible
+or reported by the user.
+
+8. If damage is visible or reported, suggest
+repairing or upcycling before discarding.
+
+Return ONLY valid JSON:
 
 {
   "garment": "",
@@ -389,14 +396,12 @@ Return ONLY valid JSON using exactly this structure:
   "verdict": ""
 }
 
-For verdict, use one of these short sustainability-focused phrases:
-
+The verdict must be one of:
 "KEEP & REWEAR"
 "REPAIR & REWEAR"
 "UPCYCLE & REWEAR"
 
-Do not include Markdown.
-Do not include any text outside the JSON.
+No Markdown or additional text.
 `;
 
 
