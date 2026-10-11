@@ -487,6 +487,10 @@ if (analyseOutfitButton) {
 
       analysis = data;
       renderMatches();
+section.scrollIntoView({
+  behavior: "smooth",
+  block: "start"
+});
 
     } catch (error) {
       console.error("EcoStreak AI error:", error);
