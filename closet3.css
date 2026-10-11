@@ -1128,4 +1128,11 @@ button:hover {
   font-size: 16px;
   line-height: 1.6;
 }
+/* Empty closet welcome message */
+#clothingContainer:not(:has(.card)) + #noResults {
+  display: block !important;
+}
 
+#clothingContainer:has(.card) + #noResults {
+  display: none !important;
+}
