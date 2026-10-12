@@ -846,6 +846,8 @@ function initialiseAIStylist() {
   });
 }
 
+
+
 /* START DIGITAL CLOSET */
 
 function updateEmptyCloset() {
