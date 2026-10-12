@@ -870,10 +870,9 @@ function initialiseDigitalCloset() {
   initialiseAIStylist();
   updateEmptyCloset();
 }
-document.addEventListener("DOMContentLoaded", updateEmptyCloset);
+
+document.addEventListener("DOMContentLoaded", initialiseDigitalCloset);
 
 if (document.readyState !== "loading") {
-  updateEmptyCloset();
+  initialiseDigitalCloset();
 }
-
-
