@@ -161,19 +161,40 @@ const wasteCountries = {
       "The United States generates an estimated 17 million tonnes of textile and clothing waste. The United States has high levels of clothing consumption, with large quantities of unwanted garments discarded each year."
   },
 
+pakistan: {
+    id: "pakistan",
+    number: "03",
+    rank: "#3 IN THIS SELECTED DATASET",
+    name: "PAKISTAN",
+    waste: "≈ 8.7 MILLION",
+    lat: 30.3753,
+    lng: 69.3451,
+    description:
+      "Pakistan generates an estimated 8.7 million tonnes of textile waste annually. Its significant textile manufacturing industry shows the need to improve waste management, recycling and sustainability."
+  },
 
   india: {
     id: "india",
-    number: "03",
-    rank: "#3 IN THIS GLOBAL DATASET",
+    number: "04",
+    rank: "#4 IN THIS SELECTED DATASET",
     name: "INDIA",
     waste: "≈ 7.8 MILLION",
-
     lat: 20.5937,
     lng: 78.9629,
-
     description:
-      "India generates an estimated 7.8 million tonnes of textile and clothing waste. India has a large textile and garment industry, with clothing production and consumption contributing to growing textile waste."
+      "India generates an estimated 7.8 million tonnes of textile and clothing waste annually. Its large textile and garment industry shows the need for sustainable production, reuse and recycling."
+  },
+
+  bangladesh: {
+    id: "bangladesh",
+    number: "05",
+    rank: "#5 IN THIS SELECTED DATASET",
+    name: "BANGLADESH",
+    waste: "≈ 5.77 MILLION",
+    lat: 23.6850,
+    lng: 90.3563,
+    description:
+      "Bangladesh generates an estimated 5.77 million tonnes of textile waste annually. Its garment manufacturing industry shows the importance of reducing  waste and recovering reusable textile materials."
   }
 
 };
