@@ -462,7 +462,9 @@ document.getElementById(
   const names = {
     china: "CHINA",
     usa: "USA",
-    india: "INDIA"
+    pakistan: "PAKISTAN",
+    india: "INDIA",
+    bangladesh: "BANGLADESH"
   };
 
 
