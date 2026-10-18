@@ -1066,4 +1066,15 @@ h2 {
         font-size: 28px;
     }
 
+    .country-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    }
+
+    .country-buttons button {
+    flex: 1 1 auto;
+    min-width: 90px;
+    }
 }
