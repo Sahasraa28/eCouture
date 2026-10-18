@@ -866,8 +866,22 @@ function updateEmptyCloset() {
 }
 
 function initialiseDigitalCloset() {
-  restoreDigitalCloset();
-  initialiseAIStylist();
+  console.log("STEP 1: Digital Closet starting");
+
+  try {
+    restoreDigitalCloset();
+    console.log("STEP 2: Wardrobe restored");
+  } catch (error) {
+    console.error("Wardrobe restoration failed:", error);
+  }
+
+  try {
+    initialiseAIStylist();
+    console.log("STEP 3: AI Stylist connected");
+  } catch (error) {
+    console.error("AI Stylist initialization failed:", error);
+  }
+
   updateEmptyCloset();
 }
 
