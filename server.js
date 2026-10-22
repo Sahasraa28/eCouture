@@ -18,19 +18,10 @@ const wait = ms =>
   new Promise(resolve => setTimeout(resolve, ms));
 
 
+
 async function generateWithRetry(request) {
-  for (let attempt = 1; attempt <= 2; attempt++) {
-    try {
-      const response = await ai.models.generateContent({
-        ...request,
-        config: {
-          ...request.config,
-          httpOptions: {
-            ...request.config?.httpOptions,
-            timeout: 12000
-          }
-        }
-      });
+  return await ai.models.generateContent(request);
+}
 
       return response;
 
