@@ -17,14 +17,43 @@ const ai = new GoogleGenAI({
 const wait = ms =>
   new Promise(resolve => setTimeout(resolve, ms));
 
+
 async function generateWithRetry(request) {
-  for (let attempt = 1; attempt <= 3; attempt++) {
+  for (let attempt = 1; attempt <= 2; attempt++) {
     try {
-      return await ai.models.generateContent(request);
+      const response = await ai.models.generateContent({
+        ...request,
+        config: {
+          ...request.config,
+          httpOptions: {
+            ...request.config?.httpOptions,
+            timeout: 12000
+          }
+        }
+      });
+
+      return response;
+
     } catch (error) {
       const status = Number(
         error.status || error.code || 0
       );
+
+      const temporaryError =
+        [429, 500, 502, 503, 504].includes(status) ||
+        /high demand|unavailable|overloaded|timeout|timed out/i.test(
+          error.message || ""
+        );
+
+      if (!temporaryError || attempt === 2) {
+        throw error;
+      }
+
+      console.log("Gemini busy. Retrying once...");
+      await wait(1000);
+    }
+  }
+}
 
       const temporaryError =
         [429, 500, 502, 503, 504].includes(status) ||
