@@ -8,64 +8,7 @@ const app = express();
 
 app.use(express.json({ limit: "10mb" }));
 app.use(express.static("."));
-
-const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY
-});
-
-
-const wait = ms =>
-  new Promise(resolve => setTimeout(resolve, ms));
-
-
-
-async function generateWithRetry(request) {
-  return await ai.models.generateContent(request);
-}
-
-      return response;
-
-    } catch (error) {
-      const status = Number(
-        error.status || error.code || 0
-      );
-
-      const temporaryError =
-        [429, 500, 502, 503, 504].includes(status) ||
-        /high demand|unavailable|overloaded|timeout|timed out/i.test(
-          error.message || ""
-        );
-
-      if (!temporaryError || attempt === 2) {
-        throw error;
-      }
-
-      console.log("Gemini busy. Retrying once...");
-      await wait(1000);
-    }
-  }
-}
-
-      const temporaryError =
-        [429, 500, 502, 503, 504].includes(status) ||
-        /high demand|unavailable|overloaded/i.test(
-          error.message || ""
-        );
-
-      if (!temporaryError || attempt === 3) {
-        throw error;
-      }
-
-      console.log(
-        `Gemini temporarily unavailable. Retry ${attempt}/2`
-      );
-
-      await wait(attempt * 1500);
-    }
-  }
-}
-
-app.post("/api/style-me", async (req, res) => {
+app.post("/api/style-me", async (req, res) => {             
 
   try {
 
