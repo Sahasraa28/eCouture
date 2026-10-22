@@ -8,6 +8,15 @@ const app = express();
 
 app.use(express.json({ limit: "10mb" }));
 app.use(express.static("."));
+
+const ai = new GoogleGenAI({
+  apiKey: process.env.GEMINI_API_KEY
+});
+
+async function generateWithRetry(request) {
+  return await ai.models.generateContent(request);
+}
+
 app.post("/api/style-me", async (req, res) => {             
 
   try {
