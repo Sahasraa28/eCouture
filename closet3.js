@@ -501,30 +501,58 @@ function closeViewModal() {
 
 /* AI GARMENT IMAGE CONVERSION */
 
+
 async function getGarmentImageData(image) {
   if (!image) {
     throw new Error("No garment image available");
   }
 
-  if (image.startsWith("data:image/")) {
-    return image;
-  }
-
-  const response = await fetch(image);
-
-  if (!response.ok) {
-    throw new Error("Could not load garment image");
-  }
-
-  const blob = await response.blob();
-
   return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onloadend = () => resolve(reader.result);
-    reader.onerror = reject;
-    reader.readAsDataURL(blob);
+    const img = new Image();
+
+    img.onload = () => {
+      try {
+        const maxSize = 1024;
+
+        const scale = Math.min(
+          1,
+          maxSize / Math.max(img.width, img.height)
+        );
+
+        const canvas = document.createElement("canvas");
+
+        canvas.width = Math.round(img.width * scale);
+        canvas.height = Math.round(img.height * scale);
+
+        const ctx = canvas.getContext("2d");
+
+        ctx.drawImage(
+          img,
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        );
+
+        const compressedImage = canvas.toDataURL(
+          "image/jpeg",
+          0.8
+        );
+
+        resolve(compressedImage);
+      } catch (error) {
+        reject(error);
+      }
+    };
+
+    img.onerror = () => {
+      reject(new Error("Could not load garment image"));
+    };
+
+    img.src = image;
   });
 }
+
 
 /* AI TAILOR - SCAN GARMENT */
 
