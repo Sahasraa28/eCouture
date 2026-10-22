@@ -13,6 +13,38 @@ const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY
 });
 
+
+const wait = ms =>
+  new Promise(resolve => setTimeout(resolve, ms));
+
+async function generateWithRetry(request) {
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      return await ai.models.generateContent(request);
+    } catch (error) {
+      const status = Number(
+        error.status || error.code || 0
+      );
+
+      const temporaryError =
+        [429, 500, 502, 503, 504].includes(status) ||
+        /high demand|unavailable|overloaded/i.test(
+          error.message || ""
+        );
+
+      if (!temporaryError || attempt === 3) {
+        throw error;
+      }
+
+      console.log(
+        `Gemini temporarily unavailable. Retry ${attempt}/2`
+      );
+
+      await wait(attempt * 1500);
+    }
+  }
+}
+
 app.post("/api/style-me", async (req, res) => {
 
   try {
@@ -92,7 +124,7 @@ Give one short sentence about reusing clothes they already own.
 Keep the entire response concise and clean.
 `;
 
-    const response = await ai.models.generateContent({
+    const response = await generateWithRetry({
       model: "gemini-3.5-flash-lite",
       contents: prompt
     });
